@@ -29,6 +29,7 @@ const Hero = () => {
             <ButtonPrimary 
             label="Download CV" 
             icon="download" 
+            href="https://drive.google.com/file/d/1Qe7yj6MoWLZWdM26Oub7guV0Oaip45pe/view?usp=sharing"
             />
             <ButtonOutline
             href="#about"
@@ -39,15 +40,13 @@ const Hero = () => {
         </div>
 
         <div className="hidden lg:block">
-          <figure className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden">
-            <img
-              src="/images/hero-banner.png"
-              width={656}
-              height={800}
-              alt="Muniraju B R"
-              className="w-full"
-            />
-          </figure>
+          <figure className="w-full max-w-[400px] max-h-[500px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden">
+  <img
+    src="/images/hero-banner.png"
+    alt="Muniraju B R"
+    className="object-contain w-full h-auto"
+  />
+</figure>
         </div>
       </div>
     </section>

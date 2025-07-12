@@ -44,8 +44,7 @@ const Work = () => {
     return(
         <section id="work" className="section">
             <div className="container">
-
-                <h2 className="headline-2 reveal-up"> 
+                <h2 className="mb-8 headline-2 reveal-up"> 
                     My portfolio highlights
                 </h2>
 

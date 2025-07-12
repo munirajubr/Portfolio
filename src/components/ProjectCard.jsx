@@ -37,8 +37,8 @@ const ProjectCard = ({
 
                 <div className="grid rounded-lg w-11 h-11 place-items-center bg-sky-400 text-zinc-950 shrink-0">
                     <span 
-                    className=""
-                    aria-hidden="true"
+                        className="material-symbols-rounded"
+                        aria-hidden="true"
                     >
                         arrow_outward
                     </span>

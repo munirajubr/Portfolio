@@ -5,13 +5,13 @@ const achievements = [
     imgSrc: '',
     title: 'Google UX Design',
     tags: ['UX Design', 'Google', 'Certificate'],
-    achievementLink: '#achievements'
+    achievementLink: '/#achievements'
   },
   {
     imgSrc: '',
     title: 'Google AI Essentials',
     tags: ['AI Essentials', 'Google', 'LLM'],
-    achievementLink: '#achievements'
+    achievementLink: '/#achievements'
   },
 ];
 

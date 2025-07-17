@@ -6,6 +6,7 @@ import Work from "./components/Work";
 import Review from "./components/Review";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Achievements from "./components/Achievements"
 
 import { ReactLenis } from 'lenis/react'
 import gsap from "gsap";
@@ -44,7 +45,8 @@ const App = () => {
         <About/>
         <Skill/>
         <Work/>
-        <Review/>
+        <Achievements/>
+        {/* <Review/> */}
         <Contact/>
       </main>
       <Footer/>

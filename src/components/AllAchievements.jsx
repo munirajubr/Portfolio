@@ -21,7 +21,7 @@ const AllAchievements = () => {
         <section id="achievements" className="section">
             <div className="container">
                 <ButtonNonOutline
-                    href="/#achievements"
+                    href="/"
                     label=""
                     icon="arrow_back"
                 />

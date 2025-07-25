@@ -43,7 +43,7 @@ const Work = () => {
                 </div>
 
                 <a href='/projects'>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center reveal-up">
                     View More <span 
                         className="material-symbols-rounded"
                         aria-hidden="true"

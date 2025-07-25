@@ -22,7 +22,7 @@ const AllProject = () => {
         <section id="work" className="section">
             <div className="container">
                 <ButtonNonOutline
-                    href="/#work"
+                    href="/"
                     label=""
                     icon="arrow_back"
                 />

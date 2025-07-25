@@ -39,7 +39,7 @@ const Achievements = () => {
                     }
                 </div>
                 <a href='/achievements'>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center reveal-up">
                     View More <span 
                         className="material-symbols-rounded"
                         aria-hidden="true"

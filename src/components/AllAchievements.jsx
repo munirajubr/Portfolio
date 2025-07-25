@@ -1,6 +1,5 @@
 import AchievementCard from "./achievementCard"; // Changed to uppercase
-import { ButtonPrimary, ButtonOutline } from "./Button";
-import Header from './Header';
+import { ButtonNonOutline } from "./Button";
 
 const achievements = [
   {
@@ -21,11 +20,10 @@ const AllAchievements = () => {
     return(
         <section id="achievements" className="section">
             <div className="container">
-                <Header />
-                <ButtonOutline
+                <ButtonNonOutline
                     href="/#achievements"
                     label=""
-                    icon="arrow_left"
+                    icon="arrow_back"
                 />
                 <h6 className="headline-2 reveal-up"> 
                     Achievements

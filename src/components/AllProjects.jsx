@@ -1,6 +1,5 @@
 import ProjectCard from './ProjectCard';
-import { ButtonOutline } from "./Button";
-import Header from './Header';
+import { ButtonNonOutline } from "./Button";
 
 
 const works = [
@@ -21,12 +20,11 @@ const works = [
 const AllProject = () => {
     return(
         <section id="work" className="section">
-            <Header />
             <div className="container">
-                <ButtonOutline
+                <ButtonNonOutline
                     href="/#work"
                     label=""
-                    icon="arrow_left"
+                    icon="arrow_back"
                 />
                 <h6 className="headline-2 reveal-up">  
                     Projects

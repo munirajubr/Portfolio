@@ -10,6 +10,7 @@ import './index.css';
 const App = () => {
   return (
     <>
+    <Header />
     <Routes>
       <Route path="/" element={<Portfilio />} />
       <Route path="/projects" element={<AllProject />} />

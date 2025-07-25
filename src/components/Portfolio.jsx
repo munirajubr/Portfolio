@@ -1,9 +1,8 @@
-import Header from "./Header";
 import Hero from "./Hero";
 import About from "./About";
 import Skill from "./Skill";
 import Work from "./Work";
-import Review from "./Review";
+// import Review from "./Review";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Achievements from "./Achievements"
@@ -39,7 +38,6 @@ const Portfilio = () => {
 
   return (
     <ReactLenis root>
-            <Header />
       <main>
         <Hero />
         <About/>

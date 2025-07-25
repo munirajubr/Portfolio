@@ -1,6 +1,4 @@
 import ProjectCard from './ProjectCard';
-import { ButtonPrimary, ButtonOutline } from "./Button";
-
 
 
 const works = [
@@ -18,7 +16,7 @@ const works = [
   },
 ];
 
-const Work = () => {
+const AllProject = () => {
     return(
         <section id="work" className="section">
             <div className="container">
@@ -42,7 +40,6 @@ const Work = () => {
                     }
                 </div>
 
-                <a href='/projects'>
                 <div className="flex items-center justify-center">
                     View More <span 
                         className="material-symbols-rounded"
@@ -51,11 +48,10 @@ const Work = () => {
                         arrow_outward
                     </span>
                 </div>
-                </a>
                 </div>
             </div>
         </section>
     )
 }
 
-export default Work;
+export default AllProject;

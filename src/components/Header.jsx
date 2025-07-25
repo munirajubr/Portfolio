@@ -34,7 +34,7 @@ const Header = () => {
           <Navbar navOpen={navOpen} />
         </div>
 
-        <a href="#contact" className="hidden md:inline-flex btn btn-secondary">
+        <a href="/#contact" className="hidden md:inline-flex btn btn-secondary">
           Contact Me
         </a>
       </div>

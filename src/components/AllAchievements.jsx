@@ -1,6 +1,6 @@
 import AchievementCard from "./achievementCard"; // Changed to uppercase
-import { ButtonOutline } from "./Button";
-
+import { ButtonPrimary, ButtonOutline } from "./Button";
+import Header from './Header';
 
 const achievements = [
   {
@@ -17,13 +17,19 @@ const achievements = [
   },
 ];
 
-const Achievements = () => {
+const AllAchievements = () => {
     return(
         <section id="achievements" className="section">
             <div className="container">
-                <h2 className="mb-8 headline-2 reveal-up"> 
-                    My Achievements
-                </h2>
+                <Header />
+                <ButtonOutline
+                    href="/#achievements"
+                    label=""
+                    icon="arrow_left"
+                />
+                <h6 className="headline-2 reveal-up"> 
+                    Achievements
+                </h6>
                 <div className="grid gap-x-4 gap-y-5">
                 <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
                     {
@@ -38,20 +44,10 @@ const Achievements = () => {
                         ))
                     }
                 </div>
-                <a href='/achievements'>
-                <div className="flex items-center justify-center">
-                    View More <span 
-                        className="material-symbols-rounded"
-                        aria-hidden="true"
-                    >
-                        arrow_outward
-                    </span>
-                </div>
-                </a>
                 </div>
             </div>
         </section>
     )
 }
 
-export default Achievements;
+export default AllAchievements;

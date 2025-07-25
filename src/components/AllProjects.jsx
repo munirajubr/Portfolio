@@ -1,6 +1,6 @@
 import ProjectCard from './ProjectCard';
-import { ButtonPrimary, ButtonOutline } from "./Button";
-
+import { ButtonOutline } from "./Button";
+import Header from './Header';
 
 
 const works = [
@@ -18,13 +18,19 @@ const works = [
   },
 ];
 
-const Work = () => {
+const AllProject = () => {
     return(
         <section id="work" className="section">
+            <Header />
             <div className="container">
-                <h2 className="mb-8 headline-2 reveal-up"> 
-                    My portfolio highlights
-                </h2>
+                <ButtonOutline
+                    href="/#work"
+                    label=""
+                    icon="arrow_left"
+                />
+                <h6 className="headline-2 reveal-up">  
+                    Projects
+                </h6>
 
                 <div className="grid gap-x-4 gap-y-5">
                 <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
@@ -42,20 +48,10 @@ const Work = () => {
                     }
                 </div>
 
-                <a href='/projects'>
-                <div className="flex items-center justify-center">
-                    View More <span 
-                        className="material-symbols-rounded"
-                        aria-hidden="true"
-                    >
-                        arrow_outward
-                    </span>
-                </div>
-                </a>
                 </div>
             </div>
         </section>
     )
 }
 
-export default Work;
+export default AllProject;

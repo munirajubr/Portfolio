@@ -16,7 +16,6 @@ const Header = () => {
               height={40}
               alt="Muniraju BR"
             />
-              <h1 className="text-2xl text-white md:text-2xl">Muniraju BR</h1>
           </a>
       </div>
 

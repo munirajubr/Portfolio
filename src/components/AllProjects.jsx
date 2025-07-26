@@ -4,16 +4,28 @@ import { ButtonNonOutline } from "./Button";
 
 const works = [
   {
-    imgSrc: '',
-    title: 'Updating soon',
-    tags: ['NULL', 'NULL'],
-    projectLink: '/#work'
+    imgSrc: '/images/Student GPT.jpg',
+    title: 'Student GPT Mobile App UI Design',
+    tags: ['Figma', 'UI Design', 'Mobile UI'],
+    projectLink: 'https://www.behance.net/gallery/223935725/Student-GPT-Your-Smart-Academic-Assistant'
   },
   {
-    imgSrc: '',
-    title: 'Updating soon',
-    tags: ['NULL', 'NULL'],
-    projectLink: '/#work'
+    imgSrc: '/images/ProjectCollab.jpg',
+    title: 'Project Collab Mobile App UI Design',
+    tags: ['Figma', 'UI Design', 'Mobile UI'],
+    projectLink: 'https://www.behance.net/gallery/226979827/ProjectCollab-Connecting-Innovators'
+  },
+  {
+    imgSrc: '/images/Trip_planner_app_UI.jpg',
+    title: 'Trip Planner Mobile App UI Design',
+    tags: ['Figma', 'UI Design', 'Mobile UI'],
+    projectLink: ''
+  },
+  {
+    imgSrc: '/images/Containerized_Chronicles.jpg',
+    title: 'Containerized Chronicles A Authenticated Blogging Platform',
+    tags: ['Django', 'Web App', 'Blog Site'],
+    projectLink: ''
   },
 ];
 

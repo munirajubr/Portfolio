@@ -4,16 +4,22 @@ import { ButtonOutline } from "./Button";
 
 const achievements = [
   {
-    imgSrc: '',
+    imgSrc: '/images/Google UX Design.jpg',
     title: 'Google UX Design',
     tags: ['UX Design', 'Google', 'Certificate'],
-    achievementLink: '/#achievements'
+    achievementLink: 'https://drive.google.com/file/d/1_njfVoLGWv-INTz7zJz-1yau5btinX3q/view?usp=sharing'
   },
   {
-    imgSrc: '',
+    imgSrc: '/images/Google AI Essentials.jpg',
     title: 'Google AI Essentials',
-    tags: ['AI Essentials', 'Google', 'LLM'],
-    achievementLink: '/#achievements'
+    tags: ['AI Essentials', 'Google', 'LLM', 'Prompting'],
+    achievementLink: 'https://drive.google.com/file/d/101xNpc0X22w4gxwXv-KALhnHfwJ7e2k2/view?usp=sharing'
+  },
+  {
+    imgSrc: '/images/Microfsoft Foundations of UX and Design Thinking.jpg',
+    title: 'Microfsoft Foundations of UX and Design Thinking',
+    tags: ['Design Thinking', 'UX'],
+    achievementLink: 'https://drive.google.com/file/d/1IVdPvVWwSjmjFLXbMQO4RXOzeWGNzqon/view?usp=sharing'
   },
 ];
 

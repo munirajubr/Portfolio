@@ -25,7 +25,7 @@ const works = [
     imgSrc: '/images/Containerized_Chronicles.jpg',
     title: 'Containerized Chronicles A Authenticated Blogging Platform',
     tags: ['Django', 'Web App', 'Blog Site'],
-    projectLink: ''
+    projectLink: 'https://github.com/munirajubr/Containerized-Chronicles-An-authenticated-blogging-platform'
   },
 ];
 

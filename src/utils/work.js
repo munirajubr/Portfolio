@@ -60,29 +60,37 @@ export const works = [
   },
 ];
 
+const themeColors = ['green', 'red', 'light-orange', 'blue', 'pink', 'purple'];
+
 export const getHomeProjects = () => {
-  return works.filter(work => work.featured).map((work, index) => ({
-    id: work.id,
-    tags: work.tags.map(tag => [tag, ['green', 'red', 'light-orange', 'blue', 'pink', 'purple'][index % 6]]),
-    title: work.title,
-    desc: work.description,
-    img: work.imgSrc,
-    caseColor: index % 2 === 0 ? '#4e4ce1' : '#fe90e7',
-    arrowIco: index % 2 === 0 ? assets.arrowPurple : assets.arrowPink,
-    reverse: index % 2 === 1
-  }));
+  return works.filter(work => work.featured).map((work, index) => {
+    const shuffledColors = [...themeColors].sort(() => 0.5 - Math.random());
+    return {
+      id: work.id,
+      tags: work.tags.map((tag, i) => [tag, shuffledColors[i % shuffledColors.length]]),
+      title: work.title,
+      desc: work.description,
+      img: work.imgSrc,
+      caseColor: index % 2 === 0 ? '#4e4ce1' : '#fe90e7',
+      arrowIco: index % 2 === 0 ? assets.arrowPurple : assets.arrowPink,
+      reverse: index % 2 === 1
+    };
+  });
 };
 
 export const getAllProjects = () => {
-  return works.map((work, index) => ({
-    id: work.id,
-    tags: work.tags.map(tag => [tag, ['green', 'blue', 'red', 'light-orange', 'pink', 'purple'][index % 6]]),
-    title: work.title.replace(' (Case Study)', '').replace(' (Design)', ''),
-    desc: work.description,
-    img: work.imgSrc,
-    caseColor: index % 2 === 0 ? 'var(--purple)' : 'var(--pink)',
-    reverse: index % 2 === 1
-  }));
+  return works.map((work, index) => {
+    const shuffledColors = [...themeColors].sort(() => 0.5 - Math.random());
+    return {
+      id: work.id,
+      tags: work.tags.map((tag, i) => [tag, shuffledColors[i % shuffledColors.length]]),
+      title: work.title.replace(' (Case Study)', '').replace(' (Design)', ''),
+      desc: work.description,
+      img: work.imgSrc,
+      caseColor: index % 2 === 0 ? 'var(--purple)' : 'var(--pink)',
+      reverse: index % 2 === 1
+    };
+  });
 };
 
 export const getProjectsCount = () => works.length;

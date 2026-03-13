@@ -1,4 +1,5 @@
 export const assets = {
+  resumeURL: 'https://drive.google.com/file/d/1Qe7yj6MoWLZWdM26Oub7guV0Oaip45pe/view?usp=drive_link',
   profilePhoto: 'https://www.figma.com/api/mcp/asset/6231023d-4763-4490-9aec-40b3101dafc1',
   resumeIco: 'https://www.figma.com/api/mcp/asset/2452733d-4243-4664-83b9-e03f057172d9',
   aboutArrow: 'https://www.figma.com/api/mcp/asset/093935ec-8fa3-4f00-894b-1bf43a0cc2e9',

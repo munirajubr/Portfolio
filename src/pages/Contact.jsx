@@ -104,11 +104,10 @@ export default function Contact() {
       </section>
 
       {/* ── Collaboration / Form ── */}
-      <section style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 25 }}>
+      {/* <section style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 25 }}>
         <h2 style={{ fontSize: 32, fontWeight: 700 }}>For collaboration</h2>
 
         <div className="reveal" style={{ display: 'flex', gap: 25, alignItems: 'flex-start' }}>
-          {/* Description */}
           <div style={{ width: 605, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 15, padding: '25px 0' }}>
             <p style={{ fontSize: 32, fontWeight: 700 }}>Tell me about your project</p>
             <p style={{ fontSize: 24, fontWeight: 500, opacity: 0.8, lineHeight: 1.6 }}>
@@ -117,12 +116,10 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Form */}
           <form
             onSubmit={handleSubmit}
             style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end' }}
           >
-            {/* Name + Email row */}
             <div style={{ display: 'flex', gap: 10, width: '100%' }}>
               <input
                 required
@@ -186,7 +183,7 @@ export default function Contact() {
             </button>
           </form>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

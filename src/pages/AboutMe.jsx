@@ -57,7 +57,7 @@ export default function AboutMe() {
                 </div>
                 <span style={{ fontSize:18, fontWeight:500, color:'var(--gray)' }}>Projects</span>
               </div>
-              <a href="#" style={{ display:'flex', alignItems:'center', gap:15, background:'var(--green)', border:'3px solid var(--black)', borderRadius:50, padding:'12.5px 30px', boxShadow:'3px 3px 0 var(--black)', fontSize:24, fontWeight:700, color:'var(--black)', textDecoration:'none', transition:'transform .15s, box-shadow .15s' }}
+              <a href={assets.resumeURL} target="_blank" rel="noreferrer" style={{ display:'flex', alignItems:'center', gap:15, background:'var(--green)', border:'3px solid var(--black)', borderRadius:50, padding:'12.5px 30px', boxShadow:'3px 3px 0 var(--black)', fontSize:24, fontWeight:700, color:'var(--black)', textDecoration:'none', transition:'transform .15s, box-shadow .15s' }}
                 onMouseEnter={e=>{ e.currentTarget.style.transform='translate(-2px,-2px)'; e.currentTarget.style.boxShadow='5px 5px 0 var(--black)' }}
                 onMouseLeave={e=>{ e.currentTarget.style.transform=''; e.currentTarget.style.boxShadow='3px 3px 0 var(--black)' }}>
                 <img src={assets.aboutResumeIco} alt="" style={{ width:32, height:32 }} />

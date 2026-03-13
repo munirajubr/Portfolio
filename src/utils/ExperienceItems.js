@@ -1,0 +1,47 @@
+export const ExperienceItems = [
+  {
+    domain: "UIUX Design",
+    company: "AIKING Solutions",
+    location: "Work From Home",
+    workmode: "Remote",
+    worktype: "Contract/Full-time",
+    startDate: "2026-01-05",
+    endDate: "Present",
+    milestones: [
+      {
+        date: "2026-01-05",
+        title: "UIUX Design Intern",
+        type: "Internship"
+      },
+      {
+        date: "2026-04-05",
+        title: "UIUX Designer",
+        type: "Full-time"
+      }
+    ],
+    description: [
+      "Design UI/UX for web applications and Chrome extensions",
+      "Create wireframes, user flows, and interactive prototypes",
+      "Convert product requirements into user-friendly designs",
+      "Collaborate with product managers and developers",
+      "Improve usability, accessibility, and overall user experience",
+      "Conduct basic user research and iterate designs based on feedback",
+    ],
+  },
+  {
+    domain: "Full stack Web development",
+    company: "Loginware Softtech Pvt. Ltd.",
+    location: "Hassan, Karnataka",
+    workmode: "Hybrid",
+    worktype: "Internship",
+    startDate: "2022-10-01",
+    endDate: "2023-06-10",
+    description: [
+      "Developed and tested full-stack applications using Java Spring Boot for the back end and MongoDB for the database.",
+      "Utilized tools like Postman to validate RESTful APIs and Docker to containerize applications, streamlining the deployment process.",
+      "Gained hands-on experience working in an agile environment, contributing to the full software development lifecycle.",
+      "Collaborated with a team to build and implement features, applying foundational knowledge of front-end and back-end web technologies.",
+      "Assisted in debugging and troubleshooting applications, ensuring reliability and performance across different environments.",
+    ],
+  },
+];

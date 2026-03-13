@@ -1,0 +1,42 @@
+export const skillItems = [
+  {
+    category: "Design Skills",
+    skillsList: [
+      "Visual design",
+      "Interaction design",
+      "Wireframing",
+      "Prototyping",
+      "User research",
+      "Usability testing",
+      "Design systems",
+      "Design thinking",
+      "Typography",
+      "Colour theory",
+      "Autolayout",
+      "Grid system",
+      "Web app design",
+      "Mobile app design",
+      "Responsive design",
+      "Figma",
+      "Miro",
+      "Adobe Xd",
+      "Miro",
+    ],
+  },
+  {
+    category: "Technical Skills",
+    skillsList: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Tailwind CSS",
+      "Java (Basics)",
+      "Python (Basics)",
+      "C (Basics)",
+      "SQL",
+      "React Native",
+      "Vite",
+    ],
+  }
+];

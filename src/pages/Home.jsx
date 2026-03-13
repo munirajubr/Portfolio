@@ -8,7 +8,6 @@ import { assets } from '../utils/assets'
 import { calculateTotalExperienceCount } from '../utils/calculateExperience'
 import { ExperienceItems } from '../utils/ExperienceItems'
 import { ProjectCard } from '../components/Cards'
-import { LogoPills } from '../components/shared'
 
 const PROJECTS = getHomeProjects()
 

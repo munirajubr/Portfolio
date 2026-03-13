@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './shared.module.css'
 import { socialLinks } from '../utils/socialLinks'
 import { assets } from '../utils/assets'
-import { LogoPills } from './shared'
 
 /* ── Footer ── */
 export default function Footer() {

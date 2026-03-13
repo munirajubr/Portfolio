@@ -34,7 +34,7 @@ export default function AboutMe() {
   }, [])
 
   return (
-    <div ref={pageRef} style={{ background:'var(--bg)', minHeight:'100vh', display:'flex', flexDirection:'column', gap:100 }}>
+    <div ref={pageRef} style={{ background:'var(--bg)', minHeight:'100vh', display:'flex', flexDirection:'column', gap:50 }}>
       <Navbar />
 
       {/* Hero */}
@@ -119,6 +119,7 @@ export default function AboutMe() {
             workmode={exp.workmode}
             dates={formatDateRange(exp.startDate, exp.endDate)}
             description={exp.description}
+            milestones={exp.milestones}
             color={index === 0 ? "red" : "orange"}
           />
         ))}
@@ -131,16 +132,6 @@ export default function AboutMe() {
           <div style={{ flex:1, height:5, borderRadius:10, background:'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
         </div>
 
-        <Tag label="Skills" color="pink" />
-
-        {skillItems.map((skillCategory, index) => (
-          <SkillCard 
-            key={index}
-            category={skillCategory.category}
-            skillsList={skillCategory.skillsList}
-          />
-        ))}
-
         <Tag label="Education" color="red" />
 
         <div className="reveal" style={{ display:'flex', gap:50 }}>
@@ -152,6 +143,16 @@ export default function AboutMe() {
             />
           ))}
         </div>
+
+         <Tag label="Skills" color="pink" />
+
+        {skillItems.map((skillCategory, index) => (
+          <SkillCard 
+            key={index}
+            category={skillCategory.category}
+            skillsList={skillCategory.skillsList}
+          />
+        ))}
       </section>
 
       {/* Achievements */}

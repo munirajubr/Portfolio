@@ -19,7 +19,7 @@ export default function Services() {
   }, [])
 
   return (
-    <div ref={pageRef} style={{ background:'var(--bg)', minHeight:'100vh', display:'flex', flexDirection:'column', gap:100 }}>
+    <div ref={pageRef} style={{ background:'var(--bg)', minHeight:'100vh', display:'flex', flexDirection:'column', gap:50 }}>
       <Navbar />
 
       <section style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>

@@ -40,7 +40,7 @@ export default function Contact() {
   }
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: 100 }}>
+    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: 50 }}>
       <Navbar />
 
       {/* ── Contact section ── */}

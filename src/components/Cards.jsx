@@ -78,20 +78,46 @@ export function EducationCard({ institution, location, degree, gaduationyear, CG
 }
 
 /* ── Experience Card ── */
-export function ExperienceCard({ duration, domain, worktype, company, workmode, dates, description, color }) {
+export function ExperienceCard({ duration, domain, worktype, company, workmode, dates, description, color, milestones }) {
   const [isExpanded, setIsExpanded] = useState(false)
   const showDetail = description.length > 2
 
   return (
     <div className="reveal" style={{ display: 'flex', gap: 50 }}>
-      <div style={{ width: 400, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <Tag label={duration} color={color} />
-        <p style={{ fontSize: 32, fontWeight: 700 }}>{domain} <span style={{ fontSize: 18, fontWeight: 600 }}>({worktype})</span></p>
-        <p style={{ fontSize: 18, fontWeight: 500 }}>{company} ({workmode})</p>
-        <p style={{ fontSize: 18, fontWeight: 500 }}>{dates}</p>
+      <div style={{ width: 400, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 15 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <Tag label={duration} color={color} />
+          {/* <p style={{ fontSize: 32, fontWeight: 700 }}>{domain} <span style={{ fontSize: 18, fontWeight: 600 }}>({worktype})</span></p> */}
+          {/* <p style={{ fontSize: 18, fontWeight: 500 }}>{company} ({workmode})</p> */}
+          {/* <p style={{ fontSize: 18, fontWeight: 500 }}>{dates}</p> */}
+        </div>
+
+        {/* Milestones Vertical Progress */}
+        {milestones && milestones.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginTop: 10, paddingLeft: 10 }}>
+            {milestones.map((ms, idx) => (
+              <div key={idx} style={{ display: 'flex', gap: 15, position: 'relative', paddingBottom: idx === milestones.length - 1 ? 0 : 25 }}>
+                {/* Vertical Line */}
+                {idx !== milestones.length - 1 && (
+                  <div style={{ position: 'absolute', left: 4, top: 12, bottom: 0, width: 2, background: 'var(--black)', opacity: 0.3 }} />
+                )}
+                
+                {/* Dot */}
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--black)', border: '2px solid var(--white)', boxShadow: '0 0 0 2px var(--black)', zIndex: 2, marginTop: 6, flexShrink: 0 }} />
+                
+                {/* Info */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <p style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.2 }}>{ms.title}</p>
+                  <p style={{ fontSize: 14, fontWeight: 500, opacity: 0.7 }}>{ms.type} • {ms.date}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <ul style={{ fontSize: 24, fontWeight: 500, paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <ul style={{ fontSize: 20, fontWeight: 500, paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 8 }}>
           {(isExpanded ? description : description.slice(0, 2)).map((desc, i) => (
             <li key={i}>{desc}</li>
           ))}
@@ -106,7 +132,7 @@ export function ExperienceCard({ duration, domain, worktype, company, workmode, 
                 border: 'none', 
                 color: 'var(--black)', 
                 fontSize: 16, 
-                fontWeight: 700, 
+                fontWeight: 500, 
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -120,7 +146,7 @@ export function ExperienceCard({ duration, domain, worktype, company, workmode, 
               style={{ 
                 width: isExpanded ? 80 : 85, 
                 height: 3, 
-                background: `var(--${color === 'red' ? 'purple' : 'orange'})`, // Matching the color logic used elsewhere or just using the prop
+                background: `var(--${color === 'red' ? 'purple' : 'orange'})`,
                 borderRadius: 50,
                 transition: 'width 0.3s ease'
               }} 
@@ -137,7 +163,7 @@ export function SkillCard({ category, skillsList }) {
   return (
     <div className="reveal" style={{ display: 'flex', gap: 50 }}>
       <div style={{ width: 400, flexShrink: 0 }}><p style={{ fontSize: 32, fontWeight: 700 }}>{category}</p></div>
-      <p style={{ flex: 1, fontSize: 24, fontWeight: 500, lineHeight: 1.6 }}>
+      <p style={{ flex: 1, fontSize: 20, fontWeight: 500, lineHeight: 1.6 }}>
         {skillsList.map((skill, i) => (
           <span key={i}>
             {skill}

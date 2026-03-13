@@ -58,7 +58,14 @@ export default function Contact() {
           {/* Left – email & socials */}
           <div style={{ width: 681, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 15, padding: '25px 0' }}>
             <p style={{ fontSize: 18, fontWeight: 500 }}>Email at:</p>
-            <p style={{ fontSize: 32, fontWeight: 700 }}>munirajgowdaraj@gmail.com</p>
+            <a 
+              href="mailto:munirajgowdaraj@gmail.com" 
+              style={{ fontSize: 32, fontWeight: 700, color: 'var(--black)', textDecoration: 'none', transition: 'color .15s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--purple)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--black)'}
+            >
+              munirajgowdaraj@gmail.com
+            </a>
 
             <p style={{ fontSize: 18, fontWeight: 500, marginTop: 16 }}>Follow</p>
             <div style={{ display: 'flex', gap: 10 }}>

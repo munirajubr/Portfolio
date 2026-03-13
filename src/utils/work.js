@@ -85,7 +85,7 @@ export const getAllProjects = () => {
   }));
 };
 
-export const getProjectsCount = () => works.length;
+export const getProjectsCount = () => works.filter(w => w.featured).length;
 
 
 export const otherworks = [

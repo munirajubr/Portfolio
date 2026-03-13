@@ -4,7 +4,7 @@ export const ExperienceItems = [
     company: "AIKING Solutions",
     location: "Work From Home",
     workmode: "Remote",
-    worktype: "Contract/Full-time",
+    worktype: "Full-Time",
     startDate: "2026-01-05",
     endDate: "Present",
     milestones: [

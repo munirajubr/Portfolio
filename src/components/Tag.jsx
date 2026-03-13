@@ -26,6 +26,7 @@ export default function Tag({ label, color }) {
         background: colorMap[color] || 'var(--bg)',
         color: 'var(--black)',
         flexShrink: 0,
+        width: 'fit-content',
       }}
     >
       {label}

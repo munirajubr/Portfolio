@@ -17,6 +17,13 @@ import { ExperienceCard, SkillCard, EducationCard, AchievementCard } from '../co
 
 export default function AboutMe() {
   const pageRef = useRef(null)
+  const workRef = useRef(null)
+  const skillsRef = useRef(null)
+  const achievementsRef = useRef(null)
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+  }
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
@@ -67,8 +74,16 @@ export default function AboutMe() {
 
             {/* Quick links */}
             <div className="reveal delay-2" style={{ display:'flex', gap:25 }}>
-              {[{label:'Work Experience',color:'light-orange'},{label:'Skills & Education',color:'pink'},{label:'Achievements',color:'blue'}].map(({label,color})=>(
-                <div key={label} style={{ display:'flex', alignItems:'center', gap:5, background:`var(--${color})`, border:'2px solid var(--black)', borderRadius:15, padding:'7.5px 15px', boxShadow:'3px 3px 0 var(--black)', fontSize:16, fontWeight:500, cursor:'pointer', flexShrink:0 }}>
+              {[
+                { label: 'Work Experience', color: 'light-orange', ref: workRef },
+                { label: 'Skills & Education', color: 'pink', ref: skillsRef },
+                { label: 'Achievements', color: 'blue', ref: achievementsRef }
+              ].map(({ label, color, ref }) => (
+                <div 
+                  key={label} 
+                  onClick={() => scrollToSection(ref)}
+                  style={{ display: 'flex', alignItems: 'center', gap: 5, background: `var(--${color})`, border: '2px solid var(--black)', borderRadius: 15, padding: '7.5px 15px', boxShadow: '3px 3px 0 var(--black)', fontSize: 16, fontWeight: 500, cursor: 'pointer', flexShrink: 0 }}
+                >
                   {label}
                 </div>
               ))}
@@ -76,19 +91,19 @@ export default function AboutMe() {
           </div>
 
           {/* Right photo */}
-          <div className="reveal delay-1" style={{ position:'relative', width:430, height:460, flexShrink:0 }}>
-            <img src={assets.aboutPhoto} alt="Muniraju" style={{ width:428, height:428, objectFit:'cover', borderRadius:16 }} onError={e=>e.currentTarget.style.display='none'} />
-            <div style={{ position:'absolute', top:0, right:-20, background:'var(--orange)', border:'3px solid var(--black)', borderRadius:50, padding:'10px 20px', fontSize:16, fontWeight:700, boxShadow:'3px 3px 0 var(--black)', whiteSpace:'nowrap' }}>Muniraju B R</div>
-            <div style={{ position:'absolute', bottom:20, left:20, background:'var(--blue)', border:'3px solid var(--black)', borderRadius:50, padding:'10px 20px', fontSize:14, fontWeight:700, boxShadow:'3px 3px 0 var(--black)', display:'flex', alignItems:'center', gap:10, whiteSpace:'nowrap' }}>
-              <img src={assets.aboutAvailIco} alt="" style={{ width:18, height:18 }} />
-              Available for collaborations
-            </div>
+          <div className="reveal delay-1" style={{ position:'relative' }}>
+            <img 
+              src={assets.aboutPhoto} 
+              alt="Muniraju" 
+              style={{ width:428, height:428 }} 
+              onError={e=>e.currentTarget.style.display='none'} 
+            />
           </div>
         </div>
       </section>
 
       {/* Work Experience */}
-      <section style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>
+      <section ref={workRef} style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>
         <div style={{ display:'flex', gap:25, alignItems:'center' }}>
           <h2 style={{ fontSize:32, fontWeight:700, whiteSpace:'nowrap' }}>Work Experience</h2>
           <div style={{ flex:1, height:5, borderRadius:10, background:'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
@@ -110,7 +125,7 @@ export default function AboutMe() {
       </section>
 
       {/* Skills & Education */}
-      <section style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:25 }}>
+      <section ref={skillsRef} style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:25 }}>
         <div style={{ display:'flex', gap:25, alignItems:'center' }}>
           <h2 style={{ fontSize:32, fontWeight:700, whiteSpace:'nowrap' }}>Skills &amp; Education</h2>
           <div style={{ flex:1, height:5, borderRadius:10, background:'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
@@ -140,7 +155,7 @@ export default function AboutMe() {
       </section>
 
       {/* Achievements */}
-      <section style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>
+      <section ref={achievementsRef} style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>
         <div style={{ display:'flex', gap:25, alignItems:'center' }}>
           <h2 style={{ fontSize:32, fontWeight:700, whiteSpace:'nowrap' }}>Achievements</h2>
           <div style={{ flex:1, height:5, borderRadius:10, background:'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />

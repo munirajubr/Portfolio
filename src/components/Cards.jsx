@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tag from './Tag'
 import { assets } from '../utils/assets'
@@ -78,6 +79,9 @@ export function EducationCard({ institution, location, degree, gaduationyear, CG
 
 /* ── Experience Card ── */
 export function ExperienceCard({ duration, domain, worktype, company, workmode, dates, description, color }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const showDetail = description.length > 2
+
   return (
     <div className="reveal" style={{ display: 'flex', gap: 50 }}>
       <div style={{ width: 400, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -86,11 +90,44 @@ export function ExperienceCard({ duration, domain, worktype, company, workmode, 
         <p style={{ fontSize: 18, fontWeight: 500 }}>{company} ({workmode})</p>
         <p style={{ fontSize: 18, fontWeight: 500 }}>{dates}</p>
       </div>
-      <ul style={{ flex: 1, fontSize: 24, fontWeight: 500, paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {description.map((desc, i) => (
-          <li key={i}>{desc}</li>
-        ))}
-      </ul>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <ul style={{ fontSize: 24, fontWeight: 500, paddingLeft: 36, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {(isExpanded ? description : description.slice(0, 2)).map((desc, i) => (
+            <li key={i}>{desc}</li>
+          ))}
+        </ul>
+        
+        {showDetail && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'var(--black)', 
+                fontSize: 16, 
+                fontWeight: 700, 
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                padding: 0,
+                width: 'fit-content',
+              }}
+            >
+              {isExpanded ? 'Show Less' : 'View Detail'}
+            </button>
+            <div 
+              style={{ 
+                width: isExpanded ? 80 : 85, 
+                height: 3, 
+                background: `var(--${color === 'red' ? 'purple' : 'orange'})`, // Matching the color logic used elsewhere or just using the prop
+                borderRadius: 50,
+                transition: 'width 0.3s ease'
+              }} 
+            />
+          </div>
+        )}
+      </div>
     </div>
   )
 }

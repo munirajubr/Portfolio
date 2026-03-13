@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Tag from '../components/Tag'
 import { services } from '../utils/services'
 import { assets } from '../utils/assets'
 
 export default function Services() {
+  const navigate = useNavigate()
   const pageRef = useRef(null)
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,14 +60,28 @@ export default function Services() {
               <h3 style={{ fontSize:32, fontWeight:700, lineHeight:1.2 }}>{title}</h3>
               <p style={{ flex:1, fontSize:18, fontWeight:500, lineHeight:1.6 }}>{desc}</p>
 
-              <a href="#" style={{ display:'inline-flex', alignItems:'center', gap:5, borderBottom:`2px solid ${linkColor}`, paddingBottom:2, textDecoration:'none', fontSize:18, fontWeight:500, color: linkColor }}>
-                Learn more
-                <img src={assets.learnArrow} alt="" style={{ width:18, height:18 }} />
-              </a>
             </div>
           ))}
         </div>
       </section>
+
+      {/* Next Step CTA */}
+            <section className="reveal" style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:25 }}>
+              <div style={{ display:'inline-flex' }}>
+                <Tag label="Next Step" color="red" />
+              </div>
+              <div style={{ background:'var(--white)', border:'3px solid var(--black)', borderRadius:25, padding:'25px 30px', boxShadow:'3px 3px 0 var(--black)', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                <p style={{ fontSize:38, fontWeight:700, maxWidth:392 }}>Let's Work Together</p>
+                <button
+                  onClick={() => navigate('/contact')}
+                  style={{ background:'var(--green)', border:'2px solid var(--black)', borderRadius:25, padding:'15px 20px', boxShadow:'5px 5px 0 var(--black)', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', transition:'transform .15s' }}
+                  onMouseEnter={e=>e.currentTarget.style.transform='translate(-2px,-2px)'}
+                  onMouseLeave={e=>e.currentTarget.style.transform=''}
+                >
+                  <img src={assets.handArrow} alt="Contact" style={{ width:50, height:50 }} />
+                </button>
+              </div>
+            </section>
 
       <Footer />
     </div>

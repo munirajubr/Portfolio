@@ -1,3 +1,5 @@
+import aboutImg from '../assets/about.png'
+
 export const assets = {
   resumeURL: 'https://drive.google.com/file/d/1Qe7yj6MoWLZWdM26Oub7guV0Oaip45pe/view?usp=drive_link',
   profilePhoto: 'https://www.figma.com/api/mcp/asset/6231023d-4763-4490-9aec-40b3101dafc1',
@@ -10,7 +12,7 @@ export const assets = {
   arrowPurple: 'https://www.figma.com/api/mcp/asset/72de4a8b-7834-4299-9e56-8f49823c67fd',
   arrowPink: 'https://www.figma.com/api/mcp/asset/ad56eda3-6d3b-4c30-8d72-50dfffceca1a',
   
-  aboutPhoto: 'https://www.figma.com/api/mcp/asset/8e576ad9-8ec2-445e-8ccc-6195e9941bf6',
+  aboutPhoto: aboutImg,
   aboutResumeIco: 'https://www.figma.com/api/mcp/asset/d34c473c-0bc5-4e68-8a26-69d308f2932d',
   aboutAvailIco: 'https://www.figma.com/api/mcp/asset/3f789a98-83cc-4c4a-90b4-86560ba64c6e',
   linkArrow: 'https://www.figma.com/api/mcp/asset/5b3fd585-4aa6-4572-8d25-8bf7bb94762c',
@@ -26,6 +28,6 @@ export const assets = {
   serviceUiUx: 'https://www.figma.com/api/mcp/asset/1a5ad312-4a41-4e40-9120-567044c5d778',
   serviceDev: 'https://www.figma.com/api/mcp/asset/7752c28e-8a02-4190-8a51-989d0414d747',
   
-  footerExploreIco: 'https://www.figma.com/api/mcp/asset/d0ae6793-a236-4492-9c7d-d7fe0e52e6f3',
-  footerSocialIco: 'https://www.figma.com/api/mcp/asset/9b09918f-83e0-45b0-b8d2-feb878f3f460'
+  footerExploreIco: 'https://www.figma.com/api/mcp/asset/9b09918f-83e0-45b0-b8d2-feb878f3f460',
+  footerSocialIco: 'https://www.figma.com/api/mcp/asset/d0ae6793-a236-4492-9c7d-d7fe0e52e6f3',   
 };

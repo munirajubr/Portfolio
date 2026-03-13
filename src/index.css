@@ -46,3 +46,37 @@ body {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
+
+/* Sticker / Comic Styles */
+.sticker {
+  background: var(--white);
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+  border-radius: 999px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sticker:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--black);
+}
+
+.sticker-orange { background: var(--orange); }
+.sticker-blue { background: var(--blue); }
+.sticker-purple { background: var(--purple); color: var(--white); }
+.sticker-green { background: var(--green); }
+
+.box-shadow {
+  box-shadow: 4px 4px 0 var(--black);
+  border: 3px solid var(--black);
+}
+
+.syne-font {
+  font-family: 'Syne', sans-serif;
+}

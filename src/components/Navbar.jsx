@@ -1,17 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './shared.module.css'
 import { navItems } from '../utils/navItems'
-
-/* ── Logo Pills ── */
-function LogoPills() {
-  return (
-    <div className={styles.logoPills}>
-      <div className={`${styles.pill} ${styles.pillPurple}`} />
-      <div className={`${styles.pill} ${styles.pillPink}`} />
-      <div className={`${styles.pill} ${styles.pillGreen}`} />
-    </div>
-  )
-}
+import { LogoPills } from './shared'
 
 /* ── Navbar ── */
 export default function Navbar() {

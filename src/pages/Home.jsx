@@ -8,6 +8,7 @@ import { assets } from '../utils/assets'
 import { calculateTotalExperienceCount } from '../utils/calculateExperience'
 import { ExperienceItems } from '../utils/ExperienceItems'
 import { ProjectCard } from '../components/Cards'
+import { LogoPills } from '../components/shared'
 
 const PROJECTS = getHomeProjects()
 
@@ -97,6 +98,7 @@ export default function Home() {
           <img src={assets.profilePhoto} alt="Muniraju B R"
             style={{ position:'absolute', left:104, top:0, width:336, height:504, objectFit:'cover', objectPosition:'top', borderRadius:12, zIndex:2 }}
             onError={e => e.currentTarget.style.opacity='0'} />
+
           {/* Name badge */}
           <div style={{ position:'absolute', right:-20, top:0, zIndex:3, background:'var(--purple)', border:'3px solid var(--black)', borderRadius:50, padding:'10px 20px', fontSize:16, fontWeight:700, color:'var(--bg)', boxShadow:'3px 3px 0 var(--black)', whiteSpace:'nowrap' }}>
             Muniraju B R

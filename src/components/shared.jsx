@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react'
 import styles from './shared.module.css'
 
 /* ── Logo Pills ── */
-export function LogoPills() {
+export function LogoPills({ variant }) {
+  const isWhite = variant === 'white'
   return (
     <div className={styles.logoPills}>
-      <div className={`${styles.pill} ${styles.pillPurple}`} />
-      <div className={`${styles.pill} ${styles.pillPink}`} />
-      <div className={`${styles.pill} ${styles.pillGreen}`} />
+      <div className={`${styles.pill} ${isWhite ? styles.pillWhite : styles.pillPurple}`} style={{ height: 35 }} />
+      <div className={`${styles.pill} ${isWhite ? styles.pillWhite : styles.pillPink}`} style={{ height: 15, transform: 'rotate(26deg)', marginTop: 4 }} />
+      <div className={`${styles.pill} ${isWhite ? styles.pillWhite : styles.pillGreen}`} style={{ height: 35, transform: 'rotate(9deg)' }} />
     </div>
   )
 }

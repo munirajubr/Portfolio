@@ -14,6 +14,7 @@ import { getProjectsCount } from '../utils/work'
 import { assets } from '../utils/assets'
 
 import { ExperienceCard, SkillCard, EducationCard, AchievementCard } from '../components/Cards'
+import { LogoPills } from '../components/shared'
 
 export default function AboutMe() {
   const pageRef = useRef(null)

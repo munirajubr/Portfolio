@@ -1,0 +1,597 @@
+/* ─────────────────────────────────────────
+   RESPONSIVE LAYOUT UTILITY
+   Breakpoints:
+     mobile  : ≤ 600px
+     tablet  : 601px – 1024px
+     desktop : ≥ 1025px
+───────────────────────────────────────── */
+
+/* ── Footer nav group: Explore + Social always side-by-side ── */
+.footer-nav-group {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY SCALING – TABLET (601px – 1024px)
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* Hero */
+  .hero-headline        { font-size: 32px !important; }
+  .hero-subtitle        { font-size: 18px !important; }
+  .hero-resume-btn      { font-size: 18px !important; padding: 10px 22px !important; }
+
+  /* Page / section titles */
+  .page-title           { font-size: 26px !important; }
+  .section-heading      { font-size: 26px !important; }
+
+  /* Project cards */
+  .project-card-title   { font-size: 24px !important; }
+
+  /* Project card: thumbnail on top, labels below */
+  .project-card-row {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+  }
+  .project-card-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+  .project-card-info {
+    width: 100% !important;
+  }
+
+  /* Achievement / Education / Skill */
+  .achievement-title    { font-size: 24px !important; }
+  .edu-card-title       { font-size: 22px !important; }
+  .skill-card-label p   { font-size: 24px !important; }
+  .skill-card-text      { font-size: 17px !important; }
+
+  /* Contact */
+  .contact-email-text   { font-size: 24px !important; }
+  .contact-phone-text   { font-size: 24px !important; }
+
+  /* Case study */
+  .case-heading         { font-size: 22px !important; }
+  .case-overview-text   { font-size: 18px !important; }
+  .case-vision-text,
+  .case-content-text    { font-size: 18px !important; }
+  .vision-label         { font-size: 18px !important; }
+  .case-explore-btn     { font-size: 18px !important; }
+  .case-back-btn span   { font-size: 22px !important; }
+
+  /* CTA / Footer */
+  .cta-heading          { font-size: 28px !important; }
+  .footer-headline      { font-size: 24px !important; }
+  .footer-btn-touch     { font-size: 18px !important; }
+}
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY SCALING – MOBILE (≤ 600px)
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  /* Hero */
+  .hero-headline        { font-size: 22px !important; line-height: 1.25 !important; }
+  .hero-subtitle        { font-size: 14px !important; }
+  .hero-resume-btn      { font-size: 14px !important; padding: 8px 16px !important; }
+
+  /* Stats numbers in hero / about */
+  .hero-stats-row span[style*="font-size: 32"],
+  .about-stats-row span[style*="font-size: 32"] { font-size: 22px !important; }
+
+  /* Page / section titles */
+  .page-title           { font-size: 20px !important; }
+  .section-heading      { font-size: 20px !important; }
+
+  /* Project cards */
+  .project-card-title   { font-size: 18px !important; }
+
+  /* Achievement / Education / Skill */
+  .achievement-title    { font-size: 16px !important; }
+  .edu-card-title       { font-size: 16px !important; }
+  .skill-card-label p   { font-size: 18px !important; }
+  .skill-card-text      { font-size: 14px !important; }
+
+  /* About bio paragraph */
+  .about-resume-btn     { font-size: 14px !important; padding: 8px 16px !important; }
+
+  /* Contact */
+  .contact-email-text   { font-size: 15px !important; word-break: break-all; }
+  .contact-phone-text   { font-size: 18px !important; }
+
+  /* Case study */
+  .case-heading         { font-size: 17px !important; }
+  .case-overview-text   { font-size: 14px !important; }
+  .case-vision-text,
+  .case-content-text    { font-size: 14px !important; }
+  .vision-label         { font-size: 14px !important; }
+  .case-explore-btn     { font-size: 14px !important; padding: 8px 12px !important; }
+  .case-back-btn span   { font-size: 18px !important; }
+
+  /* CTA / Footer */
+  .cta-heading          { font-size: 20px !important; }
+  .footer-headline      { font-size: 18px !important; }
+  .footer-btn-touch     { font-size: 15px !important; }
+}
+
+/* ── Page wrapper: controls section padding ── */
+.page-wrap {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+/* ── Section padding helper ── */
+.section-pad {
+  padding: 0 100px;
+}
+
+/* ══════════════════════════════════════
+   TABLET  (601px – 1024px)
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .section-pad,
+  .page-wrap {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* Hero – stack vertically */
+  .hero-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  /* Hide illustration & photo on tablet */
+  .hero-illustration,
+  .about-photo,
+  .about-photo-wrap { display: none !important; }
+
+  /* Project cards – thumbnail on top, info below */
+  .project-card-row {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+  }
+  .project-card-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+  .project-card-info {
+    width: 100% !important;
+  }
+
+  /* About hero */
+  .about-hero-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Experience card */
+  .exp-card-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .exp-card-left {
+    width: 100% !important;
+  }
+
+  /* Skill card */
+  .skill-card-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .skill-card-label {
+    width: 100% !important;
+  }
+
+  /* Education cards */
+  .education-row {
+    flex-direction: column !important;
+  }
+
+  /* Achievements grid */
+  .achievements-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact top row */
+  .contact-top-row {
+    flex-direction: column !important;
+  }
+  .contact-email-col {
+    width: 100% !important;
+  }
+
+  /* Case study meta row */
+  .case-meta-row {
+    flex-direction: column !important;
+  }
+  .case-meta-cards {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  .case-meta-cards > * {
+    flex: 1;
+    min-width: 160px;
+  }
+
+  /* Case study title row */
+  .case-title-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Vision / Strategy row */
+  .vision-row {
+    flex-direction: column !important;
+  }
+
+  /* Services */
+  .services-row {
+    flex-wrap: wrap !important;
+    justify-content: center;
+  }
+  .services-row > * {
+    width: calc(50% - 25px) !important;
+    min-width: 260px;
+    flex-shrink: 1 !important;
+  }
+
+  /* Footer CTA button */
+  .footer-btn-touch {
+    width: 100% !important;
+  }
+  .footer-top-row {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  /* Hero photo composite */
+  .hero-photo-wrap {
+    width: 380px !important;
+    height: 400px !important;
+  }
+
+  /* Quick links – wrap */
+  .quick-links {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   MOBILE  (≤ 600px)
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .section-pad,
+  .page-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Hero section */
+  .hero-section {
+    padding: 30px 20px !important;
+    gap: 30px !important;
+  }
+  .hero-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .hero-headline {
+    font-size: 28px !important;
+  }
+  .hero-subtitle {
+    font-size: 18px !important;
+  }
+  .hero-stats-row {
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+  .hero-resume-btn {
+    font-size: 18px !important;
+    padding: 10px 20px !important;
+  }
+  /* Hide illustration & photo on mobile (already hidden from tablet rule; kept explicit) */
+  .hero-illustration,
+  .about-photo,
+  .about-photo-wrap,
+  .hero-photo-wrap { display: none !important; }
+
+  /* Page titles */
+  .page-title {
+    font-size: 28px !important;
+  }
+
+  /* Section headings */
+  .section-heading {
+    font-size: 26px !important;
+  }
+
+  /* Project cards – thumbnail on top, info below */
+  .project-card-row {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+  }
+  .project-card-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+  .project-card-info {
+    width: 100% !important;
+  }
+  .project-card-title {
+    font-size: 24px !important;
+  }
+
+  /* About */
+  .about-hero-row {
+    flex-direction: column !important;
+  }
+  .about-stats-row {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+  .about-resume-btn {
+    font-size: 18px !important;
+    padding: 10px 20px !important;
+  }
+
+  /* Experience */
+  .exp-card-row {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  .exp-card-left {
+    width: 100% !important;
+  }
+
+  /* Skill card */
+  .skill-card-row {
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+  .skill-card-label {
+    width: 100% !important;
+    font-size: 24px !important;
+  }
+  .skill-card-text {
+    font-size: 16px !important;
+  }
+
+  /* Education */
+  .education-row {
+    flex-direction: column !important;
+  }
+  .edu-card-title {
+    font-size: 22px !important;
+  }
+
+  /* Achievements */
+  .achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .achievement-title {
+    font-size: 22px !important;
+  }
+
+  /* Quick links */
+  .quick-links {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Services */
+  .services-row {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .services-row > * {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 320px;
+    flex-shrink: 1 !important;
+  }
+
+  /* Contact */
+  .contact-top-row {
+    flex-direction: column !important;
+  }
+  .contact-email-col {
+    width: 100% !important;
+  }
+  .contact-email-text {
+    font-size: 20px !important;
+    word-break: break-all;
+  }
+  .contact-socials {
+    flex-wrap: wrap !important;
+  }
+  .contact-phone-text {
+    font-size: 24px !important;
+  }
+
+  /* Case study */
+  .case-title-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+  }
+  .case-explore-btn {
+    font-size: 18px !important;
+    padding: 10px 16px !important;
+    width: 100%;
+    justify-content: center !important;
+  }
+  .case-meta-row {
+    flex-direction: column !important;
+  }
+  .case-meta-cards {
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+  .case-overview-text {
+    font-size: 18px !important;
+  }
+  .case-vision-text,
+  .case-content-text {
+    font-size: 18px !important;
+  }
+  .vision-row {
+    flex-direction: column !important;
+  }
+  .case-heading {
+    font-size: 22px !important;
+  }
+  .vision-label {
+    font-size: 20px !important;
+  }
+  .case-back-btn span {
+    font-size: 24px !important;
+  }
+
+  /* CTA next step */
+  .cta-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: flex-start !important;
+  }
+  .cta-heading {
+    font-size: 28px !important;
+  }
+
+  /* Footer */
+  .footer-top-row {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .footer-btn-touch {
+    width: 100% !important;
+    font-size: 18px !important;
+  }
+  .footer-headline {
+    font-size: 24px !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   HOME HERO ROW – the nested flex container
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* The hero-row wraps both text and illustration */
+  .hero-row {
+    flex-direction: column !important;
+  }
+  /* Hide illustration on tablet */
+  .hero-illustration { display: none !important; }
+  /* section padding override since inline style takes precedence */
+  [style*="padding: '50px 100px'"],
+  [style*='padding: "50px 100px"'] {
+    padding: 30px 40px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-row {
+    flex-direction: column !important;
+  }
+  /* Hide illustration on mobile */
+  .hero-illustration { display: none !important; }
+}
+
+/* ══════════════════════════════════════
+   SERVICES – single column on mobile
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .services-row > * {
+    width: 100% !important;
+    min-width: unset !important;
+    height: auto !important;
+    min-height: 280px;
+  }
+}
+
+/* ══════════════════════════════════════
+   INLINE-STYLE OVERRIDES
+   Since pages use style="" padding/font-size,
+   we use these class overrides to win the cascade
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .section-pad {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  /* footer */
+  .footer-top-row {
+    flex-wrap: wrap;
+    gap: 24px !important;
+  }
+  .footer-btn-touch {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-pad {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .hero-section {
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* About photo */
+  .about-photo {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+  }
+
+  /* Contact form inputs wrap on narrow screens */
+  .contact-form-row {
+    flex-direction: column !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   MISC TEXT SCALING (supplements the rule blocks above)
+══════════════════════════════════════ */
+
+/* Tablet: general body/description text */
+@media (max-width: 1024px) {
+  /* Decorative large footer name */
+  .footerBigName span {
+    font-size: clamp(40px, 10vw, 120px) !important;
+  }
+  /* Generic body text helper class */
+  .body-text-lg { font-size: 18px !important; }
+  .body-text-md { font-size: 16px !important; }
+}
+
+/* Mobile: remaining elements */
+@media (max-width: 600px) {
+  /* Decorative large footer name */
+  .footerBigName span {
+    font-size: clamp(28px, 8vw, 72px) !important;
+  }
+  /* Generic body text helper class */
+  .body-text-lg { font-size: 14px !important; }
+  .body-text-md { font-size: 13px !important; }
+
+  /* "Featured Works" divider heading */
+  h2[style*="font-size: 32"] { font-size: 20px !important; }
+
+  /* Location / phone card text */
+  p[style*="font-size: 32"] { font-size: 18px !important; }
+
+  /* Collaboration section "Tell me about..." heading */
+  p[style*="font-size: 32"][style*="font-weight: 700"] { font-size: 18px !important; }
+}
+

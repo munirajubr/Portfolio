@@ -3,7 +3,7 @@ import heroGraphic from '../assets/hero-graphic.png';
 
 const HeroIllustration = () => {
   return (
-    <div className="reveal delay-2" style={{ position: 'relative', width: 500, height: 500, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="reveal delay-2" style={{ position: 'relative', width: '100%', maxWidth: 500, height: 'auto', minHeight: 280, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       
       {/* Main Illustration (No background container or decorations) */}
       <div 

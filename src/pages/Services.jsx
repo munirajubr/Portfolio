@@ -9,6 +9,7 @@ import { assets } from '../utils/assets'
 export default function Services() {
   const navigate = useNavigate()
   const pageRef = useRef(null)
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
@@ -19,69 +20,76 @@ export default function Services() {
   }, [])
 
   return (
-    <div ref={pageRef} style={{ background:'var(--bg)', minHeight:'100vh', display:'flex', flexDirection:'column', gap:50 }}>
+    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: 50 }}>
       <Navbar />
 
-      <section style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:50 }}>
-        <h1 style={{ fontSize:32, fontWeight:700 }}>Services</h1>
+      <section className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 50 }}>
+        <h1 className="page-title" style={{ fontSize: 32, fontWeight: 700 }}>Services</h1>
 
-        <div className="reveal" style={{ display:'flex', gap:50 }}>
+        <div className="reveal services-row" style={{ display: 'flex', gap: 50, flexWrap: 'wrap' }}>
           {services.map(({ icon, iconBg, title, desc, linkColor }) => (
-            <div key={title} style={{
-              background:'var(--white)',
-              border:'2.5px solid var(--black)',
-              borderRadius:25,
-              padding:25,
-              boxShadow:'7.5px 7.5px 0 var(--black)',
-              width:350,
-              display:'flex',
-              flexDirection:'column',
-              gap:15,
-              height:425,
-              flexShrink:0,
-            }}>
-              {/* Icon */}
+            <div
+              key={title}
+              style={{
+                background: 'var(--white)',
+                border: '2.5px solid var(--black)',
+                borderRadius: 25,
+                padding: 25,
+                boxShadow: '7.5px 7.5px 0 var(--black)',
+                width: 350,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 15,
+                minHeight: 320,
+                flexShrink: 0,
+              }}
+            >
               <div style={{
                 background: iconBg,
-                border:'2px solid var(--black)',
-                borderRadius:5,
-                boxShadow:`${iconBg !== 'transparent' ? '5px 5px' : '3px 3px'} 0 var(--black)`,
+                border: '2px solid var(--black)',
+                borderRadius: 5,
+                boxShadow: `${iconBg !== 'transparent' ? '5px 5px' : '3px 3px'} 0 var(--black)`,
                 padding: iconBg !== 'transparent' ? 10 : 0,
                 width: iconBg !== 'transparent' ? 'fit-content' : 100,
                 height: iconBg !== 'transparent' ? 'fit-content' : 69,
-                overflow:'hidden',
-                display:'flex',
-                alignItems:'center',
-                flexShrink:0,
+                overflow: 'hidden',
+                display: 'flex',
+                alignItems: 'center',
+                flexShrink: 0,
               }}>
-                <img src={icon} alt="" style={{ width: iconBg !== 'transparent' ? 84 : '100%', height: iconBg !== 'transparent' ? 50 : '100%', objectFit:'contain' }} />
+                <img
+                  src={icon}
+                  alt=""
+                  style={{ width: iconBg !== 'transparent' ? 84 : '100%', height: iconBg !== 'transparent' ? 50 : '100%', objectFit: 'contain' }}
+                />
               </div>
-
-              <h3 style={{ fontSize:32, fontWeight:700, lineHeight:1.2 }}>{title}</h3>
-              <p style={{ flex:1, fontSize:18, fontWeight:500, lineHeight:1.6 }}>{desc}</p>
-
+              <h3 style={{ fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>{title}</h3>
+              <p style={{ flex: 1, fontSize: 18, fontWeight: 500, lineHeight: 1.6 }}>{desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Next Step CTA */}
-            <section className="reveal" style={{ padding:'0 100px', display:'flex', flexDirection:'column', gap:25 }}>
-              <div style={{ display:'inline-flex' }}>
-                <Tag label="Next Step" color="red" />
-              </div>
-              <div style={{ background:'var(--white)', border:'3px solid var(--black)', borderRadius:25, padding:'25px 30px', boxShadow:'3px 3px 0 var(--black)', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-                <p style={{ fontSize:38, fontWeight:700, maxWidth:392 }}>Let's Work Together</p>
-                <button
-                  onClick={() => navigate('/contact')}
-                  style={{ background:'var(--green)', border:'2px solid var(--black)', borderRadius:25, padding:'15px 20px', boxShadow:'5px 5px 0 var(--black)', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', transition:'transform .15s' }}
-                  onMouseEnter={e=>e.currentTarget.style.transform='translate(-2px,-2px)'}
-                  onMouseLeave={e=>e.currentTarget.style.transform=''}
-                >
-                  <img src={assets.handArrow} alt="Contact" style={{ width:50, height:50 }} />
-                </button>
-              </div>
-            </section>
+      <section className="reveal section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 25 }}>
+        <div style={{ display: 'inline-flex' }}>
+          <Tag label="Next Step" color="red" />
+        </div>
+        <div
+          className="cta-row"
+          style={{ background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 25, padding: '25px 30px', boxShadow: '3px 3px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}
+        >
+          <p className="cta-heading" style={{ fontSize: 38, fontWeight: 700, maxWidth: 392 }}>Let's Work Together</p>
+          <button
+            onClick={() => navigate('/contact')}
+            style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 25, padding: '15px 20px', boxShadow: '5px 5px 0 var(--black)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .15s', flexShrink: 0 }}
+            onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
+            onMouseLeave={e => e.currentTarget.style.transform = ''}
+          >
+            <img src={assets.handArrow} alt="Contact" style={{ width: 50, height: 50 }} />
+          </button>
+        </div>
+      </section>
 
       <Footer />
     </div>

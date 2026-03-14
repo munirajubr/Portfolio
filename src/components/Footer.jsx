@@ -11,37 +11,39 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerDivider} />
       <div className={styles.footerCard}>
-        <div className={styles.footerTop}>
+        <div className={`${styles.footerTop} footer-top-row`}>
           <div className={styles.footerCta}>
             <p className={styles.footerHeadline}>
               Crafting Exceptional digital experiences to help clients achieve their goals.
             </p>
             <button
-              className={styles.btnTouch}
+              className={`${styles.btnTouch} footer-btn-touch`}
               onClick={() => navigate('/contact')}
             >
               Get in Touch
             </button>
           </div>
 
-          <div className={styles.footerCol}>
-            <div className={`${styles.footerColHeader} ${styles.footerColGreen}`}>
-              <img src={assets.footerExploreIco} alt="" width={20} height={20} />
-              Explore
+          <div className="footer-nav-group">
+            <div className={styles.footerCol}>
+              <div className={`${styles.footerColHeader} ${styles.footerColGreen}`}>
+                <img src={assets.footerExploreIco} alt="" width={20} height={20} />
+                Explore
+              </div>
+              <Link className={styles.footerLink} to="/about">About Me</Link>
+              <Link className={styles.footerLink} to="/work">My Work</Link>
+              <Link className={styles.footerLink} to="/contact">Contact</Link>
             </div>
-            <Link className={styles.footerLink} to="/about">About Me</Link>
-            <Link className={styles.footerLink} to="/work">My Work</Link>
-            <Link className={styles.footerLink} to="/contact">Contact</Link>
-          </div>
 
-          <div className={styles.footerCol}>
-            <div className={`${styles.footerColHeader} ${styles.footerColBlue}`}>
-              <img src={assets.footerSocialIco} alt="" width={20} height={20} />
-              Social
+            <div className={styles.footerCol}>
+              <div className={`${styles.footerColHeader} ${styles.footerColBlue}`}>
+                <img src={assets.footerSocialIco} alt="" width={20} height={20} />
+                Social
+              </div>
+              {socialLinks.map(({ label, href }) => (
+                <a key={label} className={styles.footerLink} href={href} target="_blank" rel="noreferrer">{label}</a>
+              ))}
             </div>
-            {socialLinks.map(({ label, href }) => (
-              <a key={label} className={styles.footerLink} href={href} target="_blank" rel="noreferrer">{label}</a>
-            ))}
           </div>
         </div>
 

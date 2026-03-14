@@ -249,3 +249,110 @@
   border-color: var(--white);
   box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
+
+/* ── RESPONSIVE NAV ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+  z-index: 200;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--black);
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 100px 40px 40px;
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+.mobileNavItem {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 15px;
+  border: 2.5px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.mobileNavItem:hover,
+.mobileNavItemActive {
+  background: var(--purple);
+  color: var(--white);
+  border-color: var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 20px 40px 0;
+  }
+  .navLinks {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .footerHeadline {
+    font-size: 24px;
+  }
+  .btnTouch {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 16px 20px 0;
+  }
+  .logoName {
+    font-size: 20px;
+  }
+  .footer {
+    padding: 0 20px;
+  }
+  .footerCard {
+    padding: 20px;
+  }
+  .footerHeadline {
+    font-size: 18px;
+    max-width: 100%;
+  }
+  .btnTouch {
+    width: 100%;
+    font-size: 15px;
+  }
+  .footerBigName span {
+    font-size: clamp(28px, 8vw, 72px);
+  }
+}

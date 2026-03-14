@@ -97,12 +97,12 @@ export default function Home() {
 
             {/* About link */}
             <div className="reveal delay-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 18, fontWeight: 500, color: 'var(--black)' }}>
+              <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 16, fontWeight: 500, color: 'var(--black)' }}>
                 <span>more</span>
                 <strong style={{ color: 'var(--purple)', fontWeight: 700 }}> About Me</strong>
-                <img src={assets.aboutArrow} alt="" style={{ width: 18, height: 18 }} />
+                <img src={assets.aboutArrow} alt="" style={{ width: 16, height: 16 }} />
               </Link>
-              <div style={{ marginLeft: 55, width: 110, height: 2, background: 'var(--purple)', borderRadius: 50 }} />
+              <div style={{ marginLeft: 55, width: 60, height: 2, background: 'var(--purple)', borderRadius: 50 }} />
             </div>
           </div>
 

@@ -40,7 +40,7 @@ export const achievements = [
     title: "Certification on UIUX Development",
     tags: ["Design Thinking", "UX"],
     featured: false,
-    providedby: "Internshala, National Skill Development Corporation (NSDC)",
+    providedby: "Internshala, NSDC",
     achievementLink:
       "https://trainings.internshala.com/s/v/3779921/b5ffaaba",
   },

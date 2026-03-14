@@ -61,13 +61,20 @@
   .case-vision-text,
   .case-content-text    { font-size: 18px !important; }
   .vision-label         { font-size: 18px !important; }
-  .case-explore-btn     { font-size: 18px !important; }
-  .case-back-btn span   { font-size: 22px !important; }
-
-  /* CTA / Footer */
-  .cta-heading          { font-size: 28px !important; }
-  .footer-headline      { font-size: 24px !important; }
-  .footer-btn-touch     { font-size: 18px !important; }
+  /* ── Buttons (tablet) ── */
+  .hero-resume-btn,
+  .about-resume-btn {
+    font-size: 16px !important;
+    padding: 10px 20px !important;
+  }
+  .case-explore-btn {
+    font-size: 15px !important;
+    padding: 10px 18px !important;
+  }
+  .case-back-btn span   { font-size: 20px !important; }
+  .footer-btn-touch     { font-size: 16px !important; width: 100% !important; }
+  /* CTA arrow button */
+  .cta-row button img   { width: 40px !important; height: 40px !important; }
 }
 
 /* ══════════════════════════════════════
@@ -76,7 +83,7 @@
 @media (max-width: 600px) {
   /* Hero */
   .hero-headline        { font-size: 22px !important; line-height: 1.25 !important; }
-  .hero-subtitle        { font-size: 14px !important; }
+  .hero-subtitle        { font-size: 18px !important; }
   .hero-resume-btn      { font-size: 14px !important; padding: 8px 16px !important; }
 
   /* Stats numbers in hero / about */
@@ -109,13 +116,22 @@
   .case-vision-text,
   .case-content-text    { font-size: 14px !important; }
   .vision-label         { font-size: 14px !important; }
-  .case-explore-btn     { font-size: 14px !important; padding: 8px 12px !important; }
-  .case-back-btn span   { font-size: 18px !important; }
-
-  /* CTA / Footer */
-  .cta-heading          { font-size: 20px !important; }
-  .footer-headline      { font-size: 18px !important; }
-  .footer-btn-touch     { font-size: 15px !important; }
+  /* ── Buttons (mobile) ── */
+  .hero-resume-btn,
+  .about-resume-btn {
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+  }
+  .case-explore-btn {
+    font-size: 13px !important;
+    padding: 7px 12px !important;
+    width: 100%;
+    justify-content: center !important;
+  }
+  .case-back-btn span   { font-size: 16px !important; }
+  .footer-btn-touch     { font-size: 13px !important; width: 100% !important; }
+  /* CTA arrow button */
+  .cta-row button img   { width: 34px !important; height: 34px !important; }
 }
 
 /* ── Page wrapper: controls section padding ── */
@@ -291,10 +307,7 @@
     flex-wrap: wrap !important;
     gap: 16px !important;
   }
-  .hero-resume-btn {
-    font-size: 18px !important;
-    padding: 10px 20px !important;
-  }
+  /* Hero resume btn – handled in typography block */
   /* Hide illustration & photo on mobile (already hidden from tablet rule; kept explicit) */
   .hero-illustration,
   .about-photo,
@@ -337,10 +350,7 @@
     flex-wrap: wrap !important;
     gap: 12px !important;
   }
-  .about-resume-btn {
-    font-size: 18px !important;
-    padding: 10px 20px !important;
-  }
+  /* About resume btn – handled in typography block */
 
   /* Experience */
   .exp-card-row {
@@ -423,12 +433,7 @@
     align-items: flex-start !important;
     gap: 15px !important;
   }
-  .case-explore-btn {
-    font-size: 18px !important;
-    padding: 10px 16px !important;
-    width: 100%;
-    justify-content: center !important;
-  }
+  /* Case explore btn – handled in typography block */
   .case-meta-row {
     flex-direction: column !important;
   }
@@ -452,9 +457,7 @@
   .vision-label {
     font-size: 20px !important;
   }
-  .case-back-btn span {
-    font-size: 24px !important;
-  }
+  /* Case back btn – handled in typography block */
 
   /* CTA next step */
   .cta-row {
@@ -471,10 +474,8 @@
     flex-direction: column !important;
     gap: 24px !important;
   }
-  .footer-btn-touch {
-    width: 100% !important;
-    font-size: 18px !important;
-  }
+  /* Footer btn – handled in typography block */
+  .footer-btn-touch { width: 100% !important; }
   .footer-headline {
     font-size: 24px !important;
   }
@@ -582,8 +583,8 @@
     font-size: clamp(28px, 8vw, 72px) !important;
   }
   /* Generic body text helper class */
-  .body-text-lg { font-size: 14px !important; }
-  .body-text-md { font-size: 13px !important; }
+  .body-text-lg { font-size: 18px !important; }
+  .body-text-md { font-size: 16px !important; }
 
   /* "Featured Works" divider heading */
   h2[style*="font-size: 32"] { font-size: 20px !important; }

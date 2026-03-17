@@ -5,6 +5,8 @@ import MyWork from './pages/MyWork'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import CaseStudy from './pages/CaseStudy'
+import SurveyList from './survey/SurveyList'
+import Slides from './slides/Slides'
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/case-study/:id" element={<CaseStudy />} />
+        <Route path="/user-survey" element={<SurveyList />} />
+        <Route path="/my-presentations/slides" element={<Slides />} />
       </Routes>
     </>
   )

@@ -86,7 +86,7 @@ app.post('/api/otp/verify', (req, res) => {
     }
   }
 
-  return res.status(400).json({ ok: false, message: 'Incorrect credentials' });
+  return res.status(401).json({ ok: false, message: 'Incorrect PIN' });
 });
 
 export default app;

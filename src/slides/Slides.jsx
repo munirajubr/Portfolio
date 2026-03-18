@@ -16,14 +16,14 @@ const Slides = () => {
   const [activeSlide, setActiveSlide] = useState(null);
   const [slides, setSlides] = useState([]);
 
-  const { status, error, cooldown, requestOTP, verifyOTP } = useAuth();
+  const { status, error, cooldown, requestOTP, verifyOTP, verifyPassword } = useAuth();
   const isVerified = status === 'verified';
   const showModal = !isVerified;
 
-  // ── Auto-trigger OTP on restricted page enter ───────────────────────────
-  useEffect(() => {
-    if (status === 'idle') requestOTP();
-  }, [status, requestOTP]);
+  // Auto-trigger disabled: PIN is now primary authentication
+  // useEffect(() => {
+  //   if (status === 'idle') requestOTP();
+  // }, [status, requestOTP]);
 
   // Load slides from PDF glob
   useEffect(() => {
@@ -121,6 +121,7 @@ const Slides = () => {
             cooldown={cooldown}
             onRequest={requestOTP}
             onVerify={verifyOTP}
+            onVerifyPassword={verifyPassword}
           />
         )}
       </AnimatePresence>

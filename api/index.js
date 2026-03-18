@@ -6,7 +6,6 @@ import crypto from 'crypto';
 
 const app = express();
 
-// Use middleware to parse JSON and handle CORS
 app.use(cors({ 
   origin: '*',
   credentials: true 
@@ -14,7 +13,8 @@ app.use(cors({
 app.use(express.json());
 
 const JWT_SECRET = process.env.JWT_SECRET || 'default_secret_key';
-const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
+const STATIC_PASSWORD = '829615'; // Requested PIN
+const OTP_TTL_MS = 10 * 60 * 1000;
 const OTP_DIGITS = 6;
 
 function generateOTP() {
@@ -29,16 +29,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// GET health check
 app.get('/api/check-health', (req, res) => {
   res.json({ ok: true, message: 'Serverless API is alive' });
 });
 
-// POST /api/otp/send
 app.post('/api/otp/send', async (req, res) => {
   try {
     const otp = generateOTP();
-    // Statelessly sign the OTP + hash in a JWT
     const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
     const token = jwt.sign({ otpHash }, JWT_SECRET, { expiresIn: '10m' });
 
@@ -58,30 +55,38 @@ app.post('/api/otp/send', async (req, res) => {
       `,
     });
 
-    res.json({ ok: true, token }); // Give the client the token to send back for verification
+    res.json({ ok: true, token });
   } catch (err) {
     console.error('Send OTP error:', err.message);
     res.status(500).json({ ok: false, message: 'Server failed to send email. Check API logs.' });
   }
 });
 
-// POST /api/otp/verify
 app.post('/api/otp/verify', (req, res) => {
-  const { otp, token } = req.body;
-  if (!otp || !token) return res.status(400).json({ ok: false, message: 'Missing OTP or Token' });
+  const { otp, token, password } = req.body;
 
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const inputHash = crypto.createHash('sha256').update(otp.trim()).digest('hex');
-
-    if (inputHash === decoded.otpHash) {
-      return res.json({ ok: true, message: 'Verified successfully' });
-    }
-    return res.status(401).json({ ok: false, message: 'Invalid OTP' });
-  } catch (e) {
-    console.error('Verify error:', e.message);
-    return res.status(401).json({ ok: false, message: 'Token expired or invalid. Please resend code.' });
+  // Handle Static PIN first
+  if (password && password === STATIC_PASSWORD) {
+    return res.json({ ok: true, message: 'Verified successfully' });
   }
+
+  // Handle OTP stateless check
+  if (otp && token) {
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      const inputHash = crypto.createHash('sha256').update(otp.trim()).digest('hex');
+
+      if (inputHash === decoded.otpHash) {
+        return res.json({ ok: true, message: 'Verified successfully' });
+      }
+      return res.status(401).json({ ok: false, message: 'Invalid OTP code' });
+    } catch (e) {
+      console.error('Verify error:', e.message);
+      return res.status(401).json({ ok: false, message: 'Token expired. Please resend code.' });
+    }
+  }
+
+  return res.status(400).json({ ok: false, message: 'Incorrect credentials' });
 });
 
 export default app;

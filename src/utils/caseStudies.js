@@ -22,6 +22,7 @@ export const caseStudies = {
       { bold: 'Target Audience', text: ': Students, educators, and anyone seeking an AI-driven tool to improve their interaction with course materials.' },
     ],
     projectLink: 'https://www.figma.com',
+    pdfUrl: '/src/slides/slides/OE-Reliability-Block-Diagram.pdf', // ← Now supports PDF scroll via the new system
     nextColor: 'pink',
   },
   'project-collab': {

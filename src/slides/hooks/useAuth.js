@@ -1,30 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const SESSION_KEY = 'slides_auth_verified';
-const SESSION_TTL = 1000 * 60 * 60; // 1 hour
-
 export function useAuth() {
   const [status, setStatus] = useState('idle'); // idle | sending | awaiting | verifying | verified | error
   const [error, setError] = useState('');
   const [cooldown, setCooldown] = useState(0);
   const [token, setToken] = useState(null); // stateless JWT token from backend
 
-  // Restore session
-  useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem(SESSION_KEY);
-      if (raw) {
-        const { ts } = JSON.parse(raw);
-        if (Date.now() - ts < SESSION_TTL) {
-          setStatus('verified');
-        } else {
-          sessionStorage.removeItem(SESSION_KEY);
-        }
-      }
-    } catch (e) {
-      console.error("Session restore failed", e);
-    }
-  }, []);
+  // NO SESSION STORAGE: refresh forces re-auth as per user request.
 
   useEffect(() => {
     if (cooldown <= 0) return;
@@ -56,16 +38,15 @@ export function useAuth() {
       const res = await fetch('/api/otp/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ otp, token }), // Send both
+        body: JSON.stringify({ otp, token }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Invalid OTP');
       
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
       setStatus('verified');
     } catch (e) {
       setError(e.message);
-      setStatus('awaiting'); // Go back to awaiting so they can try again or switch to password
+      setStatus('awaiting');
     }
   };
 
@@ -76,16 +57,15 @@ export function useAuth() {
       const res = await fetch('/api/otp/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }), // Send static password
+        body: JSON.stringify({ password }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Incorrect Password');
+      if (!res.ok) throw new Error(data.message || 'Incorrect PIN');
       
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
       setStatus('verified');
     } catch (e) {
       setError(e.message);
-      setStatus('awaiting');
+      setStatus('idle'); // Back to idle (PIN mode)
     }
   };
 

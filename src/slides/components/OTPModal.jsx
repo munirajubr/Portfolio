@@ -144,6 +144,9 @@ export default function OTPModal({ status, error, onRequest, onVerify, onVerifyP
         }}
       >
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: isPinMode ? '#000' : '#c0f7fe', borderBottom: '3px solid #000' }} />
+        
+        {/* Debug Version */}
+        <div style={{ position: 'absolute', top: 10, right: 15, fontSize: 9, opacity: 0.2, fontFamily: 'monospace' }}>v2.0-secure</div>
 
         <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'center' }}>
           <IconShield size={40} />

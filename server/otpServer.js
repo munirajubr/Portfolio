@@ -7,22 +7,11 @@ import crypto from 'crypto';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({ 
-  origin: process.env.FRONTEND_URL || '*', 
-  credentials: true 
-}));
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 
 const otpStore = new Map();
-const OTP_TTL_MS    = 10 * 60 * 1000;
-const MAX_ATTEMPTS  = 5;
-const OTP_DIGITS    = 6;
-
-const STATIC_PASSWORD = '829615'; // Requested PIN
-
-function generateOTP() {
-  return crypto.randomInt(10 ** (OTP_DIGITS - 1), 10 ** OTP_DIGITS).toString();
-}
+const STATIC_PASSWORD = '829615'; // Exact PIN required
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -34,56 +23,49 @@ const transporter = nodemailer.createTransport({
 
 app.post('/api/otp/send', async (req, res) => {
   try {
-    const otp = generateOTP();
-    const expiresAt = Date.now() + OTP_TTL_MS;
-    otpStore.set('slides_otp', { otp, expiresAt, attempts: 0 });
+    const otp = crypto.randomInt(100000, 999999).toString();
+    const expiresAt = Date.now() + (10 * 60 * 1000);
+    otpStore.set('slides_otp', { otp, expiresAt });
 
     await transporter.sendMail({
-      from: `"Portfolio Slides" <${process.env.OTP_EMAIL}>`,
+      from: `"Slides Access" <${process.env.OTP_EMAIL}>`,
       to: process.env.RECIPIENT_EMAIL,
-      subject: '🔐 Your Slides Access OTP',
-      html: `
-        <div style="font-family: 'Syne', Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; background: #fdfcf0; border: 3px solid #000; border-radius: 16px;">
-          <h1 style="font-size: 28px; font-weight: 800; text-transform: uppercase;">Your OTP Code</h1>
-          <p>Use the code below to access the Slides page.</p>
-          <div style="background: #fff; border: 3px solid #000; border-radius: 14px; box-shadow: 6px 6px 0 #000; padding: 24px; text-align: center; margin: 20px 0;">
-            <p style="font-size: 48px; font-weight: 900; letter-spacing: 12px; margin: 0;">${otp}</p>
-          </div>
-          <p style="font-size: 13px; opacity: 0.5;">Expires in 10 minutes.</p>
-        </div>
-      `,
+      subject: '🔐 Your Access OTP',
+      html: `<h2>Your OTP Code: ${otp}</h2>`
     });
 
-    res.json({ ok: true, message: 'OTP sent' });
+    res.json({ ok: true, message: 'OTP sent', v: '2.0-local' });
   } catch (err) {
-    res.status(500).json({ ok: false, message: 'Failed to send OTP.' });
+    res.status(500).json({ ok: false, message: 'Mail server error.', v: '2.0-local' });
   }
 });
 
 app.post('/api/otp/verify', (req, res) => {
   const { otp, password } = req.body;
 
-  // Handle Static PIN first
-  if (password && password === STATIC_PASSWORD) {
-    return res.json({ ok: true, message: 'Verified' });
+  // 🛡 1. PIN CHECK (Highest Priority)
+  if (password) {
+    if (password === STATIC_PASSWORD) {
+      return res.json({ ok: true, message: 'PIN Verified', v: '2.0-local' });
+    }
+    return res.status(401).json({ ok: false, message: 'Incorrect PIN', v: '2.0-local' });
   }
 
-  // Handle OTP fallback
+  // 🛡 2. OTP CHECK (Fallback)
   if (otp) {
     const record = otpStore.get('slides_otp');
-    if (!record) return res.status(400).json({ ok: false, message: 'No OTP requested.' });
-    if (Date.now() > record.expiresAt) return res.status(400).json({ ok: false, message: 'OTP expired.' });
-    if (record.attempts >= MAX_ATTEMPTS) return res.status(429).json({ ok: false, message: 'Too many attempts.' });
+    if (!record) return res.status(400).json({ ok: false, message: 'No OTP requested.', v: '2.0-local' });
+    if (Date.now() > record.expiresAt) return res.status(400).json({ ok: false, message: 'OTP expired.', v: '2.0-local' });
 
-    record.attempts += 1;
     if (otp.trim() === record.otp) {
       otpStore.delete('slides_otp');
-      return res.json({ ok: true });
+      return res.json({ ok: true, message: 'OTP Verified', v: '2.0-local' });
     }
-    return res.status(401).json({ ok: false, message: 'Incorrect OTP.' });
+    return res.status(401).json({ ok: false, message: 'Incorrect OTP code.', v: '2.0-local' });
   }
 
-  return res.status(401).json({ ok: false, message: 'Incorrect PIN' });
+  // 🛡 3. FINAL ERROR (Neither was provided correctly)
+  return res.status(401).json({ ok: false, message: 'PIN is required to continue.', v: '2.0-local' });
 });
 
-app.listen(PORT, () => console.log(`✅ Local OTP server: http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`✅ Verified v2.0-local: Running at http://localhost:${PORT}`));

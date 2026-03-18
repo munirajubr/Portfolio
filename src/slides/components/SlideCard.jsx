@@ -20,11 +20,8 @@ export default function SlideCard({ slide, onPresent }) {
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '8px 8px 0 var(--black)'; }}
     >
       <PDFThumbnail url={slide.url} />
-
-      <h3 style={{ fontSize: 20, fontWeight: 800, fontFamily: 'Syne, sans-serif', textTransform: 'uppercase', lineHeight: 1.2, marginBottom: 5 }}>
-        {slide.title}
-      </h3>
-      <p style={{ fontSize: 12, fontWeight: 500, fontFamily: 'Outfit, sans-serif', color: 'var(--gray)', opacity: 0.6, marginBottom: 20 }}>
+      <h2 className="page-title" style={{ fontSize: 28, fontWeight: 700 }}>{slide.title}</h2>
+      <p style={{ fontSize: 16, fontWeight: 500, fontFamily: 'Outfit, sans-serif', color: 'var(--gray)', opacity: 0.6, marginBottom: 20 }}>
         {slide.filename}
       </p>
 

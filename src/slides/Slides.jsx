@@ -80,9 +80,7 @@ const Slides = () => {
           {/* Header */}
           <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 70, maxWidth: 700 }}>
             <Tag label="PRESENTATIONS" color="red" />
-            <h1 style={{ fontSize: 'clamp(32px, 8vw, 48px)', fontWeight: 800, fontFamily: 'Syne, sans-serif', textTransform: 'uppercase', lineHeight: 1.1 }}>
-              Slides
-            </h1>
+            <h1 className="page-title" style={{ fontSize: 32, fontWeight: 700 }}>Slides</h1>
             <p style={{ fontSize: 'clamp(16px, 3vw, 20px)', fontWeight: 500, lineHeight: 1.6, fontFamily: 'Outfit, sans-serif', opacity: 0.75 }}>
               A collection of talks, workshops, and presentations.
             </p>

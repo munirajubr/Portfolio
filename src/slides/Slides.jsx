@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Tag from '../components/Tag';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 import SlideCard from './components/SlideCard';
 import PDFPresentationViewer from './components/PDFPresentationViewer';
@@ -46,7 +44,7 @@ const Slides = () => {
 
   return (
     <div ref={pageRef} style={{ background: 'var(--bg, #fdfcf0)', minHeight: '100vh', position: 'relative' }}>
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* AUTH MODAL - Always render overlay if not verified */}
       {!isVerified && (
@@ -122,7 +120,7 @@ const Slides = () => {
         </main>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
 
       {/* PDF Presenter */}
       {activeSlide && isVerified && (

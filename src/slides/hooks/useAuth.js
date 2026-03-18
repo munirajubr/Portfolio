@@ -32,7 +32,7 @@ export function useAuth() {
   };
 
   const verifyOTP = async (otp) => {
-    setStatus('verifying');
+    setStatus('otp_verifying');
     setError('');
     try {
       const res = await fetch('/api/otp/verify', {
@@ -46,12 +46,14 @@ export function useAuth() {
       setStatus('verified');
     } catch (e) {
       setError(e.message);
-      setStatus('awaiting');
+      setStatus('otp_error');
+      // After a delay, go back to awaiting if it was an OTP error
+      setTimeout(() => setStatus('awaiting'), 1000);
     }
   };
 
   const verifyPassword = async (password) => {
-    setStatus('verifying');
+    setStatus('pin_verifying');
     setError('');
     try {
       const res = await fetch('/api/otp/verify', {
@@ -65,7 +67,9 @@ export function useAuth() {
       setStatus('verified');
     } catch (e) {
       setError(e.message);
-      setStatus('idle'); // Back to idle (PIN mode)
+      setStatus('pin_error');
+      // After a delay, go back to idle (PIN mode)
+      setTimeout(() => setStatus('idle'), 1000);
     }
   };
 

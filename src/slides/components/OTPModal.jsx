@@ -173,9 +173,9 @@ export default function OTPModal({ status, error, cooldown, onRequest, onVerify,
                   </motion.div>
                 </div>
 
-                <h2 style={{ fontSize: 26, fontWeight: 800, fontFamily: 'Syne, sans-serif', textTransform: 'uppercase', textAlign: 'center', marginBottom: 6 }}>
+                <h1 style={{ fontSize: 26, fontWeight: 800, textAlign: 'center', marginBottom: 6 }} className="page-title">
                   {isVerifyingPin ? 'Checking PIN...' : 'Enter PIN'}
-                </h2>
+                </h1>
                 <p style={{ fontSize: 14, fontFamily: 'Outfit, sans-serif', opacity: 0.55, textAlign: 'center', lineHeight: 1.5, marginBottom: 4 }}>
                   Type your {PIN_LENGTH}-digit PIN to access slides.
                 </p>
@@ -281,9 +281,9 @@ export default function OTPModal({ status, error, cooldown, onRequest, onVerify,
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 14 }}>
                   <IconShield size={40} />
                 </div>
-                <h2 style={{ fontSize: 24, fontWeight: 800, fontFamily: 'Syne, sans-serif', textTransform: 'uppercase', textAlign: 'center', marginBottom: 6 }}>
-                   {isVerifyingOtp ? 'Verifying OTP...' : 'Enter OTP'}
-                </h2>
+                <h1 style={{ fontSize: 26, fontWeight: 800, textAlign: 'center', marginBottom: 6 }} className="page-title">
+                  {isVerifyingOtp ? 'Verifying OTP...' : 'Enter OTP'}
+                </h1>
                 <p style={{ fontSize: 13, fontFamily: 'Outfit, sans-serif', opacity: 0.55, textAlign: 'center', lineHeight: 1.5, marginBottom: 24 }}>
                   6-digit code sent to your email.
                 </p>

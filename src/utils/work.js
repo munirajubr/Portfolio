@@ -1,4 +1,4 @@
-import { assets } from './assets'
+// work.js
 
 export const works = [
   {
@@ -72,7 +72,6 @@ export const getHomeProjects = () => {
       desc: work.description,
       img: work.imgSrc,
       caseColor: index % 2 === 0 ? '#4e4ce1' : '#fe90e7',
-      arrowIco: index % 2 === 0 ? assets.arrowPurple : assets.arrowPink,
       reverse: index % 2 === 1
     };
   });

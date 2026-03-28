@@ -9,6 +9,7 @@ import { calculateTotalExperienceCount } from '../utils/calculateExperience'
 import { ExperienceItems } from '../utils/ExperienceItems'
 import { ProjectCard } from '../components/Cards'
 import HeroIllustration from '../components/HeroIllustration'
+import { ResumeIcon, ArrowRightIcon } from '../utils/icons'
 
 const PROJECTS = getHomeProjects()
 
@@ -90,7 +91,7 @@ export default function Home() {
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
               >
-                <img src={assets.resumeIco} alt="" style={{ width: 32, height: 32 }} />
+                <ResumeIcon size={32} />
                 View Resume
               </a>
             </div>
@@ -100,7 +101,7 @@ export default function Home() {
               <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 16, fontWeight: 500, color: 'var(--black)' }}>
                 <span>more</span>
                 <strong style={{ color: 'var(--purple)', fontWeight: 700 }}> About Me</strong>
-                <img src={assets.aboutArrow} alt="" style={{ width: 16, height: 16 }} />
+                <ArrowRightIcon size={16} color="var(--purple)" />
               </Link>
               <div style={{ marginLeft: 55, width: 60, height: 2, background: 'var(--purple)', borderRadius: 50 }} />
             </div>

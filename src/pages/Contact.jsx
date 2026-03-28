@@ -70,7 +70,7 @@ export default function Contact() {
 
             <p style={{ fontSize: 18, fontWeight: 500, marginTop: 16 }}>Follow</p>
             <div className="contact-socials" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              {socialLinks.map(({ label, icon, bg, href }) => (
+              {socialLinks.map(({ label, Icon, bg, href }) => (
                 <a
                   key={label}
                   href={href}
@@ -80,7 +80,7 @@ export default function Contact() {
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '6px 6px 0 var(--black)' }}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '4px 4px 0 var(--black)' }}
                 >
-                  <img src={icon} alt="" style={{ width: 20, height: 20 }} />
+                  <Icon />
                   {label}
                 </a>
               ))}

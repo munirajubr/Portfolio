@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Tag from '../components/Tag'
 import { services } from '../utils/services'
-import { assets } from '../utils/assets'
+import { ArrowUpRightIcon } from '../utils/icons'
 
 export default function Services() {
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ export default function Services() {
         <h1 className="page-title" style={{ fontSize: 32, fontWeight: 700 }}>Services</h1>
 
         <div className="reveal services-row" style={{ display: 'flex', gap: 50, flexWrap: 'wrap' }}>
-          {services.map(({ icon, iconBg, title, desc, linkColor }) => (
+          {services.map(({ Icon, iconBg, title, desc }) => (
             <div
               key={title}
               style={{
@@ -48,20 +48,14 @@ export default function Services() {
                 background: iconBg,
                 border: '2px solid var(--black)',
                 borderRadius: 5,
-                boxShadow: `${iconBg !== 'transparent' ? '5px 5px' : '3px 3px'} 0 var(--black)`,
-                padding: iconBg !== 'transparent' ? 10 : 0,
-                width: iconBg !== 'transparent' ? 'fit-content' : 100,
-                height: iconBg !== 'transparent' ? 'fit-content' : 69,
-                overflow: 'hidden',
+                boxShadow: '3px 3px 0 var(--black)',
+                padding: 10,
+                width: 'fit-content',
                 display: 'flex',
                 alignItems: 'center',
                 flexShrink: 0,
               }}>
-                <img
-                  src={icon}
-                  alt=""
-                  style={{ width: iconBg !== 'transparent' ? 84 : '100%', height: iconBg !== 'transparent' ? 50 : '100%', objectFit: 'contain' }}
-                />
+                <Icon size={50} color="var(--black)" />
               </div>
               <h3 style={{ fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>{title}</h3>
               <p style={{ flex: 1, fontSize: 18, fontWeight: 500, lineHeight: 1.6 }}>{desc}</p>
@@ -86,7 +80,7 @@ export default function Services() {
             onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}
           >
-            <img src={assets.handArrow} alt="Contact" style={{ width: 50, height: 50 }} />
+            <ArrowUpRightIcon size={50} color="var(--black)" />
           </button>
         </div>
       </section>

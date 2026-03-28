@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Tag from './Tag'
-import { assets } from '../utils/assets'
+import { StarIcon, LinkArrowIcon } from '../utils/icons'
 
 /* ── Project Card ── */
 export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, reverse }) {
@@ -55,7 +55,7 @@ export function AchievementCard({ title, providedby, color, date = "2024-2025", 
       <p className="achievement-title" style={{ flex: 1, fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>{title}</p>
       <a href={achievementLink} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}>
         <span style={{ fontSize: 16, fontWeight: 500, color: 'var(--purple)' }}>View Credential</span>
-        <img src={assets.linkArrow} alt="" style={{ width: 18, height: 18 }} />
+        <LinkArrowIcon size={18} color="var(--purple)" />
       </a>
     </div>
   )
@@ -71,7 +71,7 @@ export function EducationCard({ institution, location, degree, gaduationyear, CG
           {degree.includes('Pursuing') && <span style={{ fontSize: 18, fontWeight: 500 }}>Pursuing</span>}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src={assets.starIco} alt="" style={{ width: 20, height: 20 }} />
+          <StarIcon size={20} color="var(--black)" />
           <span style={{ fontSize: 18, fontWeight: 500 }}>{CGPA} CGPA</span>
         </div>
       </div>

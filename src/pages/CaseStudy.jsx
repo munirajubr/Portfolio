@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Tag from '../components/Tag'
 import { caseStudies } from '../utils/caseStudies'
-import { assets } from '../utils/assets'
+import { BackArrowIcon, ExternalLinkIcon, ArrowUpRightIcon } from '../utils/icons'
 
 const nextColorMap = {
   pink: 'var(--pink)',
@@ -49,7 +49,7 @@ export default function CaseStudy() {
     >
       Explore Project
       <div style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 15, padding: '5px 10px', boxShadow: '5px 5px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 44 }}>
-        <img src={assets.extArrow} alt="→" style={{ width: 20, height: 20 }} />
+        <ArrowUpRightIcon size={20} color="var(--black)" />
       </div>
     </a>
   )
@@ -68,7 +68,7 @@ export default function CaseStudy() {
           onMouseEnter={e => e.currentTarget.style.opacity = '.7'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          <img src={assets.backArrow} alt="←" style={{ width: 36, height: 37 }} />
+          <BackArrowIcon size={36} color="var(--black)" />
           <span style={{ fontSize: 32, fontWeight: 700 }}>Back</span>
         </button>
 
@@ -91,7 +91,7 @@ export default function CaseStudy() {
           >
             Explore Case Study
             <div style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 15, padding: '5px 10px', boxShadow: '5px 5px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 44 }}>
-              <img src={assets.extArrow} alt="→" style={{ width: 20, height: 20 }} />
+              <ArrowUpRightIcon size={20} color="var(--black)" />
             </div>
           </a>
         </div>
@@ -179,7 +179,7 @@ export default function CaseStudy() {
             onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}
           >
-            <img src={assets.exploreIco} alt="→" style={{ width: 50, height: 50 }} />
+            <ArrowUpRightIcon size={50} color="var(--black)" />
           </button>
         </div>
       </section>

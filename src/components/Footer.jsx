@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './shared.module.css'
 import { socialLinks } from '../utils/socialLinks'
-import { assets } from '../utils/assets'
+import { CompassIcon, ShareIcon } from '../utils/icons'
 
 /* ── Footer ── */
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="footer-nav-group">
             <div className={styles.footerCol}>
               <div className={`${styles.footerColHeader} ${styles.footerColGreen}`}>
-                <img src={assets.footerExploreIco} alt="" width={20} height={20} />
+                <CompassIcon size={20} />
                 Explore
               </div>
               <Link className={styles.footerLink} to="/about">About Me</Link>
@@ -37,7 +37,7 @@ export default function Footer() {
 
             <div className={styles.footerCol}>
               <div className={`${styles.footerColHeader} ${styles.footerColBlue}`}>
-                <img src={assets.footerSocialIco} alt="" width={20} height={20} />
+                <ShareIcon size={20} />
                 Social
               </div>
               {socialLinks.map(({ label, href }) => (

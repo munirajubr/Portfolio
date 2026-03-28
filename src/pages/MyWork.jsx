@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Tag from '../components/Tag'
 import { getAllProjects } from '../utils/work'
-import { assets } from '../utils/assets'
+import { ArrowUpRightIcon } from '../utils/icons'
 import { ProjectCard } from '../components/Cards'
 
 const PROJECTS = getAllProjects()
@@ -49,7 +49,7 @@ export default function MyWork() {
             onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}
           >
-            <img src={assets.handArrow} alt="Contact" style={{ width: 50, height: 50 }} />
+            <ArrowUpRightIcon size={50} color="var(--black)" />
           </button>
         </div>
       </section>

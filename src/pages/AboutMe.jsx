@@ -13,6 +13,7 @@ import { formatDateRange } from '../utils/dateUtils'
 import { getProjectsCount } from '../utils/work'
 import { assets } from '../utils/assets'
 import { ExperienceCard, SkillCard, EducationCard, AchievementCard } from '../components/Cards'
+import { ResumeIcon } from '../utils/icons'
 
 export default function AboutMe() {
   const pageRef = useRef(null)
@@ -72,7 +73,7 @@ export default function AboutMe() {
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
               >
-                <img src={assets.aboutResumeIco} alt="" style={{ width: 32, height: 32 }} />
+                <ResumeIcon size={32} />
                 View Resume
               </a>
             </div>

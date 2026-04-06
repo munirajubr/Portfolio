@@ -6,19 +6,7 @@ export const ExperienceItems = [
     workmode: "Remote",
     worktype: "Full-Time",
     startDate: "2026-01-05",
-    endDate: "Present",
-    milestones: [
-      {
-        date: "2026-01-05",
-        title: "UIUX Design (Intern)",
-        type: "Internship"
-      },
-      // {
-      //   date: "2026-04-05",
-      //   title: "UIUX Designer",
-      //   type: "Full-time"
-      // }
-    ],
+    endDate: "2026-04-05",
     description: [
       "Design UI/UX for web applications and Chrome extensions",
       "Create wireframes, user flows, and interactive prototypes",
@@ -36,13 +24,6 @@ export const ExperienceItems = [
     worktype: "Internship",
     startDate: "2022-10-01",
     endDate: "2023-06-10",
-    milestones: [
-      {
-        date: "2026-01-05",
-        title: "UIUX Design Intern",
-        type: "Internship"
-      },
-    ],
     description: [
       "Developed and tested full-stack applications using Java Spring Boot for the back end and MongoDB for the database.",
       "Utilized tools like Postman to validate RESTful APIs and Docker to containerize applications, streamlining the deployment process.",

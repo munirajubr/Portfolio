@@ -1,6 +1,30 @@
 export const ExperienceItems = [
   {
     domain: "UIUX Design",
+    company: "ToLet-Globe",
+    location: "Work From Home",
+    workmode: "Remote",
+    worktype: "Part-Time",
+    startDate: "2026-04-13",
+    endDate: "Present",
+    milestones: [
+      {
+        date: "2026-04-13",
+        title: "UIUX Design Intern",
+        type: "Internship"
+      },
+    ],
+    description: [
+      "Design UI/UX for web applications and Chrome extensions",
+      "Create wireframes, user flows, and interactive prototypes",
+      "Convert product requirements into user-friendly designs",
+      "Collaborate with product managers and developers",
+      "Improve usability, accessibility, and overall user experience",
+      "Conduct basic user research and iterate designs based on feedback",
+    ],
+  },
+  {
+    domain: "UIUX Design",
     company: "AIKING Solutions",
     location: "Work From Home",
     workmode: "Remote",

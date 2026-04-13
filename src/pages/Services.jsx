@@ -67,13 +67,13 @@ export default function Services() {
       {/* Next Step CTA */}
       <section className="reveal section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 25 }}>
         <div style={{ display: 'inline-flex' }}>
-          <Tag label="Next Step" color="red" />
+          <Tag label="Let's Connect" color="red" />
         </div>
         <div
           className="cta-row"
           style={{ background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 25, padding: '25px 30px', boxShadow: '3px 3px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}
         >
-          <p className="cta-heading" style={{ fontSize: 38, fontWeight: 700, maxWidth: 392 }}>Let's Work Together</p>
+          <p className="cta-heading" style={{ fontSize: 38, fontWeight: 700, maxWidth: 392 }}>Let's Connect</p>
           <button
             onClick={() => navigate('/contact')}
             style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 25, padding: '15px 20px', boxShadow: '5px 5px 0 var(--black)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .15s', flexShrink: 0 }}

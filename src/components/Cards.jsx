@@ -4,8 +4,23 @@ import Tag from './Tag'
 import { StarIcon, LinkArrowIcon } from '../utils/icons'
 
 /* ── Project Card ── */
-export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, reverse }) {
+export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, reverse, projectLink }) {
   const navigate = useNavigate()
+  const hasLink = projectLink && projectLink.trim() !== ""
+  
+  const handleNavigation = (e) => {
+    if (e) e.preventDefault()
+    if (hasLink) {
+      if (projectLink.startsWith('http')) {
+        window.location.href = projectLink
+      } else {
+        navigate(projectLink)
+      }
+    } else {
+      navigate(`/case-study/${id}`)
+    }
+  }
+
   return (
     <div
       className="reveal project-card-row"
@@ -18,8 +33,12 @@ export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, r
         <h3 className="project-card-title" style={{ fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>{title}</h3>
         <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6 }}>{desc}</p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <Link to={`/case-study/${id}`} style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 16, fontWeight: 500, color: 'var(--black)' }}>
-            View <strong style={{ color: caseColor, fontWeight: 700 }}> Case Study</strong>
+          <a 
+            href={hasLink ? projectLink : `/case-study/${id}`} 
+            onClick={handleNavigation}
+            style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 16, fontWeight: 500, color: 'var(--black)' }}
+          >
+            View <strong style={{ color: caseColor, fontWeight: 700 }}> Project</strong>
             {arrowIco ? (
               <img src={arrowIco} alt="" style={{ width: 18, height: 18 }} />
             ) : (
@@ -27,8 +46,8 @@ export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, r
                 <path d="M3.75 9h10.5M9.75 5l4.5 4-4.5 4" stroke={caseColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
-          </Link>
-          <div style={{ marginLeft: 44, width: 111, height: 2, background: caseColor, borderRadius: 50 }} />
+          </a>
+          <div style={{ marginLeft: 44, width: 80, height: 2, background: caseColor, borderRadius: 50 }} />
         </div>
       </div>
       <div
@@ -36,7 +55,7 @@ export function ProjectCard({ id, tags, title, desc, img, caseColor, arrowIco, r
         style={{ width: 550, height: 391, borderRadius: 20, border: '5px solid var(--black)', boxShadow: '7.5px 7.5px 0 var(--black)', flexShrink: 0, overflow: 'hidden', cursor: 'pointer', transition: 'transform .2s, box-shadow .2s' }}
         onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-3px,-3px)'; e.currentTarget.style.boxShadow = '10.5px 10.5px 0 var(--black)' }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '7.5px 7.5px 0 var(--black)' }}
-        onClick={() => navigate(`/case-study/${id}`)}
+        onClick={() => handleNavigation()}
       >
         <img src={img} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
@@ -83,7 +102,7 @@ export function EducationCard({ institution, location, degree, gaduationyear, CG
 }
 
 /* ── Experience Card ── */
-export function ExperienceCard({ duration, domain, worktype, company, workmode, dates, description, color, milestones }) {
+export function ExperienceCard({ duration, domain, worktype, company, workmode, dates, description, color, milestones, caseStudyLink }) {
   const [isExpanded, setIsExpanded] = useState(false)
   const showDetail = description.length > 2
 
@@ -120,7 +139,7 @@ export function ExperienceCard({ duration, domain, worktype, company, workmode, 
             <li key={i}>{desc}</li>
           ))}
         </ul>
-        {showDetail && (
+          {showDetail && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <button
               onClick={() => setIsExpanded(!isExpanded)}

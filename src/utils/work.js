@@ -4,7 +4,7 @@ export const works = [
   {
     id: "student-gpt",
     imgSrc: "/images/Student GPT.jpg",
-    title: "Student GPT Mobile App UI Design (Case Study)",
+    title: "Student GPT Mobile App UI Design (Design)",
     description: "A comprehensive UI/UX case study for an AI-powered academic assistant mobile application designed to help students manage their studies efficiently.",
     tags: ["Figma", "UI Design", "Mobile UI"],
     featured: true,
@@ -14,21 +14,12 @@ export const works = [
   {
     id: "project-collab",
     imgSrc: "/images/ProjectCollab.jpg",
-    title: "Project Collab Mobile App UI Design (Case Study)",
+    title: "Project Collab Mobile App UI Design (Design)",
     description: "A platform designed to connect innovators and students for collaborative projects, featuring a sleek and intuitive mobile interface.",
     tags: ["Figma", "UI Design", "Mobile UI"],
     featured: true,
     projectLink:
       "https://www.behance.net/gallery/226979827/ProjectCollab-Connecting-Innovators",
-  },
-  {
-    id: "trip-planner",
-    imgSrc: "/images/Trip_planner_app_UI.jpg",
-    title: "Trip Planner Mobile App UI Design (Design)",
-    description: "An elegant travel planning application that helps users organize their itineraries, explore new destinations, and manage bookings seamlessly.",
-    tags: ["Figma", "UI Design", "Mobile UI"],
-    featured: false,
-    projectLink: "",
   },
   
   {
@@ -71,6 +62,7 @@ export const getHomeProjects = () => {
       title: work.title,
       desc: work.description,
       img: work.imgSrc,
+      projectLink: work.projectLink,
       caseColor: index % 2 === 0 ? '#4e4ce1' : '#fe90e7',
       reverse: index % 2 === 1
     };
@@ -86,6 +78,7 @@ export const getAllProjects = () => {
       title: work.title.replace(' (Case Study)', '').replace(' (Design)', ''),
       desc: work.description,
       img: work.imgSrc,
+      projectLink: work.projectLink,
       caseColor: index % 2 === 0 ? 'var(--purple)' : 'var(--pink)',
       reverse: index % 2 === 1
     };

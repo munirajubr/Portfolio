@@ -15,12 +15,7 @@ export const ExperienceItems = [
       },
     ],
     description: [
-      "Design UI/UX for web applications and Chrome extensions",
-      "Create wireframes, user flows, and interactive prototypes",
-      "Convert product requirements into user-friendly designs",
-      "Collaborate with product managers and developers",
-      "Improve usability, accessibility, and overall user experience",
-      "Conduct basic user research and iterate designs based on feedback",
+      "Disclosing Soon",
     ],
   },
   {

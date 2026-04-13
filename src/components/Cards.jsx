@@ -90,8 +90,10 @@ export function ExperienceCard({ duration, domain, worktype, company, workmode, 
   return (
     <div className="reveal exp-card-row" style={{ display: 'flex', gap: 50 }}>
       <div className="exp-card-left" style={{ width: 400, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 15 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
           <Tag label={duration} color={color} />
+          <h3 style={{ fontSize: 32, fontWeight: 700, margin: '5px 0 0 0' }}>{company}</h3>
+          <p style={{ fontSize: 18, fontWeight: 500, opacity: 0.7, margin: 0 }}>{worktype} • {workmode}</p>
         </div>
 
         {milestones && milestones.length > 0 && (

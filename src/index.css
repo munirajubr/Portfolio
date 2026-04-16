@@ -768,7 +768,7 @@ body {
 }
 
 .email-link {
-  font-size: clamp(18px, 3vw, 32px);
+  font-size: clamp(18px, 3vw, 24px);
   font-weight: 800;
   color: #111;
   text-decoration: none;

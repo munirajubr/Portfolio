@@ -30,10 +30,11 @@ export default function Navbar() {
         <div className="nav-inner">
           <div 
             className="nav-logo" 
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}
             onClick={() => handleNavigation('/', false)}
           >
-            Muniraju B R
+            <img src="/icon.png" alt="Logo" style={{ width: 36, height: 36 }} />
+            {/* <span>Muniraju B R</span> */}
           </div>
 
           <div className="nav-links">

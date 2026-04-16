@@ -1,10 +1,17 @@
 export const navItems = [
     {
+      label: "Resume",
+      link: "https://drive.google.com/file/d/1Qe7yj6MoWLZWdM26Oub7guV0Oaip45pe/view?usp=drive_link",
+      external: true,
+      className: "nav-link"
+    },
+    {
       label: "Home",
       link: "/",
       matchPath: "/",
       className: "nav-link"
     },
+    
     {
       label: "About Me",
       link: "/about",
@@ -12,9 +19,9 @@ export const navItems = [
       className: "nav-link"
     },
     {
-      label: "My Work",
-      link: "/work",
-      matchPath: "/work",
+      label: "Achievements",
+      link: "/achievements",
+      matchPath: "/achievements",
       className: "nav-link"
     },
     {

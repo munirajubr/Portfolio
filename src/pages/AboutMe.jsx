@@ -1,172 +1,105 @@
-import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Tag from '../components/Tag'
-import { ExperienceItems } from '../utils/ExperienceItems'
-import { EducationItems } from '../utils/EducationItems'
-import { skillItems } from '../utils/skillItems'
-import { achievements } from '../utils/achievements'
-import { aboutDetails } from '../utils/aboutDetails'
-import { calculateTotalExperienceCount, calculateExperienceDuration } from '../utils/calculateExperience'
-import { formatDateRange } from '../utils/dateUtils'
-import { getProjectsCount } from '../utils/work'
-import { assets } from '../utils/assets'
-import { ExperienceCard, SkillCard, EducationCard, AchievementCard } from '../components/Cards'
-import { ResumeIcon } from '../utils/icons'
+import { ExperienceItems, assets, skillItems, aboutDetails } from '../utils/projectsData'
+import { calculateTotalExperienceCount, formatDateRange, getProjectsCount } from '../utils/helper'
 
 export default function AboutMe() {
-  const pageRef = useRef(null)
-  const workRef = useRef(null)
-  const skillsRef = useRef(null)
-  const achievementsRef = useRef(null)
-
-  const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth' })
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.1 }
-    )
-    pageRef.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: 50 }}>
+    <div className="page-root">
       <Navbar />
 
-      {/* ── Hero ── */}
-      <section className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 50 }}>
-        <h1 className="page-title" style={{ fontSize: 32, fontWeight: 700 }}>About Me</h1>
+      {/* ── Hero ── */ }
+      <section className="hero">
+        <div className="hero-inner">
+      
 
-        <div className="about-hero-row" style={{ display: 'flex', gap: 50, alignItems: 'flex-start' }}>
-          {/* Left */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 50, minWidth: 0 }}>
-            <p className="reveal body-text-lg" style={{ fontSize: 24, fontWeight: 500, lineHeight: 1.6 }}>
-              {aboutDetails[0]}
-            </p>
+          <div className="about-hero-row">
+             {/* Left */}
+            <div className="about-text-col reveal delay-2">
+              <h1 className="reveal delay-1">About Me</h1>
+              <p className="hero-bio">
+                {aboutDetails[0]}
+                <br /><br />
+                {aboutDetails[1]}
+              </p>
 
-            {/* Stats */}
-            <div className="reveal delay-1 about-stats-row" style={{ display: 'flex', gap: 30, alignItems: 'center', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <span style={{ fontSize: 32, fontWeight: 700 }}>{calculateTotalExperienceCount(ExperienceItems)}</span>
-                  <span style={{ fontSize: 24, fontWeight: 500, color: 'var(--purple)' }}>+</span>
+              {/* Stats */}
+              <div className="stats-row">
+                <div className="stat-item">
+                  <span className="stat-value">{calculateTotalExperienceCount(ExperienceItems)}+</span>
+                  <span className="stat-label">Years Exp</span>
                 </div>
-                <span style={{ fontSize: 18, fontWeight: 500, color: 'var(--gray)' }}>Years of Experience</span>
-              </div>
-              <div style={{ width: 2, background: 'var(--gray)', opacity: 0.5, borderRadius: 50, alignSelf: 'stretch' }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <span style={{ fontSize: 32, fontWeight: 700 }}>{getProjectsCount()}</span>
-                  <span style={{ fontSize: 24, fontWeight: 500, color: 'var(--purple)' }}>+</span>
+                <div className="stat-item">
+                  <span className="stat-value">{getProjectsCount()}+</span>
+                  <span className="stat-label">Projects</span>
                 </div>
-                <span style={{ fontSize: 18, fontWeight: 500, color: 'var(--gray)' }}>Projects</span>
               </div>
-              <a
-                href={assets.resumeURL}
-                target="_blank"
-                rel="noreferrer"
-                className="about-resume-btn"
-                style={{ display: 'flex', alignItems: 'center', gap: 15, background: 'var(--green)', border: '3px solid var(--black)', borderRadius: 50, padding: '12.5px 30px', boxShadow: '3px 3px 0 var(--black)', fontSize: 24, fontWeight: 700, color: 'var(--black)', textDecoration: 'none', transition: 'transform .15s, box-shadow .15s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
-              >
-                <ResumeIcon size={32} />
-                View Resume
-              </a>
             </div>
 
-            {/* Quick links */}
-            <div className="reveal delay-2 quick-links" style={{ display: 'flex', gap: 15, flexWrap: 'wrap' }}>
-              {[
-                { label: 'Work Experience', color: 'light-orange', ref: workRef },
-                { label: 'Skills & Education', color: 'pink', ref: skillsRef },
-                { label: 'Achievements', color: 'blue', ref: achievementsRef }
-              ].map(({ label, color, ref }) => (
-                <div
-                  key={label}
-                  onClick={() => scrollToSection(ref)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 5, background: `var(--${color})`, border: '2px solid var(--black)', borderRadius: 15, padding: '7.5px 15px', boxShadow: '3px 3px 0 var(--black)', fontSize: 16, fontWeight: 500, cursor: 'pointer', flexShrink: 0, transition: 'transform .15s' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = ''}
-                >
-                  {label}
-                </div>
-              ))}
+            {/* Right photo */}
+            <div className="about-photo-wrap reveal delay-3">
+              <img 
+                src="/images/munir_nobg.png" 
+                alt="Muniraju" 
+                className="about-photo-ghost"
+              />
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Right photo */}
-          <div className="reveal delay-1 about-photo-wrap" style={{ flexShrink: 0 }}>
-            <img
-              className="about-photo"
-              src={assets.aboutPhoto}
-              alt="Muniraju"
-              style={{ width: 428, height: 428, borderRadius: 20, objectFit: 'cover', display: 'block' }}
-              onError={e => e.currentTarget.style.display = 'none'}
-            />
+      {/* ── Experience ── */}
+      <section className="about-section reveal delay-3">
+        <div className="section-inner">
+          <h2 className="section-heading">Experience</h2>
+          <div className="experience-list">
+            {ExperienceItems.map((exp, index) => (
+              <div key={index} className="exp-item">
+                <div className="exp-header">
+                  <div className="exp-left">
+                    <div className="exp-date">
+                      {formatDateRange(exp.startDate, exp.endDate)}
+                    </div>
+                    <h3 className="exp-title">{exp.company}</h3>
+                    <p className="exp-company">
+                      {exp.worktype} • {exp.domain}
+                    </p>
+                  </div>
+                  <div className="exp-badge">
+                    {exp.domain}
+                  </div>
+                </div>
+                <ul className="exp-desc">
+                  {exp.description.map((desc, i) => (
+                    <li key={i}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Work Experience ── */}
-      <section ref={workRef} className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 50 }}>
-        <div style={{ display: 'flex', gap: 25, alignItems: 'center' }}>
-          <h2 className="section-heading" style={{ fontSize: 32, fontWeight: 700, whiteSpace: 'nowrap' }}>Work Experience</h2>
-          <div style={{ flex: 1, height: 5, borderRadius: 10, background: 'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
-        </div>
-        {ExperienceItems.map((exp, index) => (
-          <ExperienceCard
-            key={index}
-            duration={calculateExperienceDuration(exp)}
-            domain={exp.domain}
-            worktype={exp.worktype}
-            company={exp.company}
-            workmode={exp.workmode}
-            dates={formatDateRange(exp.startDate, exp.endDate)}
-            description={exp.description}
-            milestones={exp.milestones}
-            color={index === 0 ? 'red' : 'orange'}
-          />
-        ))}
-      </section>
-
-      {/* ── Skills & Education ── */}
-      <section ref={skillsRef} className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 25 }}>
-        <div style={{ display: 'flex', gap: 25, alignItems: 'center' }}>
-          <h2 className="section-heading" style={{ fontSize: 32, fontWeight: 700, whiteSpace: 'nowrap' }}>Skills &amp; Education</h2>
-          <div style={{ flex: 1, height: 5, borderRadius: 10, background: 'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
-        </div>
-
-        <Tag label="Education" color="red" />
-        <div className="reveal education-row" style={{ display: 'flex', gap: 50 }}>
-          {EducationItems.map((edu, index) => (
-            <EducationCard key={index} {...edu} color={index === 0 ? 'orange' : 'pink'} />
-          ))}
-        </div>
-
-        <Tag label="Skills" color="pink" />
-        {skillItems.map((skillCategory, index) => (
-          <SkillCard key={index} category={skillCategory.category} skillsList={skillCategory.skillsList} />
-        ))}
-      </section>
-
-      {/* ── Achievements ── */}
-      <section ref={achievementsRef} className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 50 }}>
-        <div style={{ display: 'flex', gap: 25, alignItems: 'center' }}>
-          <h2 className="section-heading" style={{ fontSize: 32, fontWeight: 700, whiteSpace: 'nowrap' }}>Achievements</h2>
-          <div style={{ flex: 1, height: 5, borderRadius: 10, background: 'linear-gradient(to right, rgba(0,0,0,0.75), rgba(61,61,61,0))' }} />
-        </div>
-        <div className="achievements-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 50 }}>
-          {achievements.map((ach, index) => (
-            <AchievementCard
-              key={ach.title}
-              {...ach}
-              color={['orange', 'blue', 'red', 'light-orange'][index % 4]}
-            />
-          ))}
+      {/* ── Skills ── */}
+      <section className="about-section reveal delay-4" style={{ paddingBottom: 100 }}>
+        <div className="section-inner">
+          <h2 className="section-heading">Skills</h2>
+          <div className="skills-grid">
+            {skillItems.map((category, index) => (
+              <div key={index} className="skill-category">
+                <h3 className="skill-cat-title">
+                  {category.category}
+                </h3>
+                <div className="skill-tags">
+                  {category.skillsList.map((skill, i) => (
+                    <span key={i} className="skill-pill">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

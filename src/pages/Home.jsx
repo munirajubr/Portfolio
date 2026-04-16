@@ -1,129 +1,101 @@
-import { useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Tag from '../components/Tag'
-import { getHomeProjects, getProjectsCount } from '../utils/work'
-import { assets } from '../utils/assets'
-import { calculateTotalExperienceCount } from '../utils/calculateExperience'
-import { ExperienceItems } from '../utils/ExperienceItems'
-import { ProjectCard } from '../components/Cards'
-import HeroIllustration from '../components/HeroIllustration'
-import { ResumeIcon, ArrowRightIcon } from '../utils/icons'
-
-const PROJECTS = getHomeProjects()
+import { assets, projectsData } from '../utils/projectsData'
+import { socialLinks } from '../utils/socialLinks'
 
 export default function Home() {
-  const navigate = useNavigate()
-  const pageRef = useRef(null)
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.08 }
-    )
-    pageRef.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+  const handleNavigation = (href) => {
+    window.open(href, '_blank', 'noreferrer')
+  }
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: 50 }}>
+    <div className="page-root">
       <Navbar />
 
-      {/* ══ HERO ══ */}
-      <section className="hero-section section-pad" style={{ padding: '50px 100px', display: 'flex', gap: 50, alignItems: 'center' }}>
+      {/* ── HERO ── */}
+      <section className="hero">
+        <div className="hero-inner">
+          <h1 className="hero-title reveal delay-1">
+            Hello, I'm Muniraju.
+          </h1>
+          <p className="hero-bio reveal delay-2">
+            I'm a UIUX Designer & Full Stack Developer who loves building beautiful, fast, and user-focused digital products. I enjoy working on projects that solve real-world problems and create seamless experiences across web and mobile.
+          </p>
 
-        {/* Left */}
-        <div className="hero-row" style={{ flex: 1, display: 'flex', flexDirection: 'row', gap: 50, alignItems: 'center', width: '100%' }}>
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 25, minWidth: 0 }}>
-
-            <p className="reveal body-text-lg" style={{ fontSize: 24, fontWeight: 500, opacity: 0.8 }}>Hi, I'm Muniraju B R.</p>
-
-            <h1 className="reveal delay-1 hero-headline" style={{
-              fontSize: 42,
-              fontWeight: 800,
-              letterSpacing: '0.5px',
-              textTransform: 'uppercase',
-              color: 'var(--white)',
-              textShadow: `
-                1px 1px 0 var(--black),
-                -1px 1px 0 var(--black),
-                1px -1px 0 var(--black),
-                -1px -1px 0 var(--black),
-                0px 1px 0 var(--black),
-                0px -1px 0 var(--black),
-                1px 0px 0 var(--black),
-                -1px 0px 0 var(--black),
-                -3px 3px 0px var(--red)
-              `,
-              lineHeight: 1.2
-            }}>
-              Crafting Intuitive and Impactful Digital Experiences
-            </h1>
-
-            <p className="reveal delay-2 hero-subtitle body-text-lg" style={{ fontSize: 24, fontWeight: 500, opacity: 0.8, lineHeight: 1.5 }}>
-              I'm a UIUX Designer, I specialize in crafting exceptional digital experiences to help clients achieve their business goals.
-            </p>
-
-            {/* Stats + Resume */}
-            <div className="reveal delay-3 hero-stats-row" style={{ display: 'flex', gap: 30, alignItems: 'center', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <span style={{ fontSize: 32, fontWeight: 700 }}>{calculateTotalExperienceCount(ExperienceItems)}</span>
-                  <span style={{ fontSize: 24, fontWeight: 500, color: 'var(--purple)' }}>+</span>
-                </div>
-                <span style={{ fontSize: 18, fontWeight: 500, color: 'var(--gray)' }}>Years of Experience</span>
-              </div>
-              <div style={{ width: 2, background: 'var(--gray)', opacity: 0.5, borderRadius: 50, alignSelf: 'stretch' }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <span style={{ fontSize: 32, fontWeight: 700 }}>{getProjectsCount()}</span>
-                  <span style={{ fontSize: 24, fontWeight: 500, color: 'var(--purple)' }}>+</span>
-                </div>
-                <span style={{ fontSize: 18, fontWeight: 500, color: 'var(--gray)' }}>Projects</span>
-              </div>
-              <a
-                href={assets.resumeURL}
-                target="_blank"
-                rel="noreferrer"
-                className="hero-resume-btn"
-                style={{ display: 'flex', alignItems: 'center', gap: 15, background: 'var(--green)', border: '3px solid var(--black)', borderRadius: 50, padding: '12.5px 30px', boxShadow: '3px 3px 0 var(--black)', fontSize: 24, fontWeight: 700, color: 'var(--black)', textDecoration: 'none', transition: 'transform .15s, box-shadow .15s', flexShrink: 0 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
+          <div className="social-row reveal delay-3">
+            <div className="social-divider" />
+            {socialLinks.map(({ label, Icon, href }) => (
+              <div 
+                key={label} 
+                onClick={() => handleNavigation(href)} 
+                className="social-icon" 
+                title={label}
+                style={{ cursor: 'pointer' }}
               >
-                <ResumeIcon size={32} />
-                View Resume
-              </a>
-            </div>
-
-            {/* About link */}
-            <div className="reveal delay-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <Link to="/about" style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none', fontSize: 16, fontWeight: 500, color: 'var(--black)' }}>
-                <span>more</span>
-                <strong style={{ color: 'var(--purple)', fontWeight: 700 }}> About Me</strong>
-                <ArrowRightIcon size={16} color="var(--purple)" />
-              </Link>
-              <div style={{ marginLeft: 55, width: 60, height: 2, background: 'var(--purple)', borderRadius: 50 }} />
-            </div>
-          </div>
-
-          {/* Illustration */}
-          <div className="hero-illustration">
-            <HeroIllustration />
+                <Icon />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══ FEATURED WORKS ══ */}
-      <section className="section-pad" style={{ padding: '0 100px', display: 'flex', flexDirection: 'column', gap: 50 }}>
-        <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 25 }}>
-          <div style={{ flex: 1, height: 5, borderRadius: 10, background: 'linear-gradient(to left, rgba(255,130,130,0.75), rgba(61,61,61,0))' }} />
-          <h2 style={{ fontSize: 32, fontWeight: 700, whiteSpace: 'nowrap' }}>Featured Works</h2>
-          <div style={{ flex: 1, height: 5, borderRadius: 10, background: 'linear-gradient(to right, rgba(255,130,130,0.75), rgba(61,61,61,0))' }} />
+      {/* ── PROJECTS ── */}
+      <section className="projects-section reveal delay-4">
+        <div className="achievements-grid">
+          {projectsData.map((project, idx) => (
+            <div
+              key={idx}
+              onClick={() => handleNavigation(project.projectLink || '#')}
+              className="cert-card"
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="cert-img-wrap">
+                <img src={project.imgSrc} alt={project.title} className="cert-img" />
+                <div className="cert-overlay">
+                  <span className="cert-view-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    View Project
+                  </span>
+                </div>
+              </div>
+
+              <div className="cert-body">
+                <h3 className="cert-title">{project.title}</h3>
+                {project.tags?.length > 0 && (
+                  <div className="cert-tags">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="cert-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-        {PROJECTS.map((project) => (
-          <ProjectCard key={project.id} {...project} />
-        ))}
+
+        {/* ── BEHANCE CTA ── */}
+        <div className="behance-cta">
+          <span className="behance-cta-text">For more design works</span>
+          <div className="behance-cta-row">
+            <span className="behance-cta-arrow">
+              <svg width="120" height="55" viewBox="0 0 120 55" fill="none">
+                <path d="M5 5C5 30 35 50 65 45C85 42 95 25 85 12C75 0 60 12 68 30C74 43 100 48 118 45M118 45L110 42M118 45L114 53" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 4"/>
+              </svg>
+            </span>
+            <div 
+              onClick={() => handleNavigation(socialLinks.find(s => s.label === 'Behance')?.href || 'https://www.behance.net/munirajraj2')}
+              className="behance-cta-logo"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.2.836 1.973 2.14 1.973.798 0 1.348-.33 1.692-1.005l2.444.061zM15.97 13h4.604c-.088-1.313-.836-1.993-2.272-1.993-1.48 0-2.193.737-2.332 1.993zM8.986 12.737c1.459.358 2.514 1.21 2.514 2.827 0 2.085-1.741 3.436-4.515 3.436H1V5h5.866c2.634 0 4.204 1.14 4.204 3.132 0 1.348-.738 2.23-2.084 2.605zm-5.037-4.93v2.59h2.55c1.137 0 1.811-.465 1.811-1.325 0-.836-.651-1.265-1.764-1.265H3.949zm2.74 6.568H3.949v2.826h2.76c1.215 0 1.905-.498 1.905-1.413 0-.937-.711-1.413-1.925-1.413z"/>
+              </svg>
+              <span className="behance-cta-logo-text">Behance</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <Footer />

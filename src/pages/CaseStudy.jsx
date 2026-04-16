@@ -30,6 +30,10 @@ export default function CaseStudy() {
     return () => obs.disconnect()
   }, [id])
 
+  const handleExternalNav = (href) => {
+    window.open(href, '_blank', 'noreferrer')
+  }
+
   const metaCard = (label, value) => (
     <div style={{ background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 15, padding: '15px 20px', boxShadow: '3px 3px 0 var(--black)', display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
       <span style={{ fontSize: 18, fontWeight: 500 }}>{label}</span>
@@ -37,21 +41,19 @@ export default function CaseStudy() {
     </div>
   )
 
-  const ExploreBtn = () => (
-    <a
-      href={cs.projectLink}
-      target="_blank"
-      rel="noreferrer"
+  const ExploreBtn = ({ label = "Explore Project" }) => (
+    <div
+      onClick={() => handleExternalNav(cs.projectLink)}
       className="case-explore-btn"
-      style={{ display: 'inline-flex', alignItems: 'center', gap: 15, background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 15, padding: '12.5px 25px', boxShadow: '3px 3px 0 var(--black)', textDecoration: 'none', fontSize: 24, fontWeight: 500, color: 'var(--black)', transition: 'transform .15s, box-shadow .15s' }}
+      style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 15, background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 15, padding: '12.5px 25px', boxShadow: '3px 3px 0 var(--black)', fontSize: 24, fontWeight: 500, color: 'var(--black)', transition: 'transform .15s, box-shadow .15s' }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
     >
-      Explore Project
+      {label}
       <div style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 15, padding: '5px 10px', boxShadow: '5px 5px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 44 }}>
         <ArrowUpRightIcon size={20} color="var(--black)" />
       </div>
-    </a>
+    </div>
   )
 
   return (
@@ -80,20 +82,7 @@ export default function CaseStudy() {
               {cs.tags.map(([l, c]) => <Tag key={l} label={l} color={c} />)}
             </div>
           </div>
-          <a
-            href={cs.projectLink}
-            target="_blank"
-            rel="noreferrer"
-            className="case-explore-btn"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 15, background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 15, padding: '12.5px 25px', boxShadow: '3px 3px 0 var(--black)', textDecoration: 'none', fontSize: 24, fontWeight: 500, color: 'var(--black)', flexShrink: 0, transition: 'transform .15s, box-shadow .15s', whiteSpace: 'nowrap' }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)' }}
-          >
-            Explore Case Study
-            <div style={{ background: 'var(--green)', border: '2px solid var(--black)', borderRadius: 15, padding: '5px 10px', boxShadow: '5px 5px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 44 }}>
-              <ArrowUpRightIcon size={20} color="var(--black)" />
-            </div>
-          </a>
+          <ExploreBtn label="Explore Case Study" />
         </div>
 
         {/* Hero image */}
@@ -173,14 +162,14 @@ export default function CaseStudy() {
           style={{ background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 25, padding: '25px 30px', boxShadow: '3px 3px 0 var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}
         >
           <p className="cta-heading" style={{ fontSize: 38, fontWeight: 700, maxWidth: 392 }}>Let's Work Together</p>
-          <button
+          <div
             onClick={() => navigate('/contact')}
             style={{ background: nextColorMap[cs.nextColor] || 'var(--orange)', border: '2px solid var(--black)', borderRadius: 25, padding: '15px 20px', boxShadow: '5px 5px 0 var(--black)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .15s', flexShrink: 0 }}
             onMouseEnter={e => e.currentTarget.style.transform = 'translate(-2px,-2px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}
           >
             <ArrowUpRightIcon size={50} color="var(--black)" />
-          </button>
+          </div>
         </div>
       </section>
 

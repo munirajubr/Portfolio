@@ -17,6 +17,16 @@ export default function AboutMe() {
              {/* Left */}
             <div className="about-text-col reveal delay-2">
               <h1 className="reveal delay-1">About Me</h1>
+
+              {/* Mobile Photo: Shows between title and bio on mobile */}
+              <div className="about-photo-wrap photo-mobile reveal delay-3">
+                <img 
+                  src="/images/munir_nobg.png" 
+                  alt="Muniraju" 
+                  className="about-photo-ghost"
+                />
+              </div>
+
               <p className="hero-bio">
                 {aboutDetails[0]}
                 <br /><br />
@@ -36,8 +46,8 @@ export default function AboutMe() {
               </div>
             </div>
 
-            {/* Right photo */}
-            <div className="about-photo-wrap reveal delay-3">
+            {/* Desktop Photo: Shows on the right for larger screens */}
+            <div className="about-photo-wrap photo-desktop reveal delay-3">
               <img 
                 src="/images/munir_nobg.png" 
                 alt="Muniraju" 

@@ -593,6 +593,14 @@ body {
   position: relative;
 }
 
+.about-photo-wrap.photo-mobile {
+  display: none;
+}
+
+.about-photo-wrap.photo-desktop {
+  display: flex;
+}
+
 .about-photo-ghost {
   width: 100%;
   height: auto;
@@ -1115,10 +1123,14 @@ body {
     flex-direction: column-reverse; /* Put text below photo or keep consistent */
     gap: 40px;
   }
-  .about-photo-wrap {
+  .about-photo-wrap.photo-desktop {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    display: flex;
+  }
+  .about-photo-wrap.photo-mobile {
+    display: none;
   }
 
   /* Footer tablet */
@@ -1178,11 +1190,14 @@ body {
     gap: 32px;
   }
 
-  .about-photo-wrap {
+  .about-photo-wrap.photo-desktop {
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
     display: flex;
+  }
+  .about-photo-wrap.photo-mobile {
+    display: none;
   }
 
   .service-item {

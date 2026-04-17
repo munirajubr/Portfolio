@@ -340,6 +340,17 @@
   .about-hero-row {
     flex-direction: column !important;
   }
+  .about-text-col {
+    gap: 24px !important;
+  }
+  .about-photo-wrap.photo-desktop {
+    display: none !important;
+  }
+  .about-photo-wrap.photo-mobile {
+    display: flex !important;
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
   .about-stats-row {
     flex-wrap: wrap !important;
     gap: 12px !important;

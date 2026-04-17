@@ -151,8 +151,8 @@
 @media (max-width: 1024px) {
   .section-pad,
   .page-wrap {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   /* Hero – stack vertically */
@@ -160,10 +160,9 @@
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  /* Hide illustration & photo on tablet */
-  .hero-illustration,
-  .about-photo,
-  .about-photo-wrap { display: none !important; }
+  /* Hide large illustrations on tablet, but keep photos if they fit */
+  .hero-illustration { display: none !important; }
+  .about-photo-wrap { display: block !important; }
 
   /* Project cards – thumbnail on top, info below */
   .project-card-row {
@@ -208,10 +207,7 @@
     flex-direction: column !important;
   }
 
-  /* Achievements grid */
-  .achievements-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* Achievements grid - handled in index.css */
 
   /* Contact top row */
   .contact-top-row {
@@ -309,10 +305,8 @@
   }
   /* Hero resume btn – handled in typography block */
   /* Hide illustration & photo on mobile (already hidden from tablet rule; kept explicit) */
-  .hero-illustration,
-  .about-photo,
-  .about-photo-wrap,
-  .hero-photo-wrap { display: none !important; }
+  .hero-illustration { display: none !important; }
+  .about-photo-wrap { display: flex !important; margin: 0 auto; }
 
   /* Page titles */
   .page-title {
@@ -464,9 +458,10 @@
     flex-direction: column !important;
     gap: 20px !important;
     align-items: flex-start !important;
+    padding: 20px !important;
   }
   .cta-heading {
-    font-size: 28px !important;
+    font-size: 24px !important;
   }
 
   /* Footer */

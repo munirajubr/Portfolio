@@ -141,6 +141,26 @@ body {
   transform: translateX(-50%);
 }
 
+.nav-mobile-right {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-resume-btn {
+  display: none;
+  font-size: 13px !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  background: #f5f5f5 !important;
+  color: #111 !important;
+  border: 1px solid #eee !important;
+}
+
+.mobile-resume-btn:hover {
+  background: #eee !important;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -165,21 +185,28 @@ body {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Removed mobile-backdrop as we went back to fullscreen overlay */
+
 .mobile-menu {
-  display: none;
   position: fixed;
-  inset: 0;
-  background: #fff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; /* Full screen width */
+  background: #ffffff;
   z-index: 150;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 80px 30px 30px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-menu.open {
-  display: flex;
+  transform: translateX(0);
 }
 
 .mobile-link {
@@ -187,10 +214,16 @@ body {
   font-weight: 600;
   color: #666;
   text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
   width: 100%;
   text-align: center;
+  transition: all 0.2s ease;
+}
+
+.mobile-link:hover {
+  color: #111;
+  background: #f5f5f5;
 }
 
 .mobile-link.active {
@@ -1007,6 +1040,48 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
+  .nav {
+    padding: 24px 40px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-mobile-right {
+    display: flex;
+  }
+  .mobile-resume-btn {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  /* ── Page padding tablet ── */
+  .hero, .about-section, .projects-section, .achievements-section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .projects-grid, .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-hero-row {
+    flex-direction: column-reverse; /* Put text below photo or keep consistent */
+    gap: 40px;
+  }
+  .about-photo-wrap {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Footer tablet */
   .footer-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1022,21 +1097,82 @@ body {
 }
 
 @media (max-width: 768px) {
+  .nav {
+    padding: 20px 24px;
+  }
+
+  /* ── Page padding mobile ── */
+  .hero {
+    padding: 60px 24px 0;
+  }
+  .about-section {
+    padding: 60px 24px 0;
+  }
+  .projects-section {
+    padding: 60px 24px 80px;
+  }
+  .achievements-section {
+    padding: 60px 24px 80px;
+  }
+  .services-grid {
+    padding: 0 24px 80px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .projects-grid, .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-hero-row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .about-photo-wrap {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .service-item {
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+  }
+
+  /* ── Footer mobile ── */
   .footer {
     padding: 80px 24px 40px;
   }
   .footer-header {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 32px;
   }
   .footer-headline {
     font-size: 40px;
   }
   .footer-cta-main {
-    font-size: 18px;
+    font-size: 16px;
+    gap: 12px;
   }
   .footer-cta-circle {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
+  }
+  .footer-cta-circle svg {
+    width: 18px;
+    height: 18px;
   }
   .footer-base {
     flex-direction: column;

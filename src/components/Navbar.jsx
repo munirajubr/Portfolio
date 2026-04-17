@@ -24,6 +24,10 @@ export default function Navbar() {
     }
   }
 
+  // Separate resume item from regular nav items
+  const resumeItem = links.find(item => item.label === 'Resume')
+  const navLinks = links.filter(item => item.label !== 'Resume')
+
   return (
     <>
       <nav className="nav">
@@ -37,10 +41,10 @@ export default function Navbar() {
             {/* <span>Muniraju B R</span> */}
           </div>
 
+          {/* Desktop nav links (all items including Resume) */}
           <div className="nav-links">
             {links.map((item) => {
               const isExternal = item.to.startsWith('http');
-
               return (
                 <div
                   key={item.to}
@@ -66,50 +70,49 @@ export default function Navbar() {
             })}
           </div>
 
-          <button
-            className={`hamburger ${menuOpen ? 'open' : ''}`}
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label="Toggle menu"
-          >
-            <span /><span /><span />
-          </button>
-        </div>
-      </nav>
-
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <button
-          className="hamburger open"
-          onClick={() => setMenuOpen(false)}
-          aria-label="Close menu"
-          style={{ position: 'absolute', top: 24, right: 24 }}
-        >
-          <span /><span /><span />
-        </button>
-        {links.map((item) => {
-          const isExternal = item.to.startsWith('http');
-
-          return (
-            <div
-              key={item.to}
-              onClick={() => handleNavigation(item.to, isExternal)}
-              className={`mobile-link ${pathname === item.to ? 'active' : ''} ${item.label === 'Resume' ? 'nav-link-highlight' : ''}`}
-              style={{ 
-                cursor: 'pointer',
-                ...(item.label === 'Resume' ? { width: 'fit-content', margin: '0 auto' } : {}) 
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                {item.label === 'Resume' && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          {/* Mobile right side: Resume button + Hamburger */}
+          <div className="nav-mobile-right">
+            {resumeItem && (
+              <div
+                onClick={() => handleNavigation(resumeItem.to, resumeItem.to.startsWith('http'))}
+                className="nav-link nav-link-highlight mobile-resume-btn"
+                style={{ cursor: 'pointer' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="16" y1="13" x2="8" y2="13"></line>
                     <line x1="16" y1="17" x2="8" y2="17"></line>
                     <polyline points="10 9 9 9 8 9"></polyline>
                   </svg>
-                )}
-                {item.label}
+                  Resume
+                </div>
               </div>
+            )}
+            <button
+              className={`hamburger ${menuOpen ? 'open' : ''}`}
+              onClick={() => setMenuOpen(o => !o)}
+              aria-label="Toggle menu"
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile overlay: fullscreen centered (Reverted to "as like before") */}
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        {navLinks.map((item) => {
+          const isExternal = item.to.startsWith('http');
+          return (
+            <div
+              key={item.to}
+              onClick={() => handleNavigation(item.to, isExternal)}
+              className={`mobile-link ${pathname === item.to ? 'active' : ''}`}
+              style={{ cursor: 'pointer' }}
+            >
+              {item.label}
             </div>
           );
         })}

@@ -34,12 +34,10 @@ export const ExperienceItems = [
       },
     ],
     description: [
-      "Design UI/UX for web applications and Chrome extensions",
-      "Create wireframes, user flows, and interactive prototypes",
-      "Convert product requirements into user-friendly designs",
-      "Collaborate with product managers and developers",
-      "Improve usability, accessibility, and overall user experience",
-      "Conduct basic user research and iterate designs based on feedback",
+      "Designed end-to-end UI/UX for a Job Form Automator platform, delivering intuitive and role-specific dashboards for both candidate and recruiter personas across web and mobile",
+      "Produced comprehensive design deliverables including wireframes, user flows, journey maps, and high-fidelity interactive prototypes using Figma",
+      "Ensured WCAG 2.1 AA accessibility compliance and responsive design across breakpoints, improving inclusivity and cross-device usability",
+      "Partnered with product managers and frontend developers to validate design feasibility, streamline handoff, and maintain design-development consistency",
     ],
   },
   {

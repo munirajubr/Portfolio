@@ -39,10 +39,10 @@ export default function AboutMe() {
                   <span className="stat-value">{calculateTotalExperienceCount(ExperienceItems)}+</span>
                   <span className="stat-label">Years Exp</span>
                 </div>
-                <div className="stat-item">
+                {/* <div className="stat-item">
                   <span className="stat-value">{getProjectsCount()}+</span>
                   <span className="stat-label">Projects</span>
-                </div>
+                </div> */}
               </div>
             </div>
 

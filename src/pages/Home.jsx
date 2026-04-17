@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { assets, projectsData } from '../utils/projectsData'
 import { socialLinks } from '../utils/socialLinks'
+import { navItems } from '../utils/navItems'
 
 export default function Home() {
   const handleNavigation = (href) => {
@@ -16,25 +17,41 @@ export default function Home() {
       <section className="hero">
         <div className="hero-inner">
           <h1 className="hero-title reveal delay-1">
-            Hello, I'm Muniraju.
+            Hello, <br />I'm Muniraju B R.
           </h1>
           <p className="hero-bio reveal delay-2">
             I'm a UIUX Designer & Full Stack Developer who loves building beautiful, fast, and user-focused digital products. I enjoy working on projects that solve real-world problems and create seamless experiences across web and mobile.
           </p>
 
-          <div className="social-row reveal delay-3">
-            <div className="social-divider" />
-            {socialLinks.map(({ label, Icon, href }) => (
-              <div 
-                key={label} 
-                onClick={() => handleNavigation(href)} 
-                className="social-icon" 
-                title={label}
-                style={{ cursor: 'pointer' }}
-              >
-                <Icon />
-              </div>
-            ))}
+          <div className="hero-cta-row reveal delay-3">
+            <div className="social-row">
+              <div className="social-divider" />
+              {socialLinks.map(({ label, Icon, href }) => (
+                <div 
+                  key={label} 
+                  onClick={() => handleNavigation(href)} 
+                  className="social-icon" 
+                  title={label}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <Icon />
+                </div>
+              ))}
+            </div>
+
+            <div 
+              className="hero-resume-btn stylish"
+              onClick={() => handleNavigation(navItems.find(n => n.label === 'Resume')?.link)}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              View Resume
+            </div>
           </div>
         </div>
       </section>

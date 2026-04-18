@@ -2,27 +2,30 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ExperienceItems, assets, skillItems, aboutDetails } from '../utils/projectsData'
 import { calculateTotalExperienceCount, formatDateRange, getProjectsCount } from '../utils/helper'
+import { navItems } from '../utils/navItems'
 
 export default function AboutMe() {
+  const handleNavigation = (href) => {
+    window.open(href, '_blank', 'noreferrer')
+  }
+
   return (
     <div className="page-root">
       <Navbar />
 
-      {/* ── Hero ── */ }
+      {/* ── Hero ── */}
       <section className="hero">
         <div className="hero-inner">
-      
-
           <div className="about-hero-row">
-             {/* Left */}
+            {/* Left */}
             <div className="about-text-col reveal delay-2">
               <h1 className="reveal delay-1">About Me</h1>
 
               {/* Mobile Photo: Shows between title and bio on mobile */}
               <div className="about-photo-wrap photo-mobile reveal delay-3">
-                <img 
-                  src="/images/munir_nobg.png" 
-                  alt="Muniraju" 
+                <img
+                  src="/images/munir_nobg.png"
+                  alt="Muniraju"
                   className="about-photo-ghost"
                 />
               </div>
@@ -43,14 +46,27 @@ export default function AboutMe() {
                   <span className="stat-value">{getProjectsCount()}+</span>
                   <span className="stat-label">Projects</span>
                 </div> */}
+                <div
+                  className="hero-resume-btn stylish"
+                  onClick={() => handleNavigation(navItems.find(n => n.label === 'Resume')?.link)}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  View Resume
+                </div>
               </div>
             </div>
 
             {/* Desktop Photo: Shows on the right for larger screens */}
             <div className="about-photo-wrap photo-desktop reveal delay-3">
-              <img 
-                src="/images/munir_nobg.png" 
-                alt="Muniraju" 
+              <img
+                src="/images/munir_nobg.png"
+                alt="Muniraju"
                 className="about-photo-ghost"
               />
             </div>

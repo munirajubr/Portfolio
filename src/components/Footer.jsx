@@ -16,10 +16,10 @@ export default function Footer() {
     <footer className="footer reveal">
       <div className="footer-inner">
         <div className="footer-header">
-          <h2 className="footer-headline">
+          <h3 className="footer-headline">
             Have a project in mind? <br/>
             <span>Let's build something exceptional.</span>
-          </h2>
+          </h3>
           <div 
             onClick={() => handleNav('/contact')} 
             className="footer-cta-main"

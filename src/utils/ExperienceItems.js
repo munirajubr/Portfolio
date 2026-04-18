@@ -1,29 +1,10 @@
 export const ExperienceItems = [
-  // {
-  //   domain: "UIUX Design",
-  //   company: "ToLet-Globe",
-  //   location: "Work From Home",
-  //   workmode: "Remote",
-  //   worktype: "Part-Time",
-  //   startDate: "2026-04-13",
-  //   endDate: "Present",
-  //   milestones: [
-  //     {
-  //       date: "2026-04-13",
-  //       title: "UIUX Design Intern",
-  //       type: "Internship"
-  //     },
-  //   ],
-  //   description: [
-  //     "Disclosing Soon",
-  //   ],
-  // },
   {
     domain: "UIUX Design",
     company: "AIKING Solutions",
     location: "Work From Home",
     workmode: "Remote",
-    worktype: "Full-Time",
+    worktype: "Internship",
     startDate: "2026-01-05",
     endDate: "2026-04-05",
     milestones: [

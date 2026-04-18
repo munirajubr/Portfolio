@@ -67,7 +67,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 60px;
+  padding: 20px 60px;
   background: #ffffff;
   width: 100%;
 }
@@ -273,7 +273,7 @@ body {
 
 /* ── HERO SECTIONS (Shared) ── */
 .hero {
-  padding: 100px 60px 0;
+  padding: 60px 60px 0;
   display: flex;
   justify-content: center;
 }
@@ -363,7 +363,7 @@ body {
 
 .social-divider {
   width: 50px;
-  height: 1px;
+  height: px;
   background: #eee;
   flex-shrink: 0;
 }
@@ -702,7 +702,7 @@ body {
 }
 
 .section-heading {
-  font-size: 12px;
+  font-size: 24px;
   font-weight: 700;
   color: #999;
   margin-bottom: 48px;
@@ -723,12 +723,12 @@ body {
 .exp-item {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 32px;
-  background: #fafafa;
-  border: 1px solid #f0f0f0;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  gap: 12px;
+  padding: 12px;
+  /* background: #fafafa; */
+  /* border: 1px solid #f0f0f0; */
+  /* border-radius: 4px; */
+  /* transition: all 0.3s ease; */
 }
 
 .exp-item:hover {
@@ -1004,8 +1004,8 @@ body {
 }
 
 .footer-headline {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 800;
+  font-size: clamp(32px, 5vw, 40px);
+  font-weight: 700;
   color: #111;
   line-height: 1.1;
   letter-spacing: -0.04em;
@@ -1014,6 +1014,8 @@ body {
 
 .footer-headline span {
   color: #bbb;
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 32px);
 }
 
 .footer-cta-main {
@@ -1021,7 +1023,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: #111;
   cursor: pointer;
@@ -1033,8 +1035,8 @@ body {
 }
 
 .footer-cta-circle {
-  width: 64px;
-  height: 64px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid #eee;
   display: flex;

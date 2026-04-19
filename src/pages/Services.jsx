@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -20,6 +21,8 @@ const services = [
 ]
 
 export default function Services() {
+  const navigate = useNavigate()
+
   return (
     <div className="page-root">
       <Navbar />
@@ -37,17 +40,30 @@ export default function Services() {
         <div className="container" style={{ margin: '0 auto', maxWidth: 1200 }}>
           <div className="achievements-grid">
             {services.map((item, idx) => (
-              <div key={idx} className="cert-card">
+              <div 
+                key={idx} 
+                className="cert-card"
+                onClick={() => navigate('/contact')}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="cert-img-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
                   <div className="service-icon-main">
                     {item.icon}
                   </div>
                 </div>
-                
+
                 <div className="cert-body">
                   <span className="cert-provider">Expertise</span>
                   <h3 className="cert-title">{item.title}</h3>
                   <p className="service-desc" style={{ marginTop: 12, fontSize: '15px', color: '#666', lineHeight: '1.6' }}>{item.desc}</p>
+                  
+                  <div className="service-contact-link">
+                    <span>Get in Touch</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))}

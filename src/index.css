@@ -271,9 +271,73 @@ body {
   font-weight: 700;
 }
 
+/* ── CERTIFICATION BADGES ── */
+.hero-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.hero-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 18px 6px 6px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3c4043;
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  text-decoration: none;
+}
+
+.hero-cert-badge:hover {
+  background: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cert-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .hero-badges-row {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .hero-cert-badge {
+    padding: 4px 14px 4px 4px !important;
+    font-size: 13px !important;
+    gap: 10px !important;
+  }
+  .cert-icon-wrapper {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .cert-icon-wrapper svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
 /* ── HERO SECTIONS (Shared) ── */
 .hero {
-  padding: 60px 60px 0;
+  padding: 60px 60px 100px;
   display: flex;
   justify-content: center;
 }
@@ -320,7 +384,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-top: 40px;
+  margin-top: -10px;
 }
 
 .hero-resume-btn.stylish {
@@ -363,7 +427,7 @@ body {
 
 .social-divider {
   width: 50px;
-  height: px;
+  height: 1px;
   background: #eee;
   flex-shrink: 0;
 }
@@ -383,7 +447,7 @@ body {
 
 /* ── PROJECTS GRID ── */
 .projects-section {
-  padding: 80px 60px 120px;
+  /* padding: 20px 60px 0px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -494,7 +558,7 @@ body {
 
 /* ── ACHIEVEMENTS / CERTIFICATES ── */
 .achievements-section {
-  padding: 80px 60px 120px;
+  /* padding: 30px 60px 120px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -524,6 +588,44 @@ body {
 .cert-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+.service-icon-main {
+  color: #111;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), color 0.4s ease;
+}
+
+.cert-card:hover .service-icon-main {
+  transform: scale(1.15) rotate(-3deg);
+  color: #1a73e8;
+}
+
+.service-contact-link {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  /* color: #1a73e8; */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.cert-card:hover .service-contact-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.service-contact-link svg {
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover .service-contact-link svg {
+  transform: translateX(4px);
 }
 
 .cert-img-wrap {
@@ -651,7 +753,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
   max-width: 800px;
 }
 
@@ -667,7 +769,7 @@ body {
   display: flex;
   gap: 48px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .stat-item {
@@ -691,7 +793,7 @@ body {
 }
 
 .about-section {
-  padding: 100px 60px 0;
+  padding: 40px 60px 0;
   display: flex;
   justify-content: center;
 }
@@ -712,6 +814,9 @@ body {
   display: block;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 12px;
+  width: 100%;
+  max-width: 1200px;
+  text-align: left;
 }
 
 .experience-list {
@@ -980,7 +1085,7 @@ body {
 
 /* ── FOOTER ── */
 .footer {
-  padding: 120px 60px 60px;
+  padding: 60px 30px 30px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -1195,16 +1300,16 @@ body {
 
   /* ── Page padding mobile ── */
   .hero {
-    padding: 60px 24px 0;
+    padding: 60px 24px 80px;
   }
   .about-section {
-    padding: 60px 24px 0;
+    padding: 30px 24px 0;
   }
   .projects-section {
-    padding: 60px 24px 80px;
+    padding: 30px 24px 80px;
   }
   .achievements-section {
-    padding: 60px 24px 80px;
+    padding: 30px 24px 80px;
   }
   .services-grid {
     padding: 0 24px 80px;
@@ -1213,6 +1318,7 @@ body {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 60px;
+    padding-bottom: 20px;
   }
 
   .projects-grid, .achievements-grid {
@@ -1271,7 +1377,7 @@ body {
   }
   .footer-base {
     flex-direction: column;
-    gap: 20px;
+    /* gap: 20px; */
     align-items: flex-start;
   }
 }

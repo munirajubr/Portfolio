@@ -15,51 +15,53 @@ export default function Footer() {
   return (
     <footer className="footer reveal">
       <div className="footer-inner">
-        <div className="footer-header">
-          <h3 className="footer-headline">
-            Have a project in mind? <br/>
-            <span>Let's build something exceptional.</span>
-          </h3>
-          <div 
-            onClick={() => handleNav('/contact')} 
-            className="footer-cta-main"
-          >
-            Get in touch
-            <div className="footer-cta-circle">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
+        <div className="footer-contact-section">
+          <h2 className="footer-contact-headline reveal delay-1">
+            Let's craft something <br />
+            <span>exceptional together.</span>
+          </h2>
+          <p className="footer-contact-subtitle reveal delay-2">
+            I'm always open to new opportunities and interesting projects. Feel free to reach out if you'd like to collaborate or just say hi.
+          </p>
 
-        <div className="footer-content">
-          <div className="footer-brand">
-            <span className="footer-logo">Muniraju B R.</span>
-            <p className="footer-tagline">UI/UX Designer & Full-stack Developer based in Bangalore, India.</p>
-          </div>
-
-          <div className="footer-links-grid">
-            <div className="footer-link-group">
-              <span className="footer-group-label">Navigation</span>
-              <div className="footer-link-item" onClick={() => handleNav('/')}>Home</div>
-              <div className="footer-link-item" onClick={() => handleNav('/about')}>About</div>
-              <div className="footer-link-item" onClick={() => handleNav('/achievements')}>Achievements</div>
-              <div className="footer-link-item" onClick={() => handleNav('/services')}>Services</div>
-            </div>
-
-            <div className="footer-link-group">
-              <span className="footer-group-label">Connect</span>
-              {socialLinks.map(({ label, href }) => (
-                <div 
-                  key={label} 
-                  className="footer-link-item" 
-                  onClick={() => handleNav(href, true)}
+          <div className="contact-grid reveal delay-3">
+            {/* Left Col */}
+            <div className="contact-col">
+              <div className="contact-item">
+                <p className="contact-label">Send an email</p>
+                <div
+                  onClick={() => window.location.href = 'mailto:munirajgowdaraj@gmail.com'}
+                  className="email-link"
+                  style={{ cursor: 'pointer' }}
                 >
-                  {label}
+                  munirajgowdaraj@gmail.com
                 </div>
-              ))}
+              </div>
+
+              <div className="contact-item">
+                <p className="contact-label">Location</p>
+                <p className="info-line">Bangalore, India</p>
+              </div>
+            </div>
+
+            {/* Right Col */}
+            <div className="contact-col">
+              <div className="contact-item">
+                <p className="contact-label">Socials</p>
+                <div className="social-list">
+                  {socialLinks.map((link) => (
+                    <div
+                      key={link.label}
+                      onClick={() => handleNav(link.href, true)}
+                      className="social-link-item"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {link.label}
+                      <ArrowIcon />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -76,3 +78,10 @@ export default function Footer() {
     </footer>
   )
 }
+
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4 }}>
+    <line x1="7" y1="17" x2="17" y2="7"></line>
+    <polyline points="7 7 17 7 17 17"></polyline>
+  </svg>
+)

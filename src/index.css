@@ -1156,6 +1156,36 @@ body {
   border-color: #111;
 }
 
+.footer-contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.footer-contact-headline {
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  color: #111;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 850px;
+}
+
+.footer-contact-headline span {
+  color: #bbb;
+  font-weight: 500;
+}
+
+.footer-contact-subtitle {
+  font-size: 17px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0;
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr;

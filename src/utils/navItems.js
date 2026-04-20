@@ -30,10 +30,4 @@ export const navItems = [
       matchPath: "/services",
       className: "nav-link"
     },
-    {
-      label: "Contact",
-      link: "/contact",
-      matchPath: "/contact",
-      className: "nav-link"
-    }
-  ];
+    ];

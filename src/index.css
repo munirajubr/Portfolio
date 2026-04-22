@@ -1295,13 +1295,14 @@ body {
   }
 
   .about-hero-row {
-    flex-direction: column-reverse; /* Put text below photo or keep consistent */
+    /* Keep horizontal on tablet, only stack on mobile */
+    flex-direction: row; 
     gap: 40px;
+    align-items: center;
   }
   .about-photo-wrap.photo-desktop {
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 380px;
     display: flex;
   }
   .about-photo-wrap.photo-mobile {

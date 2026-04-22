@@ -24,7 +24,8 @@
   .hero-subtitle        { font-size: 18px !important; }
 
   /* Page / section titles */
-  .page-title           { font-size: 26px !important; }
+  .page-title,
+  .hero-title,
   .section-heading      { font-size: 26px !important; }
 
   /* Project cards */
@@ -80,11 +81,14 @@
   .hero-subtitle        { font-size: 18px !important; }
 
   /* Stats numbers in hero / about */
-  .hero-stats-row span[style*="font-size: 32"],
-  .about-stats-row span[style*="font-size: 32"] { font-size: 22px !important; }
+  .stats-row .stat-value,
+  .hero-stats-row .stat-value,
+  .about-stats-row .stat-value,
+  .stat-value { font-size: 24px !important; }
 
   /* Page / section titles */
-  .page-title           { font-size: 20px !important; }
+  .page-title,
+  .hero-title,
   .section-heading      { font-size: 20px !important; }
 
   /* Project cards */
@@ -146,8 +150,6 @@
   }
   /* Hide large illustrations on tablet, but keep photos if they fit */
   .hero-illustration { display: none !important; }
-  .about-photo-wrap.photo-desktop { display: none !important; }
-  .about-photo-wrap.photo-mobile { display: flex !important; margin: 0 auto 20px; max-width: 320px; }
 
   /* Project cards – thumbnail on top, info below */
   .project-card-row {
@@ -163,11 +165,7 @@
     width: 100% !important;
   }
 
-  /* About hero */
-  .about-hero-row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
+
 
   /* Experience card */
   .exp-card-row {
@@ -285,6 +283,7 @@
     margin-top: 24px;
   }
 
+  .hero-title,
   .hero-headline {
     font-size: 28px !important;
   }
@@ -343,9 +342,10 @@
     max-width: 320px;
     margin: 0 auto 20px;
   }
+  .stats-row,
   .about-stats-row {
     flex-wrap: wrap !important;
-    gap: 12px !important;
+    gap: 16px !important;
   }
   /* About resume btn – handled in typography block */
 

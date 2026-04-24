@@ -6,10 +6,12 @@ import Contact from './pages/Contact'
 import CaseStudy from './pages/CaseStudy'
 import Achievements from './pages/Achievements'
 import SurveyList from './survey/SurveyList'
+import Preloader from './components/Preloader'
 
 export default function App() {
   return (
     <>
+      <Preloader />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutMe />} />

@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { ExperienceItems, assets, skillItems, aboutDetails } from '../utils/projectsData'
+import { ExperienceItems, assets, skillItems, aboutDetails, strengthsData } from '../utils/projectsData'
 import { calculateTotalExperienceCount, formatDateRange, getProjectsCount } from '../utils/helper'
 import { navItems } from '../utils/navItems'
 
@@ -47,7 +47,7 @@ export default function AboutMe() {
           <div className="about-hero-row">
             {/* Left */}
             <div className="about-text-col reveal delay-2">
-              <h1 className="hero-title reveal delay-1">About Me</h1>
+              <h1 className="reveal delay-1">About Me</h1>
               {/* Mobile Photo: Shows between title and bio on mobile */}
               <div className="about-photo-wrap photo-mobile reveal delay-3">
                 <img
@@ -142,7 +142,7 @@ export default function AboutMe() {
       </section>
 
       {/* ── Skills ── */}
-      <section className="about-section reveal delay-4" style={{ paddingBottom: 100 }}>
+      <section className="about-section reveal delay-4">
         <div className="section-inner">
           <h2 className="section-heading">Skills</h2>
           <div className="skills-grid">
@@ -157,6 +157,24 @@ export default function AboutMe() {
                       {skill}
                     </span>
                   ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Strengths ── */}
+      <section className="about-section reveal delay-5" style={{ paddingBottom: 120 }}>
+        <div className="section-inner">
+          <h2 className="section-heading">Strengths</h2>
+          <div className="strengths-grid">
+            {strengthsData.map((strength, index) => (
+              <div key={index} className="strength-card">
+                <div className="strength-icon">{strength.icon}</div>
+                <div className="strength-info">
+                  <h3 className="strength-title">{strength.title}</h3>
+                  <p className="strength-desc">{strength.description}</p>
                 </div>
               </div>
             ))}

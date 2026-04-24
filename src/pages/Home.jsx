@@ -1,8 +1,9 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { assets, projectsData } from '../utils/projectsData'
+import { assets, projectsData, ExperienceItems, aboutDetails, skillItems, strengthsData } from '../utils/projectsData'
 import { socialLinks } from '../utils/socialLinks'
 import { navItems } from '../utils/navItems'
+import { calculateTotalExperienceCount, formatDateRange } from '../utils/helper'
 
 export default function Home() {
   const handleNavigation = (href) => {
@@ -16,72 +17,76 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-inner">
-          <h1 className="hero-title reveal delay-1">
-            Hello, <br />I'm Muniraju B R.
-          </h1>
-          <p className="hero-bio reveal delay-2">
-            I'm a UIUX Designer & Full Stack Developer who loves building beautiful, fast, and user-focused digital products. I enjoy working on projects that solve real-world problems and create seamless experiences across web and mobile.
-          </p>
-          <div className="hero-badges-row reveal delay-3">
-            <div
-              onClick={() => handleNavigation('https://coursera.org/share/348d156562a8a0edc71fa0f8142b48c0', true)}
-              className="hero-cert-badge google-cert"
-              style={{ cursor: 'pointer' }}
-            >
-              <div className="cert-icon-wrapper">
-                <svg viewBox="0 0 24 24" width="16" height="16">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                  <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" fill="#FBBC05" />
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                </svg>
-              </div>
-              <span>Google UX Design Certified</span>
-            </div>
-
-            <div
-              onClick={() => handleNavigation('https://trainings.internshala.com/s/v/3779492/2dc4a7a4', true)}
-              className="hero-cert-badge internshala-cert"
-              style={{ cursor: 'pointer' }}
-            >
-              <div className="cert-icon-wrapper">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1295c9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-              </div>
-              <span>Internshala UI/UX Certified</span>
-            </div>
-          </div>
-
-          <div className="hero-cta-row reveal delay-3">
-            <div className="social-row">
-              <div className="social-divider" />
-              {socialLinks.map(({ label, Icon, href }) => (
+          <div className="hero-content-row">
+            <div className="hero-text-col">
+              <h1 className="hero-title reveal delay-1">
+                Designing <br /><span className="highlight">quiet interfaces</span> <br />that do <span className="text-blue">loud </span>work.
+              </h1>
+              <p className="hero-bio reveal delay-2">
+                I design minimalist interfaces that feel calm yet perform complex tasks. By combining clean aesthetics with deep research, I create digital products that are intuitive, accessible, and effective.
+              </p>
+              <div className="hero-badges-row reveal delay-3">
                 <div
-                  key={label}
-                  onClick={() => handleNavigation(href)}
-                  className="social-icon"
-                  title={label}
+                  onClick={() => handleNavigation('https://coursera.org/share/348d156562a8a0edc71fa0f8142b48c0')}
+                  className="hero-cert-badge google-cert"
                   style={{ cursor: 'pointer' }}
                 >
-                  <Icon />
+                  <div className="cert-icon-wrapper">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                    </svg>
+                  </div>
+                  <span>Google UX Design Certified</span>
                 </div>
-              ))}
-            </div>
 
-            <div
-              className="hero-resume-btn stylish"
-              onClick={() => handleNavigation(navItems.find(n => n.label === 'Resume')?.link)}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              View Resume
+                <div
+                  onClick={() => handleNavigation('https://trainings.internshala.com/s/v/3779492/2dc4a7a4')}
+                  className="hero-cert-badge internshala-cert"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <div className="cert-icon-wrapper">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1295c9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                  </div>
+                  <span>Internshala UI/UX Certified</span>
+                </div>
+              </div>
+
+              <div className="hero-cta-row reveal delay-3">
+                <div className="social-row">
+                  <div className="social-divider" />
+                  {socialLinks.map(({ label, Icon, href }) => (
+                    <div
+                      key={label}
+                      onClick={() => handleNavigation(href)}
+                      className="social-icon"
+                      title={label}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Icon />
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  className="hero-resume-btn stylish"
+                  onClick={() => handleNavigation(navItems.find(n => n.label === 'Resume')?.link)}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  View Resume
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -89,38 +94,16 @@ export default function Home() {
 
       {/* ── PROJECTS ── */}
       <section className="projects-section reveal delay-4">
-        <h2 className="section-heading">Top Projects</h2>
-        <div className="achievements-grid">
-          {projectsData.map((project, idx) => (
+        {/* <h2 className="section-heading">Top Projects</h2> */}
+        <div className="projects-thumbnail-grid">
+          {projectsData.slice(0, 5).map((project, idx) => (
             <div
               key={idx}
               onClick={() => handleNavigation(project.projectLink || '#')}
-              className="cert-card"
+              className="project-thumbnail-only"
               style={{ cursor: 'pointer' }}
             >
-              <div className="cert-img-wrap">
-                <img src={project.imgSrc} alt={project.title} className="cert-img" />
-                <div className="cert-overlay">
-                  <span className="cert-view-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                    View Project
-                  </span>
-                </div>
-              </div>
-
-              <div className="cert-body">
-                <h3 className="cert-title">{project.title}</h3>
-                {project.tags?.length > 0 && (
-                  <div className="cert-tags">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="cert-tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <img src={project.imgSrc} alt={project.title} className="project-thumb-img" />
             </div>
           ))}
         </div>
@@ -146,6 +129,25 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── SKILLS SECTION (Currently hidden by user request) ── */}
+      {/* <section className="home-skills-section reveal delay-5">
+        <div className="home-skills-inner">
+          <h2 className="section-heading">Skills & Tools</h2>
+          <div className="home-skills-grid">
+            {skillItems.map((cat, idx) => (
+              <div key={idx} className="home-skill-cat">
+                <h3 className="home-skill-cat-title">{cat.category}</h3>
+                <div className="home-skill-pills">
+                  {cat.skillsList.map((skill, i) => (
+                    <span key={i} className="home-skill-pill">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
 
       <Footer />
     </div>

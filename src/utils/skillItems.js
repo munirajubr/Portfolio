@@ -1,42 +1,35 @@
 export const skillItems = [
   {
-    category: "Design Skills",
+    category: "UX Design",
     skillsList: [
-      "Visual design",
-      "Interaction design",
-      "Wireframing",
-      "Prototyping",
-      "User research",
-      "Usability testing",
-      "Design systems",
-      "Design thinking",
-      "Typography",
-      "Colour theory",
-      "Autolayout",
-      "Grid system",
-      "Web app design",
-      "Mobile app design",
-      "Responsive design",
-      "Figma",
-      "Miro",
-      "Adobe Xd",
-      "Miro",
+      "User Research", "UX Principles", "User Personas", "Journey Mapping", 
+      "Wireframing", "Prototyping", "Usability Testing", "Information Architecture", 
+      "Enterprise Design Thinking", "Heuristic Evaluation", "Design Handof"
     ],
   },
   {
-    category: "Technical Skills",
+    category: "Visual Design",
     skillsList: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Tailwind CSS",
-      "Java (Basics)",
-      "Python (Basics)",
-      "C (Basics)",
-      "SQL",
-      "React Native",
-      "Vite",
+      "Design Systems", "Design Principles", "Component Libraries", "Typography", 
+      "Color Theory", "Responsive Design", "WCAG 2.1 AA"
+    ],
+  },
+  {
+    category: "Design Tools",
+    skillsList: [
+      "Figma (Auto Layout, Components, Variables)", "Adobe XD"
+    ],
+  },
+  {
+    category: "Research Methods",
+    skillsList: [
+      "Interviews", "A/B Testing", "Card Sorting", "Competitive Analysis"
+    ],
+  },
+  {
+    category: "Development",
+    skillsList: [
+      "HTML", "CSS", "Javascript", "React.js", "React Native", "Java & Python (Basic Understanding)"
     ],
   }
 ];

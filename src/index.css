@@ -549,7 +549,7 @@ body {
 
 .featured-badge {
   padding: 6px 16px;
-  border-radius: 0;
+  border-radius: 100px;
   border: 1px solid #333;
   color: #fff;
   font-size: 12px;
@@ -582,7 +582,7 @@ body {
 
 .featured-btn.outlined {
   padding: 10px 24px;
-  border-radius: 0;
+  border-radius: 100px;
   border: 1.5px solid #fff;
   background: transparent;
   color: #fff;

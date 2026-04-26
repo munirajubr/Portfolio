@@ -25,5 +25,5 @@ dist-ssr
 .env
 .vscode
 src/pages/main.jsx
-"src/pages/Home copy.jsx"
+src/pages/Home-copy.jsx
 .gitignore

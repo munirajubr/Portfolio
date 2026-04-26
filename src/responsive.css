@@ -120,6 +120,9 @@
   .footer-btn-touch     { font-size: 13px !important; width: 100% !important; }
   /* CTA arrow button */
   .cta-row button img   { width: 34px !important; height: 34px !important; }
+  /* Hide custom cursor on mobile */
+  .cursor-dot, .cursor-circle { display: none !important; }
+  .page-root { cursor: auto !important; }
 }
 
 /* ── Page wrapper: controls section padding ── */
@@ -624,10 +627,19 @@
 }
 
 @media (max-width: 600px) {
-  .home-intro-section {
+  .about-overview-section {
     padding: 60px 20px !important;
-    border: 5px solid red !important; /* DEBUG BORDER */
-    display: block !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid #222;
+    padding: 30px !important;
+  }
+  .stat-item:last-child {
+    border-bottom: none;
   }
   .intro-main-row {
     display: block !important;
@@ -683,7 +695,7 @@
   .hero-bio {
     font-size: 16px !important;
     line-height: 1.6 !important;
-    color: #444 !important;
+    color: #ccc !important;
   }
   .hero-badges-row {
     flex-direction: column !important;
@@ -698,7 +710,9 @@
   }
   .social-row {
     width: 100% !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
   }
   .hero-resume-btn {
     width: 100% !important;

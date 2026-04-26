@@ -48,7 +48,7 @@ const ComingSoon = ({ title }) => {
           border: '1.5px solid var(--white)', 
           color: 'var(--white)', 
           padding: '8px 24px', 
-          borderRadius: '0',
+          borderRadius: '100px',
           fontSize: '15px',
           fontWeight: 600,
           marginBottom: '40px',

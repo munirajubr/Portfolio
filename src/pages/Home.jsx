@@ -130,7 +130,6 @@ export default function Home() {
                       <Icon />
                     </div>
                   ))}
-                  <br />
                   <div
                     onClick={() => handleNavigation('/about')}
                     style={{ textDecoration: 'none', color: 'white', cursor: 'pointer' }}
@@ -146,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT & EXPERIENCE OVERVIEW ── */}
-      <section className="about-overview-section reveal delay-4" style={{ background: '#000', padding: '60px' }}>
+      <section className="about-overview-section reveal delay-4 section-pad" style={{ background: '#000' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="about-overview-content" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
 
@@ -162,7 +161,7 @@ export default function Home() {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 border: '1px solid #222',
-                borderRadius: '0',
+                borderRadius: '24px',
                 width: '100%',
                 background: '#000',
                 marginTop: '60px'
@@ -195,15 +194,25 @@ export default function Home() {
           <div ref={trackRef} className="horizontal-track">
             {/* Introductory Slide */}
             <div className="scroll-slide intro-slide" style={{
-              minWidth: '600px',
+              minWidth: '100vw',
               flexShrink: 0,
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
+              padding: '0 40px',
+              boxSizing: 'border-box'
             }}>
               <span style={{ fontSize: '13px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.3em', display: 'block', marginBottom: '32px' }}>SELECTED WORK</span>
-              <h2 style={{ fontSize: '84px', fontWeight: 300, color: '#fff', lineHeight: 1.1, margin: 0, fontFamily: "'Playfair Display', serif" }}>
+              <h2 style={{ 
+                fontSize: 'clamp(32px, 10vw, 84px)', 
+                fontWeight: 300, 
+                color: '#fff', 
+                lineHeight: 1.1, 
+                margin: 0, 
+                fontFamily: "'Playfair Display', serif",
+                wordBreak: 'break-word'
+              }}>
                 Crafting digital <br /> experiences.
               </h2>
             </div>
@@ -265,9 +274,9 @@ export default function Home() {
       </section>
 
       {/* ── ALL PROJECTS GRID ── */}
-      <section className="projects-section reveal delay-5" style={{ background: '#000', padding: '60px' }}>
+      <section className="projects-section reveal delay-5 section-pad" style={{ background: '#000' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-          <h2 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '12px', marginBottom: '60px' }}>All Projects</h2>
+          <h2 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '12px', marginBottom: '60px', textAlign: 'center' }}>ALL PROJECTS</h2>
           <div className="projects-thumbnail-grid">
             {otherProjects.map((project, idx) => (
               <div key={idx} className="project-thumbnail-container" onClick={() => {
@@ -288,7 +297,7 @@ export default function Home() {
                         style={{
                           cursor: 'pointer',
                           padding: '8px 18px',
-                          borderRadius: '0',
+                          borderRadius: '100px',
                           border: '1.5px solid #333',
                           background: 'transparent',
                           color: '#fff',

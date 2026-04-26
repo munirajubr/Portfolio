@@ -13,10 +13,12 @@ import ProjectCollab from './pages/casestudy/ProjectCollab'
 import TripWeaver from './pages/casestudy/TripWeaver'
 import WhatsappPainpoints from './pages/casestudy/WhatsappPainpoints'
 // import Main from './pages/main'
+import CustomCursor from './components/CustomCursor'
 
 export default function App() {
   return (
     <>
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/main" element={<Main />} /> */}

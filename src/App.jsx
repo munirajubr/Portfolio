@@ -12,7 +12,7 @@ import ContainerizedChronicles from './pages/casestudy/ContainerizedChronicles'
 import ProjectCollab from './pages/casestudy/ProjectCollab'
 import TripWeaver from './pages/casestudy/TripWeaver'
 import WhatsappPainpoints from './pages/casestudy/WhatsappPainpoints'
-import Main from './pages/main'
+// import Main from './pages/main'
 
 export default function App() {
   return (

@@ -1,17 +1,76 @@
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Preloader from '../components/Preloader'
 import { assets, projectsData, ExperienceItems, aboutDetails, skillItems, strengthsData } from '../utils/projectsData'
 import { socialLinks } from '../utils/socialLinks'
 import { navItems } from '../utils/navItems'
 import { calculateTotalExperienceCount, formatDateRange } from '../utils/helper'
+import { GithubIcon, BehanceIcon, LearningIcon } from '../utils/icons'
+import { achievements } from '../utils/achievements'
+import { services } from '../utils/services'
 
 export default function Home() {
+  const navigate = useNavigate()
+  const sectionRef = useRef(null)
+  const trackRef = useRef(null)
+  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
+  useEffect(() => {
+    const moveCursor = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', moveCursor);
+    return () => window.removeEventListener('mousemove', moveCursor);
+  }, []);
+
   const handleNavigation = (href) => {
-    window.open(href, '_blank', 'noreferrer')
+    if (href.startsWith('http')) {
+      window.open(href, '_blank', 'noreferrer')
+    } else {
+      navigate(href)
+    }
   }
 
+  // Filter projects for featured section and grid
+  const featuredProjects = projectsData.filter(p => p.featured).slice(0, 3);
+  const otherProjects = projectsData.filter(p => !p.featured || !featuredProjects.some(fp => fp.id === p.id));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !trackRef.current) return
+
+      const section = sectionRef.current
+      const track = trackRef.current
+      const offsetTop = section.offsetTop
+      const height = section.offsetHeight
+      const windowHeight = window.innerHeight
+      const scrollPos = window.pageYOffset
+
+      if (scrollPos >= offsetTop && scrollPos <= offsetTop + height - windowHeight) {
+        const progress = (scrollPos - offsetTop) / (height - windowHeight)
+        const trackWidth = track.scrollWidth
+        const moveX = progress * (trackWidth - window.innerWidth)
+        track.style.transform = `translateX(-${moveX}px)`
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="page-root">
+    <div className="page-root" style={{ cursor: 'none' }}>
+      <Preloader />
+      {/* Custom Cursor */}
+      <div className="cursor-dot" style={{
+        position: 'fixed', top: 0, left: 0, width: '6px', height: '6px', background: '#fff', borderRadius: '50%', pointerEvents: 'none', zIndex: 10000,
+        transform: `translate(${cursorPos.x - 3}px, ${cursorPos.y - 3}px)`
+      }} />
+      <div className="cursor-circle" style={{
+        position: 'fixed', top: 0, left: 0, width: '36px', height: '36px', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '50%', pointerEvents: 'none', zIndex: 9999,
+        transform: `translate(${cursorPos.x - 18}px, ${cursorPos.y - 18}px)`
+      }} />
       <Navbar />
 
       {/* ── HERO ── */}
@@ -71,20 +130,14 @@ export default function Home() {
                       <Icon />
                     </div>
                   ))}
-                </div>
-
-                <div
-                  className="hero-resume-btn stylish"
-                  onClick={() => handleNavigation(navItems.find(n => n.label === 'Resume')?.link)}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                  View Resume
+                  <br />
+                  <div
+                    onClick={() => handleNavigation('/about')}
+                    style={{ textDecoration: 'none', color: 'white', cursor: 'pointer' }}
+                    className="btn-text"
+                  >
+                    More About Me
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,44 +145,212 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECTS ── */}
-      <section className="projects-section reveal delay-4">
-        {/* <h2 className="section-heading">Top Projects</h2> */}
-        <div className="projects-thumbnail-grid">
-          {projectsData.slice(0, 5).map((project, idx) => (
-            <div
-              key={idx}
-              onClick={() => handleNavigation(project.projectLink || '#')}
-              className="project-thumbnail-only"
-              style={{ cursor: 'pointer' }}
-            >
-              <img src={project.imgSrc} alt={project.title} className="project-thumb-img" />
-            </div>
-          ))}
-        </div>
+      {/* ── ABOUT & EXPERIENCE OVERVIEW ── */}
+      <section className="about-overview-section reveal delay-4" style={{ background: '#000', padding: '60px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div className="about-overview-content" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
 
-        {/* ── BEHANCE CTA ── */}
-        <div className="behance-cta">
-          <span className="behance-cta-text">For more design works</span>
-          <div className="behance-cta-row">
-            <span className="behance-cta-arrow">
-              <svg width="120" height="55" viewBox="0 0 120 55" fill="none">
-                <path d="M5 5C5 30 35 50 65 45C85 42 95 25 85 12C75 0 60 12 68 30C74 43 100 48 118 45M118 45L110 42M118 45L114 53" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 4" />
-              </svg>
-            </span>
-            <div
-              onClick={() => handleNavigation(socialLinks.find(s => s.label === 'Behance')?.href || 'https://www.behance.net/munirajraj2')}
-              className="behance-cta-logo"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.2.836 1.973 2.14 1.973.798 0 1.348-.33 1.692-1.005l2.444.061zM15.97 13h4.604c-.088-1.313-.836-1.993-2.272-1.993-1.48 0-2.193.737-2.332 1.993zM8.986 12.737c1.459.358 2.514 1.21 2.514 2.827 0 2.085-1.741 3.436-4.515 3.436H1V5h5.866c2.634 0 4.204 1.14 4.204 3.132 0 1.348-.738 2.23-2.084 2.605zm-5.037-4.93v2.59h2.55c1.137 0 1.811-.465 1.811-1.325 0-.836-.651-1.265-1.764-1.265H3.949zm2.74 6.568H3.949v2.826h2.76c1.215 0 1.905-.498 1.905-1.413 0-.937-.711-1.413-1.925-1.413z" />
-              </svg>
-              <span className="behance-cta-logo-text">Behance</span>
+            {/* Overview Text */}
+            <div className="overview-text-section">
+              <h2 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '12px', marginBottom: '32px' }}>Overview</h2>
+              <p style={{ fontSize: '18px', lineHeight: 1.6, color: '#ccc', maxWidth: '1000px', fontWeight: 300 }}>
+                {aboutDetails.join(' ')}
+              </p>
+
+              {/* Stats Grid */}
+              <div className="stats-grid" style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                border: '1px solid #222',
+                borderRadius: '0',
+                width: '100%',
+                background: '#000',
+                marginTop: '60px'
+              }}>
+                <div className="stat-item" style={{ padding: '40px', borderRight: '1px solid #222', textAlign: 'center' }}>
+                  <span className="stat-value" style={{ fontSize: '48px', fontWeight: 300, color: '#fff', display: 'block', marginBottom: '8px' }}>{calculateTotalExperienceCount(ExperienceItems)}+</span>
+                  <span className="stat-label" style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Years of work experience</span>
+                </div>
+                <div className="stat-item" style={{ padding: '40px', borderRight: '1px solid #222', textAlign: 'center' }}>
+                  <span className="stat-value" style={{ fontSize: '48px', fontWeight: 300, color: '#fff', display: 'block', marginBottom: '8px' }}>8+</span>
+                  <span className="stat-label" style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Projects completed</span>
+                </div>
+                <div className="stat-item" style={{ padding: '40px', textAlign: 'center' }}>
+                  <span className="stat-value" style={{ fontSize: '48px', fontWeight: 300, color: '#fff', display: 'block', marginBottom: '8px' }}>2+</span>
+                  <span className="stat-label" style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Design tools mastery</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── PINNED HORIZONTAL SCROLL SECTION ── */}
+      <section
+        ref={sectionRef}
+        className="horizontal-scroll-section"
+        style={{ height: '400vh' }}
+      >
+        <div className="sticky-container">
+          <div ref={trackRef} className="horizontal-track">
+            {/* Introductory Slide */}
+            <div className="scroll-slide intro-slide" style={{
+              minWidth: '600px',
+              flexShrink: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontSize: '13px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.3em', display: 'block', marginBottom: '32px' }}>SELECTED WORK</span>
+              <h2 style={{ fontSize: '84px', fontWeight: 300, color: '#fff', lineHeight: 1.1, margin: 0, fontFamily: "'Playfair Display', serif" }}>
+                Crafting digital <br /> experiences.
+              </h2>
+            </div>
+
+            {featuredProjects.map((project, idx) => (
+              <div key={idx} className="featured-project-card">
+                <div className="featured-card-top">
+                  <span className="featured-index">Project 0{idx + 1}</span>
+                  <h2 className="featured-card-title">{project.title}</h2>
+                  <div className="featured-card-badges">
+                    <span className="featured-badge">{project.role}</span>
+                    <span className="featured-badge">{project.duration}</span>
+                    <span className="featured-badge">Rated: ✦ {project.rating}</span>
+                  </div>
+                </div>
+
+                <div className="featured-card-img-wrap">
+                  <img src={project.imgSrc} alt={project.title} />
+                </div>
+
+                <div className="featured-card-bottom">
+                  <button
+                    className="featured-btn outlined"
+                    onClick={() => {
+                      const casestudy = project.links.find(l => l.type === 'casestudy');
+                      if (casestudy) handleNavigation(casestudy.url);
+                    }}
+                  >
+                    View Case Study
+                  </button>
+                  {project.links.find(l => l.type === 'github' || l.type === 'behance') && (
+                    <a
+                      href={project.links.find(l => l.type === 'github' || l.type === 'behance').url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="featured-secondary-link"
+                    >
+                      Visit {project.links.find(l => l.type === 'github' || l.type === 'behance').type === 'github' ? 'Github' : 'Behance'}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {/* More Projects Message Card */}
+            <div className="more-projects-message-card">
+              <p className="message-main">Check more of my project works.</p>
+              <div className="go-down-container">
+                <span className="go-down-text">Explore more</span>
+                <div className="go-down-arrow">
+                  <svg width="40" height="60" viewBox="0 0 40 60" fill="none">
+                    <path d="M20 5V55M20 55L5 40M20 55L35 40" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ALL PROJECTS GRID ── */}
+      <section className="projects-section reveal delay-5" style={{ background: '#000', padding: '60px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+          <h2 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '12px', marginBottom: '60px' }}>All Projects</h2>
+          <div className="projects-thumbnail-grid">
+            {otherProjects.map((project, idx) => (
+              <div key={idx} className="project-thumbnail-container" onClick={() => {
+                const primaryLink = project.links.find(l => l.type === 'casestudy') || project.links[0];
+                handleNavigation(primaryLink.url);
+              }}>
+                <div className="project-thumbnail-only">
+                  <img src={project.imgSrc} alt={project.title} className="project-thumb-img" />
+                </div>
+                <div style={{ padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <h3 style={{ fontSize: '22px', fontWeight: 600, color: '#fff', margin: 0, lineHeight: 1.3 }}>{project.title}</h3>
+                  </div>
+                  <div className="project-links-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                    {project.links.map((link, lIdx) => (
+                      <button
+                        key={lIdx}
+                        style={{
+                          cursor: 'pointer',
+                          padding: '8px 18px',
+                          borderRadius: '0',
+                          border: '1.5px solid #333',
+                          background: 'transparent',
+                          color: '#fff',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          fontSize: '12px',
+                          fontWeight: 700,
+                          transition: 'all 0.3s ease',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.02em'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = '#fff';
+                          e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = '#333';
+                          e.currentTarget.style.background = 'transparent';
+                        }}
+                        onClick={(e) => { e.stopPropagation(); handleNavigation(link.url); }}>
+                        {link.type === 'github' && <GithubIcon size={14} />}
+                        {link.type === 'behance' && <BehanceIcon size={14} />}
+                        {link.type === 'casestudy' && <LearningIcon size={14} />}
+                        <span>
+                          {link.type === 'casestudy' ? 'Case Study' : link.type}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── BEHANCE CTA ── */}
+          <div className="behance-cta" style={{
+            marginTop: '100px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center'
+          }}>
+            <span className="behance-cta-text">For more design works</span>
+            <div className="behance-cta-row" style={{ justifyContent: 'center' }}>
+              <span className="behance-cta-arrow">
+                <svg width="120" height="55" viewBox="0 0 120 55" fill="none">
+                  <path d="M5 5C5 30 35 50 65 45C85 42 95 25 85 12C75 0 60 12 68 30C74 43 100 48 118 45M118 45L110 42M118 45L114 53" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 4" />
+                </svg>
+              </span>
+              <div
+                onClick={() => handleNavigation(socialLinks.find(s => s.label === 'Behance')?.href || 'https://www.behance.net/munirajraj2')}
+                className="behance-cta-logo"
+                style={{ marginTop: '0' }}
+              >
+                <BehanceIcon size={22} />
+                <span className="behance-cta-logo-text">Behance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* ── SKILLS SECTION (Currently hidden by user request) ── */}
       {/* <section className="home-skills-section reveal delay-5">
         <div className="home-skills-inner">
@@ -150,6 +371,6 @@ export default function Home() {
       </section> */}
 
       <Footer />
-    </div>
+    </div >
   )
 }

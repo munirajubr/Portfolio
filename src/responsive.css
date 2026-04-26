@@ -385,7 +385,7 @@
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
-  .project-thumbnail-only {
+  .project-thumbnail-container {
     grid-column: span 1 !important;
   }
   .achievement-title {

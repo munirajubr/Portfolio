@@ -25,9 +25,10 @@ export default function Home() {
     }
   }
 
-  // Filter projects for featured section and grid
-  const featuredProjects = projectsData.filter(p => p.featured).slice(0, 3);
-  const otherProjects = projectsData.filter(p => !p.featured || !featuredProjects.some(fp => fp.id === p.id));
+  // Filter projects by priority
+  const sortedProjects = [...projectsData].sort((a, b) => (a.priority || 99) - (b.priority || 99));
+  const horizontalProjects = sortedProjects.filter(p => p.priority >= 1 && p.priority <= 3);
+  const moreWorksProjects = sortedProjects.filter(p => p.priority >= 4 && p.priority <= 5);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -189,12 +190,12 @@ export default function Home() {
               boxSizing: 'border-box'
             }}>
               <span style={{ fontSize: '13px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.3em', display: 'block', marginBottom: '32px' }}>SELECTED WORK</span>
-              <h2 style={{ 
-                fontSize: 'clamp(32px, 10vw, 84px)', 
-                fontWeight: 300, 
-                color: '#fff', 
-                lineHeight: 1.1, 
-                margin: 0, 
+              <h2 style={{
+                fontSize: 'clamp(32px, 10vw, 84px)',
+                fontWeight: 300,
+                color: '#fff',
+                lineHeight: 1.1,
+                margin: 0,
                 fontFamily: "'Playfair Display', serif",
                 wordBreak: 'break-word'
               }}>
@@ -202,7 +203,7 @@ export default function Home() {
               </h2>
             </div>
 
-            {featuredProjects.map((project, idx) => (
+            {horizontalProjects.map((project, idx) => (
               <div key={idx} className="featured-project-card">
                 <div className="featured-card-top">
                   <span className="featured-index">Project 0{idx + 1}</span>
@@ -258,12 +259,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ALL PROJECTS GRID ── */}
+      {/* ── ALL PROJECTS GRID & CTA ── */}
       <section className="projects-section reveal delay-5 section-pad" style={{ background: '#000' }}>
-        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-          <h2 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '12px', marginBottom: '60px', textAlign: 'center' }}>ALL PROJECTS</h2>
-          <div className="projects-thumbnail-grid">
-            {otherProjects.map((project, idx) => (
+        <div className="section-inner" style={{ maxWidth: '100%', padding: '0', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+          <div className="projects-thumbnail-grid" style={{ width: '100%', marginBottom: '60px' }}>
+            {moreWorksProjects.map((project, idx) => (
               <div key={idx} className="project-thumbnail-container" onClick={() => {
                 const primaryLink = project.links.find(l => l.type === 'casestudy') || project.links[0];
                 handleNavigation(primaryLink.url);
@@ -318,31 +319,28 @@ export default function Home() {
             ))}
           </div>
 
-          {/* ── BEHANCE CTA ── */}
-          <div className="behance-cta" style={{
-            marginTop: '100px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center'
-          }}>
-            <span className="behance-cta-text">For more design works</span>
-            <div className="behance-cta-row" style={{ justifyContent: 'center' }}>
-              <span className="behance-cta-arrow">
-                <svg width="120" height="55" viewBox="0 0 120 55" fill="none">
-                  <path d="M5 5C5 30 35 50 65 45C85 42 95 25 85 12C75 0 60 12 68 30C74 43 100 48 118 45M118 45L110 42M118 45L114 53" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 4" />
-                </svg>
-              </span>
-              <div
-                onClick={() => handleNavigation(socialLinks.find(s => s.label === 'Behance')?.href || 'https://www.behance.net/munirajraj2')}
-                className="behance-cta-logo"
-                style={{ marginTop: '0' }}
-              >
-                <BehanceIcon size={22} />
-                <span className="behance-cta-logo-text">Behance</span>
-              </div>
-            </div>
-          </div>
+          <button
+            className="featured-btn outlined"
+            onClick={() => handleNavigation('/work')}
+            style={{
+              padding: '14px 32px',
+              fontSize: '14px',
+              fontWeight: 500,
+              color: '#fff',
+              backgroundColor: 'transparent',
+              border: '1px solid #fff',
+              borderRadius: '100px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
+            }}
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#fff'; e.currentTarget.style.color = '#000'; }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#fff'; }}
+          >
+            View More Projects
+          </button>
+
         </div>
       </section>
       {/* ── SKILLS SECTION (Currently hidden by user request) ── */}

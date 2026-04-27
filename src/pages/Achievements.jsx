@@ -11,19 +11,17 @@ export default function Achievements() {
     <div className="page-root">
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section className="hero">
-        <div className="hero-inner">
-          <h1 className="reveal delay-1">Achievements &amp; Certificates</h1>
-          <p className="hero-bio reveal delay-2">
+      {/* ── ACHIEVEMENTS MAIN SECTION ── */}
+      <section className="achievements-section reveal section-pad" style={{ background: '#000', flex: 1, paddingTop: '120px', paddingBottom: '100px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
+          <h1 className="section-heading reveal delay-1" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '16px', marginBottom: '24px', textAlign: 'left', fontSize: 'clamp(40px, 6vw, 64px)', fontWeight: 300, fontFamily: "'Playfair Display', serif", textTransform: 'uppercase' }}>
+            Achievements
+          </h1>
+          <p className="reveal delay-2" style={{ fontSize: '18px', color: '#aaa', marginBottom: '60px', fontWeight: 300, maxWidth: '800px', lineHeight: 1.6 }}>
             A collection of certifications and credentials I've earned across UX Design, AI, and Development.
           </p>
-        </div>
-      </section>
 
-      {/* ── CERTIFICATES GRID ── */}
-      <section className="achievements-section reveal delay-3">
-        <div className="achievements-grid">
+          <div className="achievements-grid">
           {achievements.map((item, idx) => (
             <div
               key={idx}
@@ -55,6 +53,7 @@ export default function Achievements() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </section>
 

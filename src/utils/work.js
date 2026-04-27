@@ -3,6 +3,7 @@
 export const works = [
   {
     id: "student-gpt",
+    priority: 1,
     imgSrc: "/images/Student GPT.jpg",
     title: "Student GPT Mobile App UI Design (Design)",
     description: "A comprehensive UI/UX case study for an AI-powered academic assistant mobile application designed to help students manage their studies efficiently.",
@@ -18,6 +19,7 @@ export const works = [
   },
   {
     id: "project-collab",
+    priority: 2,
     imgSrc: "/images/ProjectCollab.jpg",
     title: "Project Collab Mobile App UI Design (Design)",
     description: "A platform designed to connect innovators and students for collaborative projects, featuring a sleek and intuitive mobile interface.",
@@ -34,6 +36,7 @@ export const works = [
   
   {
     id: "containerized-chronicles",
+    priority: 6,
     imgSrc: "/images/Containerized_Chronicles.jpg",
     title: "Containerized Chronicles A Authenticated Blogging Platform",
     description: "A full-stack Django-based blogging platform with secure authentication, allowing users to create, edit, and share their stories in a containerized environment.",
@@ -47,6 +50,7 @@ export const works = [
   },
   {
     id: "tripweaver",
+    priority: 3,
     imgSrc: "/images/TripWeaver.png",
     title: "TripWeaver A Tour Plan Guide Web App Design (Design)",
     description: "A web-based tour planning guide that offers personalized recommendations and a user-friendly interface for travelers.",
@@ -60,6 +64,7 @@ export const works = [
   },
   {
     id: "agrivision",
+    priority: 4,
     imgSrc: "/images/AgriVision.jpg",
     title: "AgriVision: Advanced Horticulture for Enhanced Brinjal Production",
     description: "An innovative IoT and Machine Learning project focused on optimizing brinjal production using React Native for the mobile interface.",
@@ -70,7 +75,22 @@ export const works = [
     rating: "4.7",
     links: [
       { type: 'github', url: "https://github.com/munirajubr/AgriVision-Mobile-App-using-React-Native" },
-      { type: 'casestudy', url: "/casestudy/agrivision" }
+      { type: 'casestudy', url: "/casestudy/agrivision" },
+    ]
+  },
+  {
+    id: "whatsapp-channel-update",
+    priority: 5,
+    imgSrc: "/images/whatsappchannelupdate.png",
+    title: "WhatsApp Channel Update (Case Study)",
+    description: "An in-depth UX research study focusing on user painpoints within the WhatsApp Updates and Channels section.",
+    tags: ["User Research", "UX Audit"],
+    featured: false,
+    role: "UX Researcher",
+    duration: "1 Month",
+    rating: "4.6",
+    links: [
+      { type: 'casestudy', url: "/casestudy/whatsapp-channel-update" }
     ]
   },
 ];

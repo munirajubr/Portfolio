@@ -11,10 +11,13 @@ export default function Contact() {
     <div className="page-root">
       <Navbar />
 
-      <section className="hero">
-        <div className="hero-inner">
-          <h1 className="reveal delay-1">Let's craft something exceptional together.</h1>
-          <p className="hero-subtitle reveal delay-2">
+      {/* ── CONTACT MAIN SECTION ── */}
+      <section className="contact-section reveal section-pad" style={{ background: '#000', flex: 1, paddingTop: '120px', paddingBottom: '100px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
+          <h1 className="section-heading reveal delay-1" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '16px', marginBottom: '24px', textAlign: 'left', fontSize: 'clamp(40px, 6vw, 64px)', fontWeight: 300, fontFamily: "'Playfair Display', serif", textTransform: 'uppercase' }}>
+            Let's Connect
+          </h1>
+          <p className="hero-subtitle reveal delay-2" style={{ fontSize: '18px', color: '#aaa', marginBottom: '60px', fontWeight: 300, maxWidth: '800px', lineHeight: 1.6 }}>
             I'm always open to new opportunities and interesting projects. Feel free to reach out if you'd like to collaborate or just say hi.
           </p>
 

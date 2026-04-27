@@ -12,6 +12,12 @@ export const navItems = [
       className: "nav-link"
     },
     {
+      label: "Works",
+      link: "/work",
+      matchPath: "/work",
+      className: "nav-link"
+    },
+    {
       label: "Achievements",
       link: "/achievements",
       matchPath: "/achievements",

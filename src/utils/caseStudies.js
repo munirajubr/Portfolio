@@ -9,6 +9,32 @@ export const caseStudies = {
     overview: `Student GPT is an AI-driven tool designed to help students engage with their course materials in a more effective and efficient manner. By allowing users to upload subject-related documents such as PDFs, lecture notes, and slides, the system generates accurate, contextual responses based on the content of the uploaded materials and user prompts. It ensures that every response is deeply rooted in the course content, making academic help more reliable and targeted.`,
     vision: 'Crafting a Seamless interaction between technical architecture and user experience',
     strategy: 'Prioritizing Aesthetic precision to ensure the solution remains visually timeless.',
+    problem: 'Students often struggle to quickly find specific answers or contextual explanations within dense academic materials like textbooks, lecture slides, and research papers. Traditional search methods are inefficient and lack contextual understanding, leading to wasted time and cognitive overload.',
+    solution: 'Student GPT provides an AI-powered academic assistant that allows users to upload their specific course materials. It uses natural language processing to understand queries and provides precise, context-aware answers directly sourced from the uploaded documents, complete with citations and explanations.',
+    designProcess: [
+      { phase: 'Discover', activities: ['User Interviews', 'Surveys', 'Competitive Analysis'] },
+      { phase: 'Define', activities: ['User Personas', 'Empathy Mapping', 'Problem Statement'] },
+      { phase: 'Ideate', activities: ['User Flow', 'Information Architecture', 'Wireframing'] },
+      { phase: 'Design', activities: ['UI Design', 'Prototyping', 'Usability Testing'] }
+    ],
+    competitiveAnalysis: [
+      { name: 'ChatGPT', strength: 'Versatile and conversational.', weakness: 'Hallucinates, lacks specific context of the student\'s exact course material without constant prompting.' },
+      { name: 'Chegg/CourseHero', strength: 'Large database of past questions.', weakness: 'Expensive, often promotes academic dishonesty rather than actual learning.' },
+      { name: 'Ctrl+F (Standard Search)', strength: 'Fast and ubiquitous.', weakness: 'Only finds exact keyword matches, cannot explain concepts or summarize.' }
+    ],
+    userPersona: {
+      name: 'Alex Chen',
+      role: 'Computer Science Undergraduate',
+      bio: 'Alex is juggling multiple heavy-reading courses. He wants to understand core concepts quickly without reading 50-page PDFs front-to-back every time he needs to clarify a minor point for his assignments.',
+      goals: ['Save time studying', 'Understand complex topics easily', 'Get reliable answers based on his syllabus'],
+      frustrations: ['Generic AI gives wrong answers', 'Finding information in long PDFs is tedious', 'Feeling overwhelmed by the sheer volume of reading']
+    },
+    empathyMap: {
+      says: ['"Where was that formula mentioned in the slides?"', '"I wish I had a tutor available at 2 AM."'],
+      thinks: ['"I don\'t have time to re-read this whole chapter."', '"Is this AI giving me accurate info for my specific class?"'],
+      does: ['Uses multiple tabs for research', 'Skims through documents looking for bold text', 'Asks classmates for summaries'],
+      feels: ['Overwhelmed by deadlines', 'Frustrated by inefficient study methods', 'Anxious about exams']
+    },
     howItWorks: [
       { bold: 'Upload Content', text: ': Users upload their course-related documents (e.g., lecture slides, notes, PDFs).' },
       { bold: 'AI Processing', text: ': The system scans and processes the uploaded materials, extracting key concepts, terminology, and context specific to the subject.' },
@@ -21,8 +47,8 @@ export const caseStudies = {
       { bold: 'Time-Saving', text: ': Streamline the academic workflow by having an AI assistant that understands the material, reducing the need for manual searching or external help.' },
       { bold: 'Target Audience', text: ': Students, educators, and anyone seeking an AI-driven tool to improve their interaction with course materials.' },
     ],
-    projectLink: 'https://www.figma.com',
-    pdfUrl: '/src/slides/slides/OE-Reliability-Block-Diagram.pdf', // ← Now supports PDF scroll via the new system
+    projectLink: 'https://www.behance.net/gallery/223935725/Student-GPT-Your-Smart-Academic-Assistant',
+    pdfUrl: '/src/slides/slides/OE-Reliability-Block-Diagram.pdf',
     nextColor: 'pink',
   },
   'project-collab': {

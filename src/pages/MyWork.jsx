@@ -24,7 +24,7 @@ export default function MyWork() {
     <div className="page-root">
       <Navbar />
       <section className="projects-section reveal section-pad" style={{ background: '#000', flex: 1, paddingTop: '120px', paddingBottom: '100px' }}>
-        <div className="section-inner" style={{ maxWidth: '100%', margin: '0 auto', width: '100%', padding: '0' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
           <h1 className="section-heading" style={{ color: '#fff', borderBottom: '1px solid #333', paddingBottom: '16px', marginBottom: '60px', textAlign: 'left', fontSize: 'clamp(40px, 6vw, 64px)', fontWeight: 300, fontFamily: "'Playfair Display', serif" }}>
             All Works
           </h1>

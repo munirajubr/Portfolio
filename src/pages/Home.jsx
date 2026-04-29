@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Preloader from '../components/Preloader'
 import { assets, projectsData, ExperienceItems, aboutDetails, skillItems, strengthsData } from '../utils/projectsData'
 import { socialLinks } from '../utils/socialLinks'
 import { navItems } from '../utils/navItems'
@@ -10,6 +9,7 @@ import { calculateTotalExperienceCount, formatDateRange } from '../utils/helper'
 import { GithubIcon, BehanceIcon, LearningIcon } from '../utils/icons'
 import { achievements } from '../utils/achievements'
 import { services } from '../utils/services'
+import Spline from '@splinetool/react-spline'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -55,83 +55,48 @@ export default function Home() {
 
   return (
     <div className="page-root">
-      <Preloader />
-
       <Navbar />
 
       {/* ── HERO ── */}
       <section className="hero">
-        <div className="hero-inner">
-          <div className="hero-content-row">
-            <div className="hero-text-col">
-              <h1 className="hero-title reveal delay-1">
-                Designing <br /><span className="highlight">quiet interfaces</span> <br />that do <span className="text-blue">loud </span>work.
-              </h1>
-              <p className="hero-bio reveal delay-2">
-                I design minimalist interfaces that feel calm yet perform complex tasks. By combining clean aesthetics with deep research, I create digital products that are intuitive, accessible, and effective.
-              </p>
-              <div className="hero-badges-row reveal delay-3">
-                <div
-                  onClick={() => handleNavigation('https://coursera.org/share/348d156562a8a0edc71fa0f8142b48c0')}
-                  className="hero-cert-badge google-cert"
-                  style={{ cursor: 'pointer' }}
-                >
-                  <div className="cert-icon-wrapper">
-                    <svg viewBox="0 0 24 24" width="16" height="16">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                      <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" fill="#FBBC05" />
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                    </svg>
-                  </div>
-                  <span>Google UX Design Certified</span>
-                </div>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, overflow: 'hidden', background: '#000' }}>
+          <Spline scene="https://prod.spline.design/ZIjwes7MzK40s8CX/scene.splinecode" />
+          <div style={{ position: 'absolute', bottom: 10, right: 10, width: '150px', height: '50px', background: '#000', zIndex: 10 }}></div>
+        </div>
+        <div className="hero-inner new-hero-layout">
+          <div className="hero-left">
+            <div className="hero-cert-text reveal delay-1">
+              Hi, I'm Muniraju B R
+            </div>
+            <h1 className="hero-title reveal delay-2">
+              Designing <br /><span className="highlight">quiet interfaces</span> <br />that do <span className="text-blue">loud </span>work.
+            </h1>
+            <div className="hero-cert-text reveal delay-3">
+              GOOGLE UX PROFESSIONAL &nbsp;\&nbsp; INTERNSHALA UIUX WITH AI
+            </div>
+          </div>
 
-                <div
-                  onClick={() => handleNavigation('https://trainings.internshala.com/s/v/3779492/2dc4a7a4')}
-                  className="hero-cert-badge internshala-cert"
-                  style={{ cursor: 'pointer' }}
-                >
-                  <div className="cert-icon-wrapper">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1295c9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                      <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                    </svg>
-                  </div>
-                  <span>Internshala UI/UX Certified</span>
-                </div>
-              </div>
-
-              <div className="hero-cta-row reveal delay-3">
-                <div className="social-row">
-                  <div className="social-divider" />
-                  {socialLinks.map(({ label, Icon, href }) => (
-                    <div
-                      key={label}
-                      onClick={() => handleNavigation(href)}
-                      className="social-icon"
-                      title={label}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <Icon />
-                    </div>
-                  ))}
-                  <div
-                    onClick={() => handleNavigation('/about')}
-                    style={{ textDecoration: 'none', color: 'white', cursor: 'pointer' }}
-                    className="btn-text"
-                  >
-                    More About Me
-                  </div>
-                </div>
-              </div>
+          <div className="hero-right">
+            <p className="hero-sub-slogan reveal delay-2">
+              I design minimalist interfaces that feel calm yet perform complex tasks. By combining clean aesthetics with deep research, I create digital products that are intuitive, accessible, and effective.
+            </p>
+            <div className="hero-buttons reveal delay-3">
+              <button className="hero-btn-contact" onClick={() => handleNavigation('/about')}>
+                More About Me
+              </button>
+              <button className="hero-btn-resume" onClick={() => window.open('https://drive.google.com/file/d/1X15hS5bS0kO7SgJvH1D9qU0P-Sj4_u-8/view?usp=sharing', '_blank')}>
+                My Resume <span className="plus-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg></span>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── ABOUT & EXPERIENCE OVERVIEW ── */}
-      <section className="about-overview-section reveal delay-4 section-pad" style={{ background: '#000' }}>
+      <section className="about-overview-section reveal delay-4 section-pad" style={{ background: 'transparent' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="about-overview-content" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
 
@@ -149,7 +114,7 @@ export default function Home() {
                 border: '1px solid #222',
                 borderRadius: '24px',
                 width: '100%',
-                background: '#000',
+                background: 'transparent',
                 marginTop: '60px'
               }}>
                 <div className="stat-item" style={{ padding: '40px', borderRight: '1px solid #222', textAlign: 'center' }}>
@@ -260,8 +225,8 @@ export default function Home() {
       </section>
 
       {/* ── ALL PROJECTS GRID & CTA ── */}
-      <section className="projects-section reveal delay-5 section-pad" style={{ background: '#000' }}>
-        <div className="section-inner" style={{ maxWidth: '100%', padding: '0', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <section className="projects-section reveal delay-5 section-pad" style={{ background: 'transparent' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', padding: '0 24px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
           <div className="projects-thumbnail-grid" style={{ width: '100%', marginBottom: '60px' }}>
             {moreWorksProjects.map((project, idx) => (

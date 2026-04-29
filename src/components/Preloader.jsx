@@ -13,7 +13,6 @@ export default function Preloader() {
       index++;
       if (index >= fullText.length) {
         clearInterval(typingInterval);
-        // Start exit timer after typing is done
         setTimeout(() => {
           setIsExiting(true);
           setTimeout(() => {
@@ -35,7 +34,6 @@ export default function Preloader() {
           {displayedText}
           <span className="typing-cursor">|</span>
         </h1>
-        {/* <p className="preloader-subtitle">Welcome</p> */}
       </div>
     </div>
   );
